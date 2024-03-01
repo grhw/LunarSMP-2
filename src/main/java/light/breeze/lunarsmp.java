@@ -40,7 +40,7 @@ public final class LunarSMP extends JavaPlugin {
 
         smeltrecipes.Axolotl(new NamespacedKey(this, "axolotl"));
         smeltrecipes.Bonemeal(new NamespacedKey(this, "bonemeal"));
-        smeltrecipes.RottenLeather(new NamespacedKey(this, "who_cares_if_any_of_these_are_even_named_correctly"));
+        smeltrecipes.RottenLeather(new NamespacedKey(this, "rotten_leather"));
 
         // Ascii Art
         getLogger().info("Loaded!" + lang.ascii_art);
