@@ -13,7 +13,7 @@ import java.util.logging.Level;
 
 public class BurningAxe {
     public ItemStack createBurningAxe() {
-        ItemStack customItem = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
+        ItemStack customItem = new ItemStack(Material.IRON_AXE, 1);
         ItemMeta meta = customItem.getItemMeta();
 
         meta.setCustomModelData(9003001);
@@ -33,5 +33,5 @@ public class BurningAxe {
         customItem.setItemMeta(meta);
 
         return customItem;
-    };
+    }
 }

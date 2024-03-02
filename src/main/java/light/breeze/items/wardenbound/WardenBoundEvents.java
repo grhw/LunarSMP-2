@@ -7,12 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class WardenBoundEvents implements Listener {
 
@@ -22,21 +22,23 @@ public class WardenBoundEvents implements Listener {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
 
-        if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002002&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
-            List<LivingEntity> exclude = new ArrayList<>();
-            player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER,3,0.75f);
-            player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER,3,1f);
+        if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002002&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
+                List<LivingEntity> exclude = new ArrayList<>();
+                player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);
+                player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER, 3, 1f);
 
-            for (int i = 2; i <= 20; i += 2) {
-                Location loc = ItemUtils.parseRelativeLocation(player.getLocation(),"^ ^ ^" + i).add(0,1,0);
-                player.getWorld().spawnParticle(Particle.SONIC_BOOM,loc,1);
-                //ItemUtils.runCommandAt(player,"particle minecraft:sonic_boom ^ ^ ^" + i);
-                List<LivingEntity> entityList = ItemUtils.getEntitiesInRadius(loc,2);
-                for (LivingEntity entity : entityList) {
-                    if (!exclude.contains(entity)) {
-                        entity.damage(16 + (Math.random()*2));
-                        exclude.add(entity);
-                        player.setCooldown(hand.getType(),120);
+                for (int i = 2; i <= 20; i += 2) {
+                    Location loc = ItemUtils.parseRelativeLocation(player.getLocation(), "^ ^ ^" + i).add(0, 1, 0);
+                    player.getWorld().spawnParticle(Particle.SONIC_BOOM, loc, 1);
+                    //ItemUtils.runCommandAt(player,"particle minecraft:sonic_boom ^ ^ ^" + i);
+                    List<LivingEntity> entityList = ItemUtils.getEntitiesInRadius(loc, 2);
+                    for (LivingEntity entity : entityList) {
+                        if (!exclude.contains(entity)) {
+                            entity.damage(16 + (Math.random() * 2));
+                            exclude.add(entity);
+                            player.setCooldown(hand.getType(), 120);
+                        }
                     }
                 }
             }

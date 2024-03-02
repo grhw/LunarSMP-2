@@ -10,7 +10,7 @@ import java.util.List;
 
 public class WardenBound {
     public ItemStack createWardenBound() {
-        ItemStack wardenBound = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
+        ItemStack wardenBound = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemMeta meta = wardenBound.getItemMeta();
         meta.setCustomModelData(9002002);
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Wardenbound Sword");
@@ -24,5 +24,5 @@ public class WardenBound {
         meta.setLore(lore);
         wardenBound.setItemMeta(meta);
         return wardenBound;
-    };
+    }
 }

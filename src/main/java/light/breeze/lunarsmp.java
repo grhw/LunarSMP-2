@@ -8,6 +8,7 @@ import light.breeze.items.Recipes;
 import light.breeze.items.burningaxe.BurningAxeEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
+import light.breeze.items.withersword.WitherSwordEvents;
 import light.breeze.recipes.Smelting;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -18,20 +19,24 @@ public final class LunarSMP extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Loading LunarSMP");
-        // Register Commands
+
+
+        ////// Register Commands ////
         this.getCommand("lunarsmp").setExecutor(new Credits());
         this.getCommand("customgive").setExecutor(new CustomGive());
         this.getCommand("customgive").setTabCompleter(new CustomGiveAutoCompleter());
 
-        // Register Events
 
+        ////// Register Events ////
         Bukkit.getPluginManager().registerEvents(new WardenBoundEvents(), this);
         Bukkit.getPluginManager().registerEvents(new BurningAxeEvents(), this);
         Bukkit.getPluginManager().registerEvents(new TotemOfFeatherfallEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new WitherSwordEvents(), this);
 
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
 
-        // Register Recipes
+
+        ////// Register Recipes ////
         Recipes recipes = new Recipes();
         Smelting smeltrecipes = new Smelting();
 
@@ -42,7 +47,8 @@ public final class LunarSMP extends JavaPlugin {
         smeltrecipes.Bonemeal(new NamespacedKey(this, "bonemeal"));
         smeltrecipes.RottenLeather(new NamespacedKey(this, "rotten_leather"));
 
-        // Ascii Art
+
+        ////// Ascii Art ////
         getLogger().info("Loaded!" + lang.ascii_art);
         getLogger().info("Plugin by Gust");
     }
