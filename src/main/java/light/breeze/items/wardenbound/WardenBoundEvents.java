@@ -37,7 +37,7 @@ public class WardenBoundEvents implements Listener {
                         if (!exclude.contains(entity)) {
                             entity.damage(16 + (Math.random() * 2));
                             exclude.add(entity);
-                            player.setCooldown(hand.getType(), 120);
+                            player.setCooldown(hand.getType(), 1800);
                         }
                     }
                 }
