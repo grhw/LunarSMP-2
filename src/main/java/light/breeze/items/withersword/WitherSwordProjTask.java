@@ -1,9 +1,8 @@
 package light.breeze.items.withersword;
 
-import light.breeze.items.ItemUtils;
+import light.breeze.utils.Utils;
 import org.bukkit.Color;
 import org.bukkit.Particle;
-import org.bukkit.entity.Egg;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Projectile;
 import org.bukkit.potion.PotionEffect;
@@ -26,7 +25,7 @@ public class WitherSwordProjTask extends BukkitRunnable {
             this.cancel();
         } else {
             Vector vel = egg.getVelocity();
-            List<LivingEntity> entityList = ItemUtils.getEntitiesInRadius(egg.getLocation(), vel.length());
+            List<LivingEntity> entityList = Utils.getEntitiesInRadius(egg.getLocation(), vel.length());
 
             for (LivingEntity entity : entityList) {
                 if (entity != egg.getShooter()) {

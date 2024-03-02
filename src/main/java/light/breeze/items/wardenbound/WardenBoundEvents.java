@@ -1,6 +1,6 @@
 package light.breeze.items.wardenbound;
 
-import light.breeze.items.ItemUtils;
+import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -29,10 +29,10 @@ public class WardenBoundEvents implements Listener {
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER, 3, 1f);
 
                 for (int i = 2; i <= 20; i += 2) {
-                    Location loc = ItemUtils.parseRelativeLocation(player.getLocation(), "^ ^ ^" + i).add(0, 1, 0);
+                    Location loc = Utils.parseRelativeLocation(player.getLocation(), "^ ^ ^" + i).add(0, 1, 0);
                     player.getWorld().spawnParticle(Particle.SONIC_BOOM, loc, 1);
-                    //ItemUtils.runCommandAt(player,"particle minecraft:sonic_boom ^ ^ ^" + i);
-                    List<LivingEntity> entityList = ItemUtils.getEntitiesInRadius(loc, 2);
+                    //Utils.runCommandAt(player,"particle minecraft:sonic_boom ^ ^ ^" + i);
+                    List<LivingEntity> entityList = Utils.getEntitiesInRadius(loc, 2);
                     for (LivingEntity entity : entityList) {
                         if (!exclude.contains(entity)) {
                             entity.damage(16 + (Math.random() * 2));

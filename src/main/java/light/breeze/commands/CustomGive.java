@@ -1,6 +1,9 @@
 package light.breeze.commands;
 
 import light.breeze.cosmetics.hats.DevHat;
+import light.breeze.cosmetics.hats.FeatherHat;
+import light.breeze.cosmetics.hats.TopHat;
+import light.breeze.cosmetics.hats.WitchHat;
 import light.breeze.items.burningaxe.BurningAxe;
 import light.breeze.items.echobow.Echobow;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
@@ -22,9 +25,13 @@ public class CustomGive implements CommandExecutor {
         customItems.put("wardenbound_sword", new WardenBound().createWardenBound());
         customItems.put("burning_axe", new BurningAxe().createBurningAxe());
         customItems.put("totem_of_featherfall", new TotemOfFeatherfall().createTOF());
-        customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("wither_sword", new WitherSword().createWitherSword());
         customItems.put("echo_bow", new Echobow().createEchobow());
+
+        customItems.put("devhat", new DevHat().createDevHat());
+        customItems.put("featherhat", new FeatherHat().createFeatherHat());
+        customItems.put("tophat", new TopHat().createTopHat());
+        customItems.put("witchhat", new WitchHat().createWitchHat());
         return customItems;
     }
 
@@ -38,6 +45,7 @@ public class CustomGive implements CommandExecutor {
             sender.sendMessage("Gave " + sender.getName() + " 1 ["  + args[0] + "].");
         } else {
             sender.sendMessage("Item " + args[0] + " doesn't exist.");
+            return false;
         }
         return true;
     }

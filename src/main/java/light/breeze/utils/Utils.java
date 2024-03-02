@@ -1,16 +1,15 @@
-package light.breeze.items;
+package light.breeze.utils;
 
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class ItemUtils {
+public class Utils {
 
     public static Plugin getPlugin() {
         return Bukkit.getPluginManager().getPlugin("LunarSMP");
@@ -25,6 +24,17 @@ public class ItemUtils {
         }
         return entitiesInRadius;
     }
+
+    public static Player getPlayer(String player_name) {
+        for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
+            if (plr.getName().toLowerCase().matches(player_name.toLowerCase())) {
+                return plr;
+            }
+        }
+        return null;
+    }
+
+
 
     public static Location parseRelativeLocation(Location location, String relativeCoords) {
         String[] coords = relativeCoords.split(" ");

@@ -1,8 +1,6 @@
 package light.breeze.items.withersword;
 
-import light.breeze.items.ItemUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.ServerTickManager;
+import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Egg;
@@ -14,7 +12,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class WitherSwordEvents implements Listener {
@@ -39,7 +36,7 @@ public class WitherSwordEvents implements Listener {
                     proj.setVisualFire(true);
                     proj.setVelocity(player.getLocation().getDirection().multiply(3));
                     WitherSwordProjTask projTask = new WitherSwordProjTask(proj);
-                    projTask.runTaskTimer(ItemUtils.getPlugin(),0,1);
+                    projTask.runTaskTimer(Utils.getPlugin(),0,1);
                 }
             }
         }

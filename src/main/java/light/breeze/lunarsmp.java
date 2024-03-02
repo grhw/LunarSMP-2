@@ -1,8 +1,6 @@
 package light.breeze;
 
-import light.breeze.commands.CustomGiveAutoCompleter;
-import light.breeze.commands.Credits;
-import light.breeze.commands.CustomGive;
+import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
 import light.breeze.items.Recipes;
 import light.breeze.items.burningaxe.BurningAxeEvents;
@@ -24,9 +22,12 @@ public final class LunarSMP extends JavaPlugin {
 
         ////// Register Commands ////
         this.getCommand("lunarsmp").setExecutor(new Credits());
+
         this.getCommand("customgive").setExecutor(new CustomGive());
         this.getCommand("customgive").setTabCompleter(new CustomGiveAutoCompleter());
 
+        this.getCommand("echotarget").setExecutor(new EchoTarget());
+        this.getCommand("echotarget").setTabCompleter(new EchoTargetAutoCompleter());
 
         ////// Register Events ////
         Bukkit.getPluginManager().registerEvents(new WardenBoundEvents(), this);
