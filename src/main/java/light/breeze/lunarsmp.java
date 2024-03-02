@@ -6,6 +6,7 @@ import light.breeze.commands.CustomGive;
 import light.breeze.cosmetics.Cosmetics;
 import light.breeze.items.Recipes;
 import light.breeze.items.burningaxe.BurningAxeEvents;
+import light.breeze.items.echobow.EchobowEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
@@ -32,6 +33,7 @@ public final class LunarSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new BurningAxeEvents(), this);
         Bukkit.getPluginManager().registerEvents(new TotemOfFeatherfallEvents(), this);
         Bukkit.getPluginManager().registerEvents(new WitherSwordEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new EchobowEvents(), this);
 
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
 

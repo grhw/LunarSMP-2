@@ -1,5 +1,6 @@
 package light.breeze.items.withersword;
 
+import light.breeze.items.ItemUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ServerTickManager;
 import org.bukkit.Sound;
@@ -38,7 +39,7 @@ public class WitherSwordEvents implements Listener {
                     proj.setVisualFire(true);
                     proj.setVelocity(player.getLocation().getDirection().multiply(3));
                     WitherSwordProjTask projTask = new WitherSwordProjTask(proj);
-                    projTask.runTaskTimer(Bukkit.getPluginManager().getPlugin("LunarSMP"),0,1);
+                    projTask.runTaskTimer(ItemUtils.getPlugin(),0,1);
                 }
             }
         }

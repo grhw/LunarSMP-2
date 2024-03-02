@@ -5,13 +5,15 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemUtils {
 
-    public static void runCommandAt(Player player, String command) {
-        player.getServer().dispatchCommand(player.getServer().getConsoleSender(),"execute at " + player.getName() + " anchored eyes run " + command);
+    public static Plugin getPlugin() {
+        return Bukkit.getPluginManager().getPlugin("LunarSMP");
     }
     public static List<LivingEntity> getEntitiesInRadius(Location center, double radius) {
         World world = center.getWorld();

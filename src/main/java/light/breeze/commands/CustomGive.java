@@ -2,6 +2,7 @@ package light.breeze.commands;
 
 import light.breeze.cosmetics.hats.DevHat;
 import light.breeze.items.burningaxe.BurningAxe;
+import light.breeze.items.echobow.Echobow;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
 import light.breeze.items.wardenbound.WardenBound;
 import light.breeze.items.withersword.WitherSword;
@@ -23,6 +24,7 @@ public class CustomGive implements CommandExecutor {
         customItems.put("totem_of_featherfall", new TotemOfFeatherfall().createTOF());
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("wither_sword", new WitherSword().createWitherSword());
+        customItems.put("echo_bow", new Echobow().createEchobow());
         return customItems;
     }
 
