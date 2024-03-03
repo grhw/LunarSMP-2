@@ -2,7 +2,7 @@ package light.breeze;
 
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
-import light.breeze.items.Recipes;
+import light.breeze.recipes.CraftingTable;
 import light.breeze.items.burningaxe.BurningAxeEvents;
 import light.breeze.items.echobow.EchobowEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
@@ -39,12 +39,16 @@ public final class LunarSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
 
 
-        ////// Register Recipes ////
-        Recipes recipes = new Recipes();
+        ////// Register CraftingTable ////
+        CraftingTable recipes = new CraftingTable();
         Smelting smeltrecipes = new Smelting();
 
         recipes.TOFRecipe(new NamespacedKey(this, "featherfall"));
         recipes.TophatRecipe(new NamespacedKey(this, "tophat"));
+
+        recipes.Witherbane(new NamespacedKey(this, "witherbane"));
+        recipes.Echobow(new NamespacedKey(this, "echobow"));
+
 
         smeltrecipes.Axolotl(new NamespacedKey(this, "axolotl"));
         smeltrecipes.Bonemeal(new NamespacedKey(this, "bonemeal"));

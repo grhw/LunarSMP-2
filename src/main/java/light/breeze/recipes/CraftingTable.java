@@ -1,14 +1,15 @@
-package light.breeze.items;
+package light.breeze.recipes;
 
-import light.breeze.LunarSMP;
 import light.breeze.cosmetics.hats.TopHat;
+import light.breeze.items.echobow.Echobow;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
+import light.breeze.items.withersword.WitherSword;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ShapedRecipe;
 
-public class Recipes {
+public class CraftingTable {
     public void TOFRecipe(NamespacedKey key) {
         ShapedRecipe recipe = new ShapedRecipe(key, new TotemOfFeatherfall().createTOF());
         recipe.shape("#H#", "#P#", "###");
@@ -23,6 +24,25 @@ public class Recipes {
         recipe.setIngredient('c', Material.COPPER_INGOT);
         recipe.setIngredient('S', Material.STRING);
         recipe.setIngredient('#', Material.GRAY_WOOL);
+        Bukkit.addRecipe(recipe);
+    }
+
+    public void Echobow(NamespacedKey key) {
+        ShapedRecipe recipe = new ShapedRecipe(key, new Echobow().createEchobow());
+        recipe.shape("#E ", "# E", "#E ");
+        recipe.setIngredient('E', Material.ECHO_SHARD);
+        recipe.setIngredient('#', Material.AMETHYST_SHARD);
+        Bukkit.addRecipe(recipe);
+    }
+
+    public void Witherbane(NamespacedKey key) {
+        ShapedRecipe recipe = new ShapedRecipe(key, new WitherSword().createWitherSword());
+        recipe.shape(" #W", "NDX", "XXX");
+        recipe.setIngredient('#', Material.FIRE_CHARGE);
+        recipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
+        recipe.setIngredient('N', Material.NETHER_STAR);
+        recipe.setIngredient('D', Material.DIAMOND_SWORD);
+        recipe.setIngredient('X', Material.NETHERRACK);
         Bukkit.addRecipe(recipe);
     }
 }
