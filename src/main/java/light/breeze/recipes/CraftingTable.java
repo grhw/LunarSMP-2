@@ -45,4 +45,13 @@ public class CraftingTable {
         recipe.setIngredient('X', Material.NETHERRACK);
         Bukkit.addRecipe(recipe);
     }
+
+    public void EchoshardDuplication(NamespacedKey key) {
+        ShapedRecipe recipe = new ShapedRecipe(key, new WitherSword().createWitherSword());
+        recipe.shape("iA", " E");
+        recipe.setIngredient('i', Material.IRON_INGOT);
+        recipe.setIngredient('A', Material.AMETHYST_SHARD);
+        recipe.setIngredient('E', Material.ECHO_SHARD);
+        Bukkit.addRecipe(recipe);
+    }
 }

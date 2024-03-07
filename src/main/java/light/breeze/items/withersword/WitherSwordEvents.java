@@ -3,7 +3,7 @@ package light.breeze.items.withersword;
 import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
-import org.bukkit.entity.Egg;
+import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
@@ -32,7 +32,7 @@ public class WitherSwordEvents implements Listener {
 
 
                     player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, SoundCategory.MASTER, 3, 2f);
-                    Projectile proj = player.launchProjectile(Egg.class);
+                    Projectile proj = player.launchProjectile(Snowball.class);
                     proj.setVisualFire(true);
                     proj.setVelocity(player.getLocation().getDirection().multiply(3));
                     WitherSwordProjTask projTask = new WitherSwordProjTask(proj);

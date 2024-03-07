@@ -49,6 +49,7 @@ public final class LunarSMP extends JavaPlugin {
         recipes.Witherbane(new NamespacedKey(this, "witherbane"));
         recipes.Echobow(new NamespacedKey(this, "echobow"));
 
+        recipes.EchoshardDuplication(new NamespacedKey(this, "echosharddupe"));
 
         smeltrecipes.Axolotl(new NamespacedKey(this, "axolotl"));
         smeltrecipes.Bonemeal(new NamespacedKey(this, "bonemeal"));

@@ -13,27 +13,27 @@ import org.bukkit.util.Vector;
 import java.util.List;
 
 public class WitherSwordProjTask extends BukkitRunnable {
-    private final Projectile egg;
+    private final Projectile snowball;
 
-    public WitherSwordProjTask(Projectile egg) {
-        this.egg = egg;
+    public WitherSwordProjTask(Projectile snowball) {
+        this.snowball = snowball;
     }
 
     @Override
     public void run() {
-        if (egg == null||egg.isDead()) {
+        if (snowball == null||snowball.isDead()) {
             this.cancel();
         } else {
-            Vector vel = egg.getVelocity();
-            List<LivingEntity> entityList = Utils.getEntitiesInRadius(egg.getLocation(), vel.length());
+            Vector vel = snowball.getVelocity();
+            List<LivingEntity> entityList = Utils.getEntitiesInRadius(snowball.getLocation(), vel.length());
 
             for (LivingEntity entity : entityList) {
-                if (entity != egg.getShooter()) {
+                if (entity != snowball.getShooter()) {
                     entity.getWorld().spawnParticle(Particle.REDSTONE, entity.getLocation().add(0,1,0), 4, new Particle.DustOptions(Color.BLACK,5));
                     entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,60,2));
                 }
             }
-            egg.getWorld().spawnParticle(Particle.REDSTONE, egg.getLocation(), 1, new Particle.DustOptions(Color.BLACK,5));
+            snowball.getWorld().spawnParticle(Particle.REDSTONE, snowball.getLocation(), 1, new Particle.DustOptions(Color.BLACK,5));
         }
     }
 }
