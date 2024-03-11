@@ -7,6 +7,7 @@ import light.breeze.items.withersword.WitherSword;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class CraftingTable {
@@ -47,7 +48,7 @@ public class CraftingTable {
     }
 
     public void EchoshardDuplication(NamespacedKey key) {
-        ShapedRecipe recipe = new ShapedRecipe(key, new WitherSword().createWitherSword());
+        ShapedRecipe recipe = new ShapedRecipe(key, new ItemStack(Material.ECHO_SHARD,2));
         recipe.shape("iA", " E");
         recipe.setIngredient('i', Material.IRON_INGOT);
         recipe.setIngredient('A', Material.AMETHYST_SHARD);
