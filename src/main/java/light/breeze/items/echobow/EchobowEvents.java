@@ -2,6 +2,7 @@ package light.breeze.items.echobow;
 
 import light.breeze.utils.Utils;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -25,8 +26,10 @@ public class EchobowEvents implements Listener {
         }
         if (ignoreBecauseNotPlayer||(event.getBow().hasItemMeta() && event.getBow().getItemMeta().hasCustomModelData() && event.getBow().getItemMeta().getCustomModelData() == 9001001)) {
             if (!ignoreBecauseNotPlayer) {
-                if (player.getInventory().contains(Material.ENDER_PEARL)) {
-                    player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
+                if (player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
+                    if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
+                        player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
+                    }
                     EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());
                     projTask.runTaskTimer(Utils.getPlugin(),0,1);
                 }
