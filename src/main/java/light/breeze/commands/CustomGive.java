@@ -12,6 +12,7 @@ import light.breeze.items.withersword.WitherSword;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -26,7 +27,10 @@ public class CustomGive implements CommandExecutor {
         customItems.put("burning_axe", new BurningAxe().createBurningAxe());
         customItems.put("totem_of_featherfall", new TotemOfFeatherfall().createTOF());
         customItems.put("wither_sword", new WitherSword().createWitherSword());
-        customItems.put("echo_bow", new Echobow().createEchobow());
+        customItems.put("echo_bow", new Echobow().createEchobow("50"));
+        ItemStack ebna = new Echobow().createEchobow("1");
+        ebna.addEnchantment(Enchantment.SILK_TOUCH,1);
+        customItems.put("echo_bow_noammo",ebna);
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());

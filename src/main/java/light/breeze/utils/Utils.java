@@ -73,4 +73,13 @@ public class Utils {
         }
         return playersInRadius;
     }
+
+    public static Boolean inList(ArrayList<String> list, String searchString) {
+        for (String curVal : list){
+            if (curVal.matches(searchString)){
+               return true;
+            }
+        }
+        return false;
+    }
 }

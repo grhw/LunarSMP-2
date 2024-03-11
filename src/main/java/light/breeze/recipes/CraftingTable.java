@@ -29,7 +29,7 @@ public class CraftingTable {
     }
 
     public void Echobow(NamespacedKey key) {
-        ShapedRecipe recipe = new ShapedRecipe(key, new Echobow().createEchobow());
+        ShapedRecipe recipe = new ShapedRecipe(key, new Echobow().createEchobow("50"));
         recipe.shape("#E ", "# E", "#E ");
         recipe.setIngredient('E', Material.ECHO_SHARD);
         recipe.setIngredient('#', Material.AMETHYST_SHARD);

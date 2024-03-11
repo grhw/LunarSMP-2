@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Echobow {
-    public ItemStack createEchobow() {
+    public ItemStack createEchobow(String ammo) {
         ItemStack customItem = new ItemStack(Material.BOW, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
         meta.setCustomModelData(9001001);
-        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Echobow");
+        meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Echobow [" + ammo + "/" + ammo + "]");
         List<String> lore = new ArrayList<>();
 
         lore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "bends time space and also space");
