@@ -29,8 +29,8 @@ public class CustomGive implements CommandExecutor {
         customItems.put("wither_sword", new WitherSword().createWitherSword());
         customItems.put("echo_bow", new Echobow().createEchobow("50"));
         ItemStack ebna = new Echobow().createEchobow("1");
-        ebna.addEnchantment(Enchantment.SILK_TOUCH,1);
-        customItems.put("echo_bow_noammo",ebna);
+        ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
+        customItems.put("eb_noammo",ebna);
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());
