@@ -14,7 +14,7 @@ import light.breeze.utils.FileStorage;
 
 public class VPNLogger implements Listener {
         @EventHandler(priority= EventPriority.HIGH)
-        public void onUse(PlayerJoinEvent event) {
+        public void checkVPN(PlayerJoinEvent event) {
             FileStorage fs = new FileStorage(Utils.getPlugin(),"lunarlog.yml");
             String ip = event.getPlayer().getAddress().getHostName();
             if (fs.get(ip) == null) {
