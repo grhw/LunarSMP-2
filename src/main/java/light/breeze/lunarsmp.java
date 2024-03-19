@@ -1,5 +1,6 @@
 package light.breeze;
 
+import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
 import light.breeze.recipes.CraftingTable;
@@ -35,6 +36,9 @@ public final class LunarSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new TotemOfFeatherfallEvents(), this);
         Bukkit.getPluginManager().registerEvents(new WitherSwordEvents(), this);
         Bukkit.getPluginManager().registerEvents(new EchobowEvents(), this);
+
+        Bukkit.getPluginManager().registerEvents(new VPNLogger(), this);
+
 
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
 
