@@ -18,7 +18,7 @@ public class AntiFly implements Listener {
         //if (oldPos.distance(newPos) > 80/event.getPlayer().getServer().getServerTickManager().getTickRate()) {
         //    event.getPlayer().teleport(oldPos);
         //}
-        if (oldPos.getY()-newPos.getY() < -0.5&&event.getPlayer().getVelocity().getY() > -0.1) {
+        if (!event.getPlayer().isGliding()&&oldPos.getY()-newPos.getY() < -0.5&&event.getPlayer().getVelocity().getY() > -0.1) {
             event.getPlayer().setVelocity(new Vector(0,0,0));
             event.getPlayer().teleport(oldPos);
         }
