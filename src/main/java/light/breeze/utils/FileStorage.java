@@ -24,7 +24,10 @@ public class FileStorage {
 
     public String get(String key) {
         reload();
-        return config.getString(key);
+        if (config.contains(key)) {
+            return config.getString(key);
+        }
+        return null;
     }
 
     private void save() {
