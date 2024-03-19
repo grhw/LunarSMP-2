@@ -1,5 +1,6 @@
 package light.breeze;
 
+import light.breeze.anticheat.AntiFly;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
@@ -38,6 +39,7 @@ public final class LunarSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EchobowEvents(), this);
 
         Bukkit.getPluginManager().registerEvents(new VPNLogger(), this);
+        Bukkit.getPluginManager().registerEvents(new AntiFly(), this);
 
 
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
