@@ -8,11 +8,15 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
 
 public class Utils {
 
     public static Plugin getPlugin() {
         return Bukkit.getPluginManager().getPlugin("LunarSMP");
+    }
+    public static void log(String str) {
+        Bukkit.getLogger().log(Level.INFO,str);
     }
     public static List<LivingEntity> getEntitiesInRadius(Location center, double radius) {
         World world = center.getWorld();
