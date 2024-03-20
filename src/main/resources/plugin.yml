@@ -19,3 +19,8 @@ commands:
     description: sets echo target
     usage: /<command>
     permission: minecraft.command.help
+
+  dev:
+    description: dev command
+    usage: /<command>
+    permission: minecraft.command.give
