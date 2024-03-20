@@ -1,6 +1,8 @@
 package light.breeze.utils;
 
 import org.bukkit.*;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -36,6 +38,17 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    // No NMS for me !
+    public static boolean setBlockNBT(Location location, String nbt) { // no nms for me!
+        Server server = Utils.getPlugin().getServer();
+        return server.dispatchCommand(server.getConsoleSender(),"data merge block " + location.getX() + " " + location.getY() + " " + location.getZ() + " " + nbt);
+    }
+
+    public static boolean setEntityNBT(Entity entity, String nbt) {
+        Server server = Utils.getPlugin().getServer();
+        return server.dispatchCommand(server.getConsoleSender(),"data merge entity " + entity.getUniqueId() + " " + nbt);
     }
 
 
