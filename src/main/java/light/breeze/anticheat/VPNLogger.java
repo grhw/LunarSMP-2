@@ -35,11 +35,11 @@ public class VPNLogger implements Listener {
                     fs.store(ip + ".isvpn","no");
                 }
                 fs.store(ip + ".country",ipinfo.get("countryName").getAsString());
-                fs.store(ip + ".blocklevel",ipinfo.get("block").getAsString());
+                fs.store(ip + ".blocklevel","" + ipinfo.get("block").getAsString());
                 fs.store(ip + ".isp",ipinfo.get("isp").getAsString());
             }
 
-            if (fs.get(ip + ".isvpn") == "vpn") {
+            if (fs.get(ip + ".isvpn").matches("vpn")) {
                 Utils.log("Was using a VPN.");
                 event.getPlayer().kickPlayer("Turn your damn VPN off!");
                 event.getPlayer().getServer().banIP(event.getPlayer().getAddress().getAddress());
