@@ -6,6 +6,7 @@ import light.breeze.cosmetics.hats.TopHat;
 import light.breeze.cosmetics.hats.WitchHat;
 import light.breeze.items.burningaxe.BurningAxe;
 import light.breeze.items.echobow.Echobow;
+import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
 import light.breeze.items.wardenbound.WardenBound;
 import light.breeze.items.withersword.WitherSword;
@@ -28,9 +29,12 @@ public class CustomGive implements CommandExecutor {
         customItems.put("totem_of_featherfall", new TotemOfFeatherfall().createTOF());
         customItems.put("wither_sword", new WitherSword().createWitherSword());
         customItems.put("echo_bow", new Echobow().createEchobow("50"));
+
         ItemStack ebna = new Echobow().createEchobow("1");
         ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
         customItems.put("eb_noammo",ebna);
+
+        customItems.put("end_pickaxe", new EndPickaxe().createEndPickaxe());
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());
