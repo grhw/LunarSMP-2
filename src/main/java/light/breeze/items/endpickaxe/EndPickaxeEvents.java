@@ -2,10 +2,8 @@ package light.breeze.items.endpickaxe;
 
 import com.sun.jdi.ShortValue;
 import light.breeze.utils.Utils;
-import org.bukkit.Location;
-import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
-import org.bukkit.World;
+import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -31,7 +29,10 @@ public class EndPickaxeEvents implements Listener {
                 for (int x = -1; x < 2; x++) {
                     for (int y = -1; y < 2; y++) {
                         for (int z = -1; z < 2; z++) {
-                            world.getBlockAt(pos.clone().add(x, y, z)).breakNaturally(hand);
+                            Block block = world.getBlockAt(pos.clone().add(x, y, z));
+                            if (block.getType().getHardness() > 0&&block.getType().getHardness() < Material.REINFORCED_DEEPSLATE.getHardness()) {
+                                block.breakNaturally(hand);
+                            }
                         }
                     }
                 }
