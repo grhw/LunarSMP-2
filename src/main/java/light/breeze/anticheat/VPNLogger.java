@@ -23,20 +23,19 @@ public class VPNLogger implements Listener {
             Utils.log("Checking");
             if (fs.get(ip) == null) {
                 Utils.log("Sending");
-                String data = Http.get("https://vpnapi.io/api/" + ip);
+                String data = Http.get("http://v2.api.iphub.info/ip/" + ip + "?key=" + fs.get("lunarlog-api-key"));
                 //event.getPlayer().sendMessage(data);
-                JsonObject ipdata = new JsonParser().parse(data).getAsJsonObject();
+                JsonObject ipinfo = new JsonParser().parse(data).getAsJsonObject();
                 fs.store(ip + ".isvpn","undetermined");
-                JsonObject flags = ipdata.get("security").getAsJsonObject();
-                JsonObject ipinfo = ipdata.get("location").getAsJsonObject();
 
-                if (flags.get("vpn").getAsBoolean()||flags.get("proxy").getAsBoolean()||flags.get("tor").getAsBoolean()||flags.get("relay").getAsBoolean()) {
+                if (ipinfo.get("block").getAsInt() == 1) {
                     fs.store(ip + ".isvpn","vpn");
                 } else {
                     fs.store(ip + ".isvpn","no");
                 }
-                fs.store(ip + ".country",ipinfo.get("country").getAsString());
-                fs.store(ip + ".continent",ipinfo.get("continent").getAsString());
+                fs.store(ip + ".country",ipinfo.get("countryName").getAsString());
+                fs.store(ip + ".blocklevel",ipinfo.get("block").getAsString());
+                fs.store(ip + ".isp",ipinfo.get("isp").getAsString());
             }
 
             if (fs.get(ip + ".isvpn") == "vpn") {
