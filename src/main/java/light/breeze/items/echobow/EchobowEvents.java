@@ -9,6 +9,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
 
 public class EchobowEvents implements Listener {
 
@@ -29,6 +32,8 @@ public class EchobowEvents implements Listener {
                 if (player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                         player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
+                    } else {
+                        Utils.customDurability(event.getBow());
                     }
                     EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());
                     projTask.runTaskTimer(Utils.getPlugin(),0,1);

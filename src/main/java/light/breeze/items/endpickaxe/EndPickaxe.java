@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EndPickaxe {
-    public ItemStack createEndPickaxe() {
+    public ItemStack createEndPickaxe(String maxdurability) {
         ItemStack customItem = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
+
         meta.setCustomModelData(9003004);
-        meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "End Pickaxe");
+        meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "End Pickaxe " + "[" + maxdurability + "/" + maxdurability + "]");
         List<String> lore = new ArrayList<>();
 
         lore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "base grief tool");

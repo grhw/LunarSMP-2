@@ -1,5 +1,7 @@
 package light.breeze.items.endpickaxe;
 
+import com.sun.jdi.ShortValue;
+import light.breeze.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -11,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -20,17 +23,19 @@ public class EndPickaxeEvents implements Listener {
         if (event.getPlayer() != null) {
             Player player = event.getPlayer();
             ItemStack hand = player.getInventory().getItemInMainHand();
+
             if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9003004) {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, SoundCategory.MASTER, 1, 2f);
                 Location pos = event.getBlock().getLocation();
                 World world = event.getBlock().getWorld();
-                for (int x = 0; x < 3; x++) {
-                    for (int y = 0; y < 3; y++) {
-                        for (int z = 0; z < 3; z++) {
-                            world.getBlockAt(pos.add(x, y, z)).breakNaturally(hand);
+                for (int x = -1; x < 2; x++) {
+                    for (int y = -1; y < 2; y++) {
+                        for (int z = -1; z < 2; z++) {
+                            world.getBlockAt(pos.clone().add(x, y, z)).breakNaturally(hand);
                         }
                     }
                 }
+                Utils.customDurability(hand);
             }
         }
     }

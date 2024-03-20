@@ -3,8 +3,11 @@ package light.breeze.utils;
 import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -51,7 +54,16 @@ public class Utils {
         return server.dispatchCommand(server.getConsoleSender(),"data merge entity " + entity.getUniqueId() + " " + nbt);
     }
 
-
+    public static void customDurability(ItemStack item) {
+        ItemMeta bim = item.getItemMeta();
+        String old = bim.getDisplayName();
+        String[] num = old.split("\\[")[1].split("\\]")[0].split("/");
+        bim.setDisplayName(old.split("\\[")[0] + (Integer.parseInt(num[0])-1) + "/" + Integer.parseInt(num[1]) + "]");
+        item.setItemMeta(bim);
+        if (Integer.parseInt(num[0]) < 1) {
+            item.setAmount(0);
+        }
+    }
 
     public static Location parseRelativeLocation(Location location, String relativeCoords) {
         String[] coords = relativeCoords.split(" ");

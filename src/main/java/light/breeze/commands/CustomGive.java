@@ -34,7 +34,7 @@ public class CustomGive implements CommandExecutor {
         ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
         customItems.put("eb_noammo",ebna);
 
-        customItems.put("end_pickaxe", new EndPickaxe().createEndPickaxe());
+        customItems.put("end_pickaxe", new EndPickaxe().createEndPickaxe("1600"));
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());
