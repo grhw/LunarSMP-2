@@ -9,6 +9,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -22,8 +23,9 @@ public class Dev implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
 
-        if (args.length > 1) {
+        if (args.length > 0) {
             if (args[0].contains("koth")) {
+                player.sendMessage("Creating KOTH Container at your location.");
                 ArmorStand arm = player.getWorld().spawn(player.getLocation(), ArmorStand.class);
                 arm.setSmall(true);
                 arm.setInvulnerable(true);
@@ -31,8 +33,10 @@ public class Dev implements CommandExecutor {
                 arm.setGravity(false);
                 arm.setCustomName("Step For Points");
                 KothTask armTask = new KothTask(arm);
-                armTask.runTaskTimer(Utils.getPlugin(),1,20);
+                armTask.runTaskTimer(Utils.getPlugin(),1,10);
             }
+        } else {
+            player.sendMessage("hi :3");
         }
         return true;
     }
@@ -57,7 +61,14 @@ public class Dev implements CommandExecutor {
             }
             List<Player> players = Utils.getPlayersInRadius(this.stand.getEyeLocation(),2);
             for (Player player:players) {
-                this.scores.put(player,this.scores.getOrDefault(player,1));
+                this.scores.put(player,this.scores.getOrDefault(player,1)+1);
+            }
+            List<Player> disablePlayers = Utils.getPlayersInRadius(this.stand.getEyeLocation(),60);
+            for (Player player:disablePlayers) {
+                if (player.isGliding()) {
+                    player.setVelocity(new Vector(0,-5,0));
+                    player.sendMessage("You are not allowed to use elytras in this area!");
+                }
             }
         }
     }

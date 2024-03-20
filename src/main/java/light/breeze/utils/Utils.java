@@ -23,16 +23,7 @@ public class Utils {
     public static void log(String str) {
         Bukkit.getLogger().log(Level.INFO,str);
     }
-    public static List<LivingEntity> getEntitiesInRadius(Location center, double radius) {
-        World world = center.getWorld();
-        List<LivingEntity> entitiesInRadius = new ArrayList<>();
-        for (LivingEntity entity : world.getLivingEntities()) {
-            if (entity.getLocation().distance(center) <= radius) {
-                entitiesInRadius.add(entity);
-            }
-        }
-        return entitiesInRadius;
-    }
+
 
     public static Player getPlayer(String player_name) {
         for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
@@ -95,14 +86,25 @@ public class Utils {
         List<Player> playersInRadius = new ArrayList<>();
         for (Player player : Bukkit.getOnlinePlayers()) {
             Location playerLocation = player.getLocation();
-            double distance = center.distance(playerLocation);
-            if (distance <= radius) {
-                playersInRadius.add(player);
+            if (center.getWorld() == playerLocation.getWorld()) {
+                double distance = center.distance(playerLocation);
+                if (distance <= radius) {
+                    playersInRadius.add(player);
+                }
             }
         }
         return playersInRadius;
     }
-
+    public static List<LivingEntity> getEntitiesInRadius(Location center, double radius) {
+        World world = center.getWorld();
+        List<LivingEntity> entitiesInRadius = new ArrayList<>();
+        for (LivingEntity entity : world.getLivingEntities()) {
+            if (entity.getLocation().distance(center) <= radius) {
+                entitiesInRadius.add(entity);
+            }
+        }
+        return entitiesInRadius;
+    }
     public static Boolean inList(ArrayList<String> list, String searchString) {
         for (String curVal : list){
             if (curVal.matches(searchString)){
