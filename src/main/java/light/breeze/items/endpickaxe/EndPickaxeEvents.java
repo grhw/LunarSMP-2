@@ -4,6 +4,7 @@ import com.sun.jdi.ShortValue;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -36,7 +37,9 @@ public class EndPickaxeEvents implements Listener {
                         }
                     }
                 }
-                Utils.customDurability(hand);
+                if (!hand.containsEnchantment(Enchantment.SILK_TOUCH)) {
+                    Utils.customDurability(hand);
+                }
             }
         }
     }
