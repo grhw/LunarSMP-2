@@ -32,7 +32,6 @@ public class EchobowEvents implements Listener {
                 if (player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                         player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
-                    } else {
                         Utils.customDurability(event.getBow());
                     }
                     EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());

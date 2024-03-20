@@ -44,7 +44,7 @@ public final class LunarSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EndPickaxeEvents(), this);
 
         Bukkit.getPluginManager().registerEvents(new VPNLogger(), this);
-        Bukkit.getPluginManager().registerEvents(new AntiFly(), this);
+        //Bukkit.getPluginManager().registerEvents(new AntiFly(), this);
         //Bukkit.getPluginManager().registerEvents(new ChunkLogger(), this);
 
 
