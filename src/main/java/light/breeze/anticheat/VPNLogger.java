@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import light.breeze.utils.FileStorage;
 
+import java.net.InetAddress;
 import java.util.logging.Level;
 
 public class VPNLogger implements Listener {
@@ -41,6 +42,7 @@ public class VPNLogger implements Listener {
             if (fs.get(ip + ".isvpn") == "vpn") {
                 Utils.log("Was using a VPN.");
                 event.getPlayer().kickPlayer("Turn your damn VPN off!");
+                event.getPlayer().getServer().banIP(event.getPlayer().getAddress().getAddress());
             }
         }
 }
