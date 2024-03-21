@@ -1,13 +1,17 @@
 package light.breeze.commands;
 
+import light.breeze.recipes.CraftingTable;
+import light.breeze.recipes.Smelting;
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -34,6 +38,23 @@ public class Dev implements CommandExecutor {
                 arm.setCustomName("Step For Points");
                 KothTask armTask = new KothTask(arm);
                 armTask.runTaskTimer(Utils.getPlugin(),1,10);
+            } else if (args[0].contains("add_recipes")) {
+                ////// Register CraftingTable ////
+                Plugin plugin = Utils.getPlugin();
+                CraftingTable recipes = new CraftingTable();
+                Smelting smeltrecipes = new Smelting();
+
+                recipes.TOFRecipe(new NamespacedKey(plugin, "featherfall"));
+                recipes.TophatRecipe(new NamespacedKey(plugin, "tophat"));
+
+                recipes.Witherbane(new NamespacedKey(plugin, "witherbane"));
+                recipes.Echobow(new NamespacedKey(plugin, "echobow"));
+
+                recipes.EchoshardDuplication(new NamespacedKey(plugin, "echosharddupe"));
+
+                smeltrecipes.Axolotl(new NamespacedKey(plugin, "axolotl"));
+                smeltrecipes.Bonemeal(new NamespacedKey(plugin, "bonemeal"));
+                smeltrecipes.RottenLeather(new NamespacedKey(plugin, "rotten_leather"));
             }
         } else {
             player.sendMessage("hi :3");

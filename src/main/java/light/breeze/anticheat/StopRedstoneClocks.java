@@ -22,7 +22,7 @@ public class StopRedstoneClocks implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void stopRedstoneClocks(BlockRedstoneEvent event) {
-        if (event.getBlock().getType() == Material.REPEATER||event.getBlock().getType() == Material.PISTON) {
+        if (event.getBlock().getType() == Material.REPEATER||event.getBlock().getType() == Material.OBSERVER||event.getBlock().getType() == Material.PISTON) {
             String chunk = event.getBlock().getChunk().toString();
             String res = this.fs.get(chunk);
             Integer tick = tc.tc.redstoneTicksAlive;

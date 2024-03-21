@@ -52,27 +52,11 @@ public final class LunarSMP extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
 
-
-        ////// Register CraftingTable ////
-        CraftingTable recipes = new CraftingTable();
-        Smelting smeltrecipes = new Smelting();
-
-        recipes.TOFRecipe(new NamespacedKey(this, "featherfall"));
-        recipes.TophatRecipe(new NamespacedKey(this, "tophat"));
-
-        recipes.Witherbane(new NamespacedKey(this, "witherbane"));
-        recipes.Echobow(new NamespacedKey(this, "echobow"));
-
-        recipes.EchoshardDuplication(new NamespacedKey(this, "echosharddupe"));
-
-        smeltrecipes.Axolotl(new NamespacedKey(this, "axolotl"));
-        smeltrecipes.Bonemeal(new NamespacedKey(this, "bonemeal"));
-        smeltrecipes.RottenLeather(new NamespacedKey(this, "rotten_leather"));
-
-
         ////// Ascii Art ////
         getLogger().info("Loaded!" + lang.ascii_art);
         getLogger().info("Plugin by Gust");
+
+
     }
 
 
