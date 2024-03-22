@@ -25,8 +25,8 @@ commands:
     usage: /<command>
     permission: minecraft.command.give
 
-  ltpa:
+  tpa:
     description: requests to TP to someone
-    aliases: [ltpa, ltpato, ltpahere, ltpaccept, ltpacancel, ltpcancel, ltpaaccept, ltpdecline, ltpadecline]
+    aliases: [tpa, tpato, tpahere, tpaccept, tpacancel, tpcancel, tpaaccept, tpdecline, tpadecline]
     usage: /tpa <player>
     permission: minecraft.command.help
