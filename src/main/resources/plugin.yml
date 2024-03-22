@@ -24,3 +24,9 @@ commands:
     description: dev command
     usage: /<command>
     permission: minecraft.command.give
+
+  tpa:
+    description: requests to TP to someone
+    aliases: [tpa, tpato, tpahere, tpaccept, tpacancel, tpcancel, tpaaccept, tpdecline, tpadecline]
+    usage: /tpa <player>
+    permission: minecraft.command.help
