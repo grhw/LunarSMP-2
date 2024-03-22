@@ -6,6 +6,7 @@ import light.breeze.anticheat.StopRedstoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
+import light.breeze.items.endingot.EndIngotEvents;
 import light.breeze.items.endpickaxe.EndPickaxeEvents;
 import light.breeze.recipes.CraftingTable;
 import light.breeze.items.burningaxe.BurningAxeEvents;
@@ -13,17 +14,23 @@ import light.breeze.items.echobow.EchobowEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
+import light.breeze.recipes.HijackCraftingTable;
 import light.breeze.recipes.Smelting;
+import light.breeze.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Level;
 
 public final class LunarSMP extends JavaPlugin {
 
     @Override
     public void onEnable() {
         getLogger().info("Loading LunarSMP");
-
+        PluginManager pm = Bukkit.getPluginManager();
 
         ////// Register Commands ////
         this.getCommand("lunarsmp").setExecutor(new Credits());
@@ -38,31 +45,59 @@ public final class LunarSMP extends JavaPlugin {
         this.getCommand("tpa").setExecutor(new TPA());
 
         ////// Register Events ////
-        Bukkit.getPluginManager().registerEvents(new WardenBoundEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new BurningAxeEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new TotemOfFeatherfallEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new WitherSwordEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new EchobowEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new EndPickaxeEvents(), this);
-        Bukkit.getPluginManager().registerEvents(new StopRedstoneClocks(), this);
+        pm.registerEvents(new WardenBoundEvents(), this);
+        pm.registerEvents(new BurningAxeEvents(), this);
+        pm.registerEvents(new TotemOfFeatherfallEvents(), this);
+        pm.registerEvents(new WitherSwordEvents(), this);
+        pm.registerEvents(new EchobowEvents(), this);
+        pm.registerEvents(new EndPickaxeEvents(), this);
+        pm.registerEvents(new StopRedstoneClocks(), this);
 
-        Bukkit.getPluginManager().registerEvents(new VPNLogger(), this);
-        //Bukkit.getPluginManager().registerEvents(new AntiFly(), this);
-        //Bukkit.getPluginManager().registerEvents(new ChunkLogger(), this);
+        pm.registerEvents(new VPNLogger(), this);
+        //pm.registerEvents(new AntiFly(), this);
+        //pm.registerEvents(new ChunkLogger(), this);
 
 
-        Bukkit.getPluginManager().registerEvents(new Cosmetics(), this);
+        pm.registerEvents(new Cosmetics(), this);
+
+        ////// Mob Drops ////
+        pm.registerEvents(new EndIngotEvents(), this);
 
         ////// Ascii Art ////
         getLogger().info("Loaded!" + lang.ascii_art);
         getLogger().info("Plugin by Gust");
 
+        ////// Register Recipes ////
+        try {
+            Plugin plugin = Utils.getPlugin();
 
+            CraftingTable recipes = new CraftingTable();
+            Smelting smeltrecipes = new Smelting();
+            HijackCraftingTable customrecipes = new HijackCraftingTable();
+
+            customrecipes.EndPickaxe();
+            pm.registerEvents(customrecipes, plugin);
+
+            recipes.TOFRecipe(new NamespacedKey(plugin, "featherfall"));
+            recipes.TophatRecipe(new NamespacedKey(plugin, "tophat"));
+
+            recipes.Witherbane(new NamespacedKey(plugin, "witherbane"));
+            recipes.Echobow(new NamespacedKey(plugin, "echobow"));
+
+            recipes.EchoshardDuplication(new NamespacedKey(plugin, "echosharddupe"));
+
+            smeltrecipes.Axolotl(new NamespacedKey(plugin, "axolotl"));
+            smeltrecipes.Bonemeal(new NamespacedKey(plugin, "bonemeal"));
+            smeltrecipes.RottenLeather(new NamespacedKey(plugin, "rotten_leather"));
+        } catch (Exception e) {
+            Utils.log("Either something went TERRIBLY wrong, or plugin was reloaded using PlugMan.");
+            this.getLogger().log(Level.WARNING,"",e);
+        }
     }
 
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
     }
 }

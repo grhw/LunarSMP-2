@@ -6,6 +6,7 @@ import light.breeze.cosmetics.hats.TopHat;
 import light.breeze.cosmetics.hats.WitchHat;
 import light.breeze.items.burningaxe.BurningAxe;
 import light.breeze.items.echobow.Echobow;
+import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
 import light.breeze.items.wardenbound.WardenBound;
@@ -27,6 +28,7 @@ public class CustomGive implements CommandExecutor {
         customItems.put("wardenbound_sword", new WardenBound().createWardenBound());
         customItems.put("burning_axe", new BurningAxe().createBurningAxe());
         customItems.put("totem_of_featherfall", new TotemOfFeatherfall().createTOF());
+        customItems.put("end_ingot", new EndIngot().createEndIngot());
         customItems.put("wither_sword", new WitherSword().createWitherSword());
         customItems.put("echo_bow", new Echobow().createEchobow("50"));
 
@@ -37,7 +39,7 @@ public class CustomGive implements CommandExecutor {
         customItems.put("end_pickaxe", new EndPickaxe().createEndPickaxe("1600"));
 
         ItemStack uep = new EndPickaxe().createEndPickaxe("1");
-        ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
+        uep.addUnsafeEnchantment(Enchantment.PIERCING,1);
         customItems.put("event_end_pickaxe",uep);
 
         customItems.put("devhat", new DevHat().createDevHat());
