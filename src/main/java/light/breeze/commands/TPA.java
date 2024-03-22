@@ -2,6 +2,8 @@ package light.breeze.commands;
 
 import light.breeze.lang;
 import light.breeze.utils.Utils;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -87,18 +89,23 @@ public class TPA implements CommandExecutor {
                 this.requester.sendMessage(lang.tpa_request_to.replace("$1",this.target.getName()));
                 this.target.sendMessage(lang.tpa_notif_to.replace("$1",this.requester.getName()));
             }
+            this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_COW_BELL,2,1);
         }
 
         public void cancel_request() {
             this.cancelled = true;
             this.requester.sendMessage(lang.tpa_cancelled.replace("$1",this.target.getName()));
             this.target.sendMessage(lang.tpa_notify_cancelled.replace("$1",this.requester.getName()));
+
+            this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_BANJO,1,(float) 0.75);
         }
 
         public void decline() {
             this.cancelled = true;
             this.requester.sendMessage(lang.tpa_decline.replace("$1",this.target.getName()));
             this.target.sendMessage(lang.tpa_notify_decline.replace("$1",this.requester.getName()));
+
+            this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_BANJO,1,(float) 0.5);
         }
 
         public void accept() {
@@ -107,6 +114,7 @@ public class TPA implements CommandExecutor {
                 this.cancelled = true;
                 this.requester.sendMessage(lang.tpa_notify_accepted.replace("$1",this.target.getName()));
                 this.target.sendMessage(lang.tpa_accepted.replace("$1",this.requester.getName()));
+                this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_PLING,2,2);
             } else {
                 this.requester.sendMessage(lang.tpa_expired);
             }
@@ -134,11 +142,14 @@ public class TPA implements CommandExecutor {
             this.isTpaHere = isTpaHere;
 
             this.health = this.player.getHealth();
+            this.target.spawnParticle(Particle.WARPED_SPORE,this.target.getLocation().add(0,1,0),50,0, 0.5, 0,0.1);
         }
 
         @Override
         public void run() {
             if (this.player.getHealth() >= this.health) {
+                this.target.playSound(this.target.getLocation(),Sound.ITEM_FIRECHARGE_USE,2,(float) 0.75);
+                this.target.spawnParticle(Particle.WHITE_SMOKE,this.target.getLocation().add(0,1,0),200,0, 0.5, 0,0.1);
                 if (!this.isTpaHere) {
                     this.player.teleport(this.target);
 
@@ -150,9 +161,12 @@ public class TPA implements CommandExecutor {
                     this.player.sendMessage(lang.tpa_teleport_1.replace("$1",this.target.getName()));
                     this.target.sendMessage(lang.tpa_teleport_2.replace("$1",this.player.getName()));
                 }
+                this.target.playSound(this.target.getLocation(),Sound.ITEM_FIRECHARGE_USE,2,(float) 0.75);
+                this.target.spawnParticle(Particle.WHITE_SMOKE,this.target.getLocation().add(0,1,0),200,0, 0.5, 0,0.1);
             } else {
                 this.player.sendMessage(lang.tpa_cancel_move);
                 this.target.sendMessage(lang.tpa_notify_cancel_move.replace("$1",this.player.getName()));
+                this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_BANJO,1,(float) 0.5);
             }
         }
     }

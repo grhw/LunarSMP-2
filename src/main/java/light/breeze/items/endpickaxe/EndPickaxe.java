@@ -13,7 +13,7 @@ public class EndPickaxe {
         ItemStack customItem = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
 
-        meta.setCustomModelData(9003005);
+        meta.setCustomModelData(9006005);
         meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "End Pickaxe " + "[" + maxdurability + "/" + maxdurability + "]");
         List<String> lore = new ArrayList<>();
 

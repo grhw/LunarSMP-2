@@ -33,6 +33,7 @@ public class EndPickaxeEvents implements Listener {
                             Block block = world.getBlockAt(pos.clone().add(x, y, z));
                             if (block.getType().getHardness() > 0&&block.getType().getHardness() < Material.REINFORCED_DEEPSLATE.getHardness()) {
                                 block.breakNaturally(hand);
+                                block.getWorld().spawnParticle(Particle.SQUID_INK,block.getLocation(),0,0,0,0,0);
                             }
                         }
                     }
