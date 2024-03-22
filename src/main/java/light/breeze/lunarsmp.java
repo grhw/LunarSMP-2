@@ -1,12 +1,10 @@
 package light.breeze;
 
-import light.breeze.anticheat.AntiFly;
-import light.breeze.anticheat.ChunkLogger;
 import light.breeze.anticheat.StopRedstoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
-import light.breeze.items.endingot.EndIngotEvents;
+import light.breeze.recipes.Drops;
 import light.breeze.items.endpickaxe.EndPickaxeEvents;
 import light.breeze.recipes.CraftingTable;
 import light.breeze.items.burningaxe.BurningAxeEvents;
@@ -61,7 +59,7 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new Cosmetics(), this);
 
         ////// Mob Drops ////
-        pm.registerEvents(new EndIngotEvents(), this);
+        pm.registerEvents(new Drops(), this);
 
         ////// Ascii Art ////
         getLogger().info("Loaded!" + lang.ascii_art);

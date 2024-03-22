@@ -49,7 +49,7 @@ public class HijackCraftingTable implements Listener {
     public Boolean Compare(ItemStack[] from, ItemStack[] compareTo) {
         for (int i = 0; i < from.length; i++) {
             Utils.log(compareTo[i] + ", " + from[i]);
-            if (!(compareTo[i] == from[i]||compareTo[i] != null||compareTo[i].isSimilar(from[i]))) {
+            if (!(compareTo[i] == from[i]||(compareTo[i] != null&&compareTo[i].isSimilar(from[i])))) {
                 return false;
             }
         }
