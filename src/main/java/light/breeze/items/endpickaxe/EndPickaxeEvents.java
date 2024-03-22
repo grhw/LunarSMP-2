@@ -23,7 +23,7 @@ public class EndPickaxeEvents implements Listener {
             Player player = event.getPlayer();
             ItemStack hand = player.getInventory().getItemInMainHand();
 
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9003004) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9003005) {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, SoundCategory.MASTER, 1, 2f);
                 Location pos = event.getBlock().getLocation();
                 World world = event.getBlock().getWorld();
@@ -37,7 +37,7 @@ public class EndPickaxeEvents implements Listener {
                         }
                     }
                 }
-                if (!hand.containsEnchantment(Enchantment.SILK_TOUCH)) {
+                if (!hand.containsEnchantment(Enchantment.PIERCING)) {
                     Utils.customDurability(hand);
                 }
             }
