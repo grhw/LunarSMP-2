@@ -14,8 +14,8 @@ public class lang {
     public static String tpa_request_to = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.DARK_GREEN + "Requested to teleport to $1.";
     public static String tpa_request_here = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.DARK_GREEN + "Requested $1 teleport to you.";
 
-    public static String tpa_notif_to = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.AQUA + "$1 is requesting for a teleport!";
-    public static String tpa_notif_there = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.AQUA + "$1 is requesting for you to teleport to them!";
+    public static String tpa_notif_to = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.AQUA + "$1 is requesting for a teleport! " + ChatColor.WHITE + "\n/tpaccept <plr> to accept.";
+    public static String tpa_notif_there = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.AQUA + "$1 is requesting for you to teleport to them!" + ChatColor.WHITE + "\n/tpaccept <plr> to accept.";
 
     public static String tpa_decline = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Declined $1's request!";
     public static String tpa_notify_decline = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "$1 declined your request!";
