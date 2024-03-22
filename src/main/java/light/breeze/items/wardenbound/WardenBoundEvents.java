@@ -25,6 +25,7 @@ public class WardenBoundEvents implements Listener {
         if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002002&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
                 List<LivingEntity> exclude = new ArrayList<>();
+                exclude.add(player)
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER, 3, 1f);
 
