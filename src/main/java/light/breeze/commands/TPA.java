@@ -27,6 +27,9 @@ public class TPA implements CommandExecutor {
             target = args[0];
         }
         Map<String,TPARequest> userRequests = requests.get(sender.getName());
+        if (!requests.containsKey(target)) {
+            requests.put(target,new HashMap<>());
+        }
         Map<String,TPARequest> targRequests = requests.get(target);
         Player player = (Player) sender;
         Player targ = Utils.getPlayer(target);
@@ -54,11 +57,11 @@ public class TPA implements CommandExecutor {
                 sender.sendMessage(lang.tpa_no_requests);
             }
         } else if (label.contains("here")) {
-            TPARequest request = new TPARequest(false,player,targ);
+            TPARequest request = new TPARequest(true,player,targ);
             lastTargetRequests.put(target,player.getName());
             targRequests.put(player.getName(),request);
         } else {
-            TPARequest request = new TPARequest(true,player,targ);
+            TPARequest request = new TPARequest(false,player,targ);
             lastTargetRequests.put(target,player.getName());
             targRequests.put(player.getName(),request);
         }

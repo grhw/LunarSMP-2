@@ -35,7 +35,7 @@ public final class LunarSMP extends JavaPlugin {
         this.getCommand("echotarget").setTabCompleter(new EchoTargetAutoCompleter());
 
         this.getCommand("dev").setExecutor(new Dev());
-        this.getCommand("tpa").setExecutor(new TPA());
+        this.getCommand("ltpa").setExecutor(new TPA());
 
         ////// Register Events ////
         Bukkit.getPluginManager().registerEvents(new WardenBoundEvents(), this);
