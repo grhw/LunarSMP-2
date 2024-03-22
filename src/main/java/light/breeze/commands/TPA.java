@@ -59,11 +59,11 @@ public class TPA implements CommandExecutor {
         } else if (label.contains("here")) {
             TPARequest request = new TPARequest(true,player,targ);
             lastTargetRequests.put(target,player.getName());
-            targRequests.put(player.getName(),request);
+            userRequests.put(target,request);
         } else {
             TPARequest request = new TPARequest(false,player,targ);
             lastTargetRequests.put(target,player.getName());
-            targRequests.put(player.getName(),request);
+            userRequests.put(target,request);
         }
         return true;
     }
@@ -139,16 +139,16 @@ public class TPA implements CommandExecutor {
         @Override
         public void run() {
             if (this.player.getHealth() >= this.health) {
-                if (this.isTpaHere) {
+                if (!this.isTpaHere) {
                     this.player.teleport(this.target);
-
-                    this.player.sendMessage(lang.tpa_teleport_1.replace("$1",this.target.getName()));
-                    this.target.sendMessage(lang.tpa_teleport_2.replace("$1",this.player.getName()));
-                } else {
-                    this.target.teleport(this.player);
 
                     this.player.sendMessage(lang.tpa_teleport_2.replace("$1",this.target.getName()));
                     this.target.sendMessage(lang.tpa_teleport_1.replace("$1",this.player.getName()));
+                } else {
+                    this.target.teleport(this.player);
+
+                    this.player.sendMessage(lang.tpa_teleport_1.replace("$1",this.target.getName()));
+                    this.target.sendMessage(lang.tpa_teleport_2.replace("$1",this.player.getName()));
                 }
             } else {
                 this.player.sendMessage(lang.tpa_cancel_move);
