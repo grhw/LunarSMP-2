@@ -12,13 +12,14 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import light.breeze.utils.FileStorage;
+import org.bukkit.event.player.PlayerLoginEvent;
 
 import java.net.InetAddress;
 import java.util.logging.Level;
 
 public class VPNLogger implements Listener {
         @EventHandler(priority= EventPriority.HIGH)
-        public void checkVPN(PlayerJoinEvent event) {
+        public void checkVPN(PlayerLoginEvent event) {
             FileStorage fs = new FileStorage(Utils.getPlugin(),"lunarlog.yml");
             String ip = event.getPlayer().getAddress().getHostName();
             Utils.log("Checking");
@@ -41,7 +42,7 @@ public class VPNLogger implements Listener {
 
             if (fs.get(ip + ".isvpn").matches("vpn")) {
                 Utils.log("Was using a VPN.");
-                event.getPlayer().kickPlayer("Turn your damn VPN off!");
+                event.disallow(PlayerLoginEvent.Result.KICK_BANNED,"Turn your damn VPN off!");
                 event.getPlayer().getServer().banIP(event.getPlayer().getAddress().getAddress());
             }
         }
