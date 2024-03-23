@@ -31,7 +31,7 @@ public class lang {
     public static String tpa_no_requests = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "You do not have any requests!";
 
     public static String no_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "You're out of mana!";
-    public static String notify_increase_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.GREEN + "+$1 Mana";
-    public static String notify_use_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "-$1 Mana";
-    public static String notify_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.WHITE + "You currently have " + ChatColor.LIGHT_PURPLE + "$1 Mana";
+    public static String notify_increase_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.GREEN + "+$1 Mana" + ChatColor.LIGHT_PURPLE + " ($2)";
+    public static String notify_use_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "-$1 Mana"  + ChatColor.LIGHT_PURPLE +  " ($2)";
+    public static String notify_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.WHITE + "You currently have " + ChatColor.LIGHT_PURPLE + "$1 Mana.";
 }
