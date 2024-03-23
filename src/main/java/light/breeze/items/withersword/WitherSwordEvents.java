@@ -28,10 +28,10 @@ public class WitherSwordEvents implements Listener {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
         if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("witherbane_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("witherbane_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1&&this.mana.checkManaWarn(player)) {
                 String name = hand.getItemMeta().getDisplayName();
                 player.setCooldown(hand.getType(),60);
-                this.mana.addMana(player,-5);
+                this.mana.addMana(player,-20);
                 Integer left = Integer.valueOf(name.split(" \\[")[1].split("\\/")[0]);
                 if (left > 0) {
                     left -= 1;

@@ -29,13 +29,25 @@ public class ManaSystem {
         }
         return Integer.parseInt(this.fs.get(player.getName()));
     }
+    public boolean checkManaWarn(Player player) {
+        if (this.getMana(player) < 1) {
+            player.sendMessage(lang.no_mana);
+            return false;
+        }
+        return true;
+    }
     public void setMana(Player player,Integer mana) {
         if (this.fs.get(player.getName()) == null) {
             this.fs.store(player.getName(),"0");
         }
-        this.fs.store(player.getName(),mana+"");
+        this.fs.store(player.getName(),Math.max(Math.min(mana,500),0)+"");
     }
     public void addMana(Player player,Integer mana) {
         this.setMana(player,this.getMana(player)+mana);
+        if (mana > 0) {
+            player.sendMessage(lang.notify_increase_mana.replace("$1",mana + ""));
+        } else {
+            player.sendMessage(lang.notify_use_mana.replace("$1",-mana + ""));
+        }
     }
 }

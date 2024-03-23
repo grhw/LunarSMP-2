@@ -35,11 +35,11 @@ public class EchobowEvents implements Listener {
         }
         if (ignoreBecauseNotPlayer||(event.getBow().hasItemMeta() && event.getBow().getItemMeta().hasCustomModelData() && event.getBow().getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("echo_bow"))) {
             if (!ignoreBecauseNotPlayer) {
-                if (player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
+                if ((player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH))&&this.mana.checkManaWarn(player)) {
                     if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                         player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
                         Utils.customDurability(event.getBow());
-                        this.mana.addMana(player,-2);
+                        this.mana.addMana(player,-60);
                     }
                     EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());
                     projTask.runTaskTimer(Utils.getPlugin(),0,1);
