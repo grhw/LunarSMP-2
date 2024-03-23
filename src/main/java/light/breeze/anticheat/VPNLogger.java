@@ -18,32 +18,35 @@ import java.net.InetAddress;
 import java.util.logging.Level;
 
 public class VPNLogger implements Listener {
+        private FileStorage fs;
+        public VPNLogger() {
+            this.fs = new FileStorage(Utils.getPlugin(),"lunarlog.yml");
+        }
         @EventHandler(priority= EventPriority.HIGH)
-        public void checkVPN(PlayerLoginEvent event) {
-            FileStorage fs = new FileStorage(Utils.getPlugin(),"lunarlog.yml");
-            String ip = event.getPlayer().getAddress().getHostName();
-            Utils.log("Checking");
-            if (fs.get(ip) == null) {
+        public void checkVPN(PlayerJoinEvent event) {
+            String ip = event.getPlayer().getAddress().getAddress().getHostAddress();
+            Utils.log("Checking " + ip);
+            if (this.fs.get(ip) == null) {
                 Utils.log("Sending");
-                String data = Http.get("http://v2.api.iphub.info/ip/" + ip + "?key=" + fs.get("lunarlog-api-key"));
+                String data = Http.get("http://v2.api.iphub.info/ip/" + ip + "?key=" + this.fs.get("lunarlog-api-key"));
                 //event.getPlayer().sendMessage(data);
                 JsonObject ipinfo = new JsonParser().parse(data).getAsJsonObject();
-                fs.store(ip + ".isvpn","undetermined");
+                this.fs.store(ip + ".isvpn","undetermined");
 
                 if (ipinfo.get("block").getAsInt() == 1) {
-                    fs.store(ip + ".isvpn","vpn");
+                    this.fs.store(ip + ".isvpn","vpn");
                 } else {
-                    fs.store(ip + ".isvpn","no");
+                    this.fs.store(ip + ".isvpn","no");
                 }
-                fs.store(ip + ".country",ipinfo.get("countryName").getAsString());
-                fs.store(ip + ".blocklevel","" + ipinfo.get("block").getAsString());
-                fs.store(ip + ".isp",ipinfo.get("isp").getAsString());
+                this.fs.store(ip + ".country",ipinfo.get("countryName").getAsString());
+                this.fs.store(ip + ".blocklevel","" + ipinfo.get("block").getAsString());
+                this.fs.store(ip + ".isp",ipinfo.get("isp").getAsString());
             }
 
-            if (fs.get(ip + ".isvpn").matches("vpn")) {
+            if (this.fs.get(ip + ".isvpn").matches("vpn")) {
                 Utils.log("Was using a VPN.");
-                event.disallow(PlayerLoginEvent.Result.KICK_BANNED,"Turn your damn VPN off!");
-                event.getPlayer().getServer().banIP(event.getPlayer().getAddress().getAddress());
+                event.getPlayer().kickPlayer("Turn your damn VPN off!");
+                event.getPlayer().getServer().banIP(ip);
             }
         }
 }
