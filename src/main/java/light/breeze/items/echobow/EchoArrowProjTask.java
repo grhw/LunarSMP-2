@@ -2,7 +2,6 @@ package light.breeze.items.echobow;
 
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -10,7 +9,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.List;
-import java.util.logging.Level;
 
 public class EchoArrowProjTask extends BukkitRunnable {
     private final Projectile arrow;

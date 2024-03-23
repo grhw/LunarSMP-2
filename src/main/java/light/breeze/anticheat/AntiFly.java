@@ -1,7 +1,5 @@
 package light.breeze.anticheat;
 
-import light.breeze.utils.FileStorage;
-import light.breeze.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

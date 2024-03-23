@@ -1,6 +1,5 @@
 package light.breeze.items.endpickaxe;
 
-import com.sun.jdi.ShortValue;
 import light.breeze.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
@@ -11,11 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class EndPickaxeEvents implements Listener {
     @EventHandler(priority= EventPriority.HIGH)

@@ -6,10 +6,9 @@ import org.bukkit.Chunk;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class ChunkLogger implements Listener {
+public class ChunkLogger  implements Listener {
     FileStorage fs = new FileStorage(Utils.getPlugin(),"chunkllog.yml");
     @EventHandler(priority= EventPriority.HIGH)
     public void logChunk(PlayerMoveEvent event) {

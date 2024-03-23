@@ -3,7 +3,10 @@ package light.breeze.items.wardenbound;
 import light.breeze.CustomModelDatas;
 import light.breeze.ManaSystem;
 import light.breeze.utils.Utils;
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +18,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class WardenBoundEvents implements Listener {
     private final ManaSystem mana;

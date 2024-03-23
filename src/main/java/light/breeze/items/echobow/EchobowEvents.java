@@ -3,17 +3,16 @@ package light.breeze.items.echobow;
 import light.breeze.CustomModelDatas;
 import light.breeze.ManaSystem;
 import light.breeze.utils.Utils;
-import org.bukkit.*;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.*;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 
 public class EchobowEvents implements Listener {
 

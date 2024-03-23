@@ -1,21 +1,14 @@
 package light.breeze.anticheat;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import light.breeze.utils.FileStorage;
 import light.breeze.utils.Http;
 import light.breeze.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import light.breeze.utils.FileStorage;
-import org.bukkit.event.player.PlayerLoginEvent;
-
-import java.net.InetAddress;
-import java.util.logging.Level;
 
 public class VPNLogger implements Listener {
         private FileStorage fs;
