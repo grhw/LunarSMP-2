@@ -1,6 +1,7 @@
 package light.breeze.items.echobow;
 
 import light.breeze.CustomModelDatas;
+import light.breeze.ManaSystem;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -16,7 +17,11 @@ import java.util.List;
 
 public class EchobowEvents implements Listener {
 
+    private final ManaSystem mana;
 
+    public EchobowEvents() {
+        this.mana = new ManaSystem();
+    }
     @EventHandler(priority= EventPriority.HIGH)
     public void onEntityShootBow(EntityShootBowEvent event) {
         LivingEntity shooter = event.getEntity();
@@ -34,6 +39,7 @@ public class EchobowEvents implements Listener {
                     if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                         player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL,1));
                         Utils.customDurability(event.getBow());
+                        this.mana.addMana(player,-2);
                     }
                     EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());
                     projTask.runTaskTimer(Utils.getPlugin(),0,1);

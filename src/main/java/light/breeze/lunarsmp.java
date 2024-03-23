@@ -30,6 +30,9 @@ public final class LunarSMP extends JavaPlugin {
         getLogger().info("Loading LunarSMP");
         PluginManager pm = Bukkit.getPluginManager();
 
+        ////// Mana ////
+        pm.registerEvents(new ManaEvents(), this);
+
         ////// Register Commands ////
         this.getCommand("lunarsmp").setExecutor(new Credits());
 
@@ -41,6 +44,8 @@ public final class LunarSMP extends JavaPlugin {
 
         this.getCommand("dev").setExecutor(new Dev());
         this.getCommand("tpa").setExecutor(new TPA());
+
+        this.getCommand("mana").setExecutor(new ManaCommand());
 
         ////// Register Events ////
         pm.registerEvents(new WardenBoundEvents(), this);

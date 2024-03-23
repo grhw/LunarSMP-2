@@ -30,3 +30,9 @@ commands:
     aliases: [tpa, tpato, tpahere, tpaccept, tpacancel, tpcancel, tpaaccept, tpdecline, tpadecline]
     usage: /tpa <player>
     permission: minecraft.command.help
+
+  mana:
+    description: gets mana
+    aliases: [getmana]
+    usage: /<command>
+    permission: minecraft.command.help

@@ -1,6 +1,7 @@
 package light.breeze.items.wardenbound;
 
 import light.breeze.CustomModelDatas;
+import light.breeze.ManaSystem;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
@@ -14,9 +15,14 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class WardenBoundEvents implements Listener {
+    private final ManaSystem mana;
 
+    public WardenBoundEvents() {
+        this.mana = new ManaSystem();
+    }
 
     @EventHandler(priority= EventPriority.HIGH)
     public void onUse(PlayerInteractEvent event) {
@@ -29,6 +35,8 @@ public class WardenBoundEvents implements Listener {
                 exclude.add(player);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER, 3, 1f);
+                player.setCooldown(hand.getType(), 1800);
+                this.mana.addMana(player,-50);
 
                 for (int i = 2; i <= 20; i += 2) {
                     Location loc = Utils.parseRelativeLocation(player.getLocation(), "^ ^ ^" + i).add(0, 1, 0);
@@ -42,7 +50,6 @@ public class WardenBoundEvents implements Listener {
                         }
                     }
                 }
-                player.setCooldown(hand.getType(), 1800);
             }
         }
     }
