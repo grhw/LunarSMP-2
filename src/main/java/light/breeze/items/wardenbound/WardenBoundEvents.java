@@ -1,5 +1,6 @@
 package light.breeze.items.wardenbound;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
@@ -23,7 +24,7 @@ public class WardenBoundEvents implements Listener {
         ItemStack hand = player.getInventory().getItemInMainHand();
 
         if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002002&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("wardenbound_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
                 List<LivingEntity> exclude = new ArrayList<>();
                 exclude.add(player);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);
@@ -38,10 +39,10 @@ public class WardenBoundEvents implements Listener {
                         if (!exclude.contains(entity)) {
                             entity.damage(16 + (Math.random() * 2));
                             exclude.add(entity);
-                            player.setCooldown(hand.getType(), 1800);
                         }
                     }
                 }
+                player.setCooldown(hand.getType(), 1800);
             }
         }
     }

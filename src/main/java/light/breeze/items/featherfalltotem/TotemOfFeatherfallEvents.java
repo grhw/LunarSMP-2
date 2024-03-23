@@ -1,5 +1,6 @@
 package light.breeze.items.featherfalltotem;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.LunarSMP;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -26,7 +27,7 @@ public class TotemOfFeatherfallEvents implements Listener {
     public void onUse(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
-        if (player.getFallDistance() > 7&&hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002001) {
+        if (player.getFallDistance() > 7&&hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("featherfall_totem")) {
             hand.setAmount(hand.getAmount() - 1);
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 360, 1));
             player.playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, SoundCategory.MASTER, 3, 2f);

@@ -1,6 +1,7 @@
 package light.breeze.items.endpickaxe;
 
 import com.sun.jdi.ShortValue;
+import light.breeze.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -23,7 +24,7 @@ public class EndPickaxeEvents implements Listener {
             Player player = event.getPlayer();
             ItemStack hand = player.getInventory().getItemInMainHand();
 
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9006005) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("end_pickaxe")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, SoundCategory.MASTER, 1, 2f);
                 Location pos = event.getBlock().getLocation();
                 World world = event.getBlock().getWorld();

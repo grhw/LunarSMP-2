@@ -1,5 +1,6 @@
 package light.breeze.items.wardenbound;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +13,7 @@ public class WardenBound {
     public ItemStack createWardenBound() {
         ItemStack wardenBound = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemMeta meta = wardenBound.getItemMeta();
-        meta.setCustomModelData(9002002);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("wardenbound_sword"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Wardenbound Sword");
         List<String> lore = new ArrayList<>();
 

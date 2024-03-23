@@ -1,5 +1,6 @@
 package light.breeze.items.endpickaxe;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +14,7 @@ public class EndPickaxe {
         ItemStack customItem = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
 
-        meta.setCustomModelData(9006005);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("end_pickaxe"));
         meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "End Pickaxe " + "[" + maxdurability + "/" + maxdurability + "]");
         List<String> lore = new ArrayList<>();
 

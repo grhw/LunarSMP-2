@@ -27,14 +27,14 @@ public class BurningAxeEvents implements Listener {
         m.put(2,"Enderdragon");
         if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()) {
             int cmd = hand.getItemMeta().getCustomModelData();
-            int type = cmd-9003000;
+            int type = cmd-9008000;
             if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                if (cmd > 9003000 && cmd < 9004000) {
+                if (cmd > 9008000 && cmd < 9009000) {
                     if (player.isSneaking()) {
                         type = (type + 1) % 3;
                         player.sendTitle("", "Ability set to: " + m.get(type), 5, 5, 5);
                         ItemMeta meta = hand.getItemMeta();
-                        meta.setCustomModelData((type + 1) + 9003000);
+                        meta.setCustomModelData((type + 1) + 9008000);
                         hand.setItemMeta(meta);
                     } else if (!player.hasCooldown(hand.getType()) && player.getCooldown(hand.getType()) < 1) {
                         Entity proj = null;

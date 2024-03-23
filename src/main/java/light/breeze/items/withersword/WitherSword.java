@@ -1,5 +1,6 @@
 package light.breeze.items.withersword;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -18,7 +19,7 @@ public class WitherSword {
     public ItemStack createWitherSword() {
         ItemStack customItem = new ItemStack(Material.IRON_SWORD, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
-        meta.setCustomModelData(9002003);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("witherbane_sword"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Witherbane Sword [50/50]");
         List<String> lore = new ArrayList<>();
 

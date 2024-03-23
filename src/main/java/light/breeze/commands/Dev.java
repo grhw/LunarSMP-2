@@ -1,5 +1,6 @@
 package light.breeze.commands;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.anticheat.StopRedstoneClocks;
 import light.breeze.recipes.CraftingTable;
 import light.breeze.recipes.HijackCraftingTable;
@@ -41,8 +42,8 @@ public class Dev implements CommandExecutor {
                 arm.setCustomName("Step For Points");
                 KothTask armTask = new KothTask(arm);
                 armTask.runTaskTimer(Utils.getPlugin(),1,10);
-            } else if (args[0].contains("add_recipes")) {
-
+            } else if (args[0].contains("get_cmd")) {
+                sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
             }
         } else {
             player.sendMessage("hi :3");

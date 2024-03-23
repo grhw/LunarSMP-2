@@ -1,5 +1,6 @@
 package light.breeze.items.withersword;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -20,7 +21,7 @@ public class WitherSwordEvents implements Listener {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
         if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == 9002003&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
+            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("witherbane_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1) {
                 String name = hand.getItemMeta().getDisplayName();
                 player.setCooldown(hand.getType(),60);
                 Integer left = Integer.valueOf(name.split(" \\[")[1].split("\\/")[0]);

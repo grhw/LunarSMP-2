@@ -1,5 +1,6 @@
 package light.breeze.items.echobow;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -18,7 +19,7 @@ public class Echobow {
     public ItemStack createEchobow(String ammo) {
         ItemStack customItem = new ItemStack(Material.BOW, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
-        meta.setCustomModelData(9001001);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("echo_bow"));
         meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Echobow [" + ammo + "/" + ammo + "]");
         List<String> lore = new ArrayList<>();
 

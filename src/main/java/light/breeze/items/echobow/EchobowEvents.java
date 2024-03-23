@@ -1,5 +1,6 @@
 package light.breeze.items.echobow;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -27,7 +28,7 @@ public class EchobowEvents implements Listener {
         } else {
             ignoreBecauseNotPlayer = true;
         }
-        if (ignoreBecauseNotPlayer||(event.getBow().hasItemMeta() && event.getBow().getItemMeta().hasCustomModelData() && event.getBow().getItemMeta().getCustomModelData() == 9001001)) {
+        if (ignoreBecauseNotPlayer||(event.getBow().hasItemMeta() && event.getBow().getItemMeta().hasCustomModelData() && event.getBow().getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("echo_bow"))) {
             if (!ignoreBecauseNotPlayer) {
                 if (player.getInventory().contains(Material.ENDER_PEARL)||event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {

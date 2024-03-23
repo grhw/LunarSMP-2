@@ -1,5 +1,6 @@
 package light.breeze.items.featherfalltotem;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,7 +16,7 @@ public class TotemOfFeatherfall {
     public ItemStack createTOF() {
         ItemStack customItem = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
         ItemMeta meta = customItem.getItemMeta();
-        meta.setCustomModelData(9002001);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("featherfall_totem"));
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Totem " + ChatColor.YELLOW + "Of " + ChatColor.WHITE + "Featherfalling" );
         List<String> lore = new ArrayList<>();
 

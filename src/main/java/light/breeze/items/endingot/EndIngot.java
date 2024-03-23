@@ -1,5 +1,6 @@
 package light.breeze.items.endingot;
 
+import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +13,7 @@ public class EndIngot {
     public ItemStack createEndIngot() {
         ItemStack customItem = new ItemStack(Material.IRON_INGOT, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
-        meta.setCustomModelData(9002005);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("end_ingot"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "End Ingot");
         List<String> lore = new ArrayList<>();
 

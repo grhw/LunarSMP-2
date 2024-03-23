@@ -1,5 +1,6 @@
 package light.breeze.items.burningaxe;
 
+import light.breeze.CustomModelDatas;
 import light.breeze.LunarSMP;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +17,7 @@ public class BurningAxe {
         ItemStack customItem = new ItemStack(Material.IRON_AXE, 1);
         ItemMeta meta = customItem.getItemMeta();
 
-        meta.setCustomModelData(9003001);
+        meta.setCustomModelData(9008001);
         meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Burning Axe");
         List<String> lore = new ArrayList<>();
 
