@@ -26,7 +26,6 @@ public class HijackCraftingTable implements Listener {
         for (int i = 0; i <9; i++) {
             String k = String.valueOf(rows[(int) Math.floor(i/3)].charAt(i%3));
             ItemMatrix[i] = mapping.get(k);
-            Utils.log(k);
         }
 
         this.recipes.put(res,ItemMatrix);
