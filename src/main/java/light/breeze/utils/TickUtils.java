@@ -1,7 +1,5 @@
 package light.breeze.utils;
 
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
 import org.bukkit.scheduler.BukkitRunnable;
 
 

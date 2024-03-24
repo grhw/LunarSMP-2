@@ -9,9 +9,11 @@ import light.breeze.items.echobow.Echobow;
 import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
+import light.breeze.items.small_potion.SmallPotion;
 import light.breeze.items.wardenbound.WardenBound;
 import light.breeze.items.withersword.WitherSword;
 import light.breeze.utils.Utils;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -42,6 +44,9 @@ public class CustomGive implements CommandExecutor {
         ItemStack uep = new EndPickaxe().createEndPickaxe("1");
         uep.addUnsafeEnchantment(Enchantment.PIERCING,1);
         customItems.put("event_end_pickaxe",uep);
+
+        customItems.put("small_potion", new SmallPotion().createSmallPotion(Material.BUCKET));
+        customItems.put("small_potion_of_flight", new SmallPotion().createSmallPotionWithFly());
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());

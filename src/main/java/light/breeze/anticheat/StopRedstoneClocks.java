@@ -15,9 +15,9 @@ public class StopRedstoneClocks implements Listener {
     private final FileStorage fs;
     private final TickUtils tc;
 
-    public StopRedstoneClocks() {
+    public StopRedstoneClocks(TickUtils tu) {
         this.fs = new FileStorage(Utils.getPlugin(), "redstoneclocks.yml");
-        this.tc = new TickUtils();
+        this.tc = tu;
     }
 
     @EventHandler(priority = EventPriority.HIGH)

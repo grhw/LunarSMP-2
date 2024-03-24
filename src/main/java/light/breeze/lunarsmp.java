@@ -1,9 +1,11 @@
 package light.breeze;
 
+import light.breeze.anticheat.AntiArtifactRename;
 import light.breeze.anticheat.StopRedstoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
+import light.breeze.items.small_potion.SmallPotionEvents;
 import light.breeze.recipes.Drops;
 import light.breeze.items.endpickaxe.EndPickaxeEvents;
 import light.breeze.recipes.CraftingTable;
@@ -14,6 +16,7 @@ import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
 import light.breeze.recipes.HijackCraftingTable;
 import light.breeze.recipes.Smelting;
+import light.breeze.utils.TickUtils;
 import light.breeze.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -48,15 +51,19 @@ public final class LunarSMP extends JavaPlugin {
         this.getCommand("mana").setExecutor(new ManaCommand());
 
         ////// Register Events ////
+        TickUtils tu = new TickUtils();
+
         pm.registerEvents(new WardenBoundEvents(), this);
         pm.registerEvents(new BurningAxeEvents(), this);
         pm.registerEvents(new TotemOfFeatherfallEvents(), this);
         pm.registerEvents(new WitherSwordEvents(), this);
         pm.registerEvents(new EchobowEvents(), this);
         pm.registerEvents(new EndPickaxeEvents(), this);
-        pm.registerEvents(new StopRedstoneClocks(), this);
+        pm.registerEvents(new StopRedstoneClocks(tu), this);
+        pm.registerEvents(new SmallPotionEvents(), this);
 
         pm.registerEvents(new VPNLogger(), this);
+        pm.registerEvents(new AntiArtifactRename(), this);
         //pm.registerEvents(new AntiFly(), this);
         //pm.registerEvents(new ChunkLogger(), this);
 

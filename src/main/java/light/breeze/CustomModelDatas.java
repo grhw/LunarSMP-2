@@ -3,6 +3,6 @@ package light.breeze;
 public class CustomModelDatas {
     public static int getCustomModelData(String name)
     {
-        return name.hashCode();
+        return Math.abs(name.hashCode());
     }
 }

@@ -46,6 +46,10 @@ public class Utils {
         return server.dispatchCommand(server.getConsoleSender(),"data merge entity " + entity.getUniqueId() + " " + nbt);
     }
 
+    public static String Capitalize(String name) {
+        return (name.charAt(0) + "").toUpperCase() + name.substring(1);
+    }
+
     public static void customDurability(ItemStack item) {
         ItemMeta bim = item.getItemMeta();
         String old = bim.getDisplayName();
