@@ -92,6 +92,8 @@ public final class LunarSMP extends JavaPlugin {
             customrecipes.EndPickaxe();
             pm.registerEvents(customrecipes, plugin);
 
+            recipes.SmallPotion(new NamespacedKey(plugin, "smallpotion"));
+
             recipes.TOFRecipe(new NamespacedKey(plugin, "featherfall"));
             recipes.TophatRecipe(new NamespacedKey(plugin, "tophat"));
 
@@ -99,7 +101,6 @@ public final class LunarSMP extends JavaPlugin {
             recipes.Echobow(new NamespacedKey(plugin, "echobow"));
 
             recipes.EchoshardDuplication(new NamespacedKey(plugin, "echosharddupe"));
-            recipes.SmallPotion(new NamespacedKey(plugin, "smallpotion"));
 
             smeltrecipes.Axolotl(new NamespacedKey(plugin, "axolotl"));
             smeltrecipes.Bonemeal(new NamespacedKey(plugin, "bonemeal"));
