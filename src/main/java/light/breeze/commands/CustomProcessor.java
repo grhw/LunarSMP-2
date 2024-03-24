@@ -14,18 +14,28 @@ import org.bukkit.inventory.Merchant;
 import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CustomProcessor implements CommandExecutor {
-    public Merchant merchant;
+    public Map<Player,Merchant> merchants;
     public CustomProcessor() {
-        this.merchant = Bukkit.createMerchant("Custom Brewer");
-        List<MerchantRecipe> mrl = new ArrayList<>();
+        this.merchants = new HashMap<>();
+    }
+    public void Brewer(Player player) {
+        if (!this.merchants.containsKey(player)) {
+            Merchant merchant = Bukkit.createMerchant(player.getDisplayName() + "'s Custom Brewer");
+            List<MerchantRecipe> mrl = new ArrayList<>();
 
-        mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.LAVA_BUCKET), new EndIngot().createEndIngot(),new SmallPotion().createSmallPotionWithFly()));
-        mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.WATER_BUCKET), new GlobOfMana().createGlobOfMana(),new SmallPotion().createSmallPotionWithMana()));
-        this.merchant.setRecipes(mrl);
+            mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.LAVA_BUCKET), new EndIngot().createEndIngot(),new SmallPotion().createSmallPotionWithFly()));
+            mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.WATER_BUCKET), new GlobOfMana().createGlobOfMana(),new SmallPotion().createSmallPotionWithMana()));
+            merchant.setRecipes(mrl);
+
+            this.merchants.put(player,merchant);
+        }
+        return this.merchants.get(player);
     }
     public MerchantRecipe SingleRecipe(ItemStack Ingredient, ItemStack Result) {
         MerchantRecipe mr = new MerchantRecipe(Result,99999);
@@ -41,7 +51,7 @@ public class CustomProcessor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         Player player = (Player) commandSender;
-        player.openMerchant(this.merchant,true);
+        player.openMerchant(Brewer(player);,true);
         return true;
     }
 }
