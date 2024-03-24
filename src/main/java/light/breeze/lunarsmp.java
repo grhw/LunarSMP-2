@@ -69,10 +69,10 @@ public final class LunarSMP extends JavaPlugin {
         ////// Ascii Art ////
         getLogger().info("Loaded!" + lang.ascii_art);
         getLogger().info("Plugin by Gust");
+        Plugin plugin = Utils.getPlugin();
 
         ////// Register Recipes ////
         try {
-            Plugin plugin = Utils.getPlugin();
 
             CraftingTable recipes = new CraftingTable();
             Smelting smeltrecipes = new Smelting();

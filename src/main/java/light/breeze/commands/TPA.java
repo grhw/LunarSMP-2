@@ -80,7 +80,7 @@ public class TPA implements CommandExecutor {
             this.requester = requester;
             this.target = target;
             this.cancelled = false;
-            this.runTaskLaterAsynchronously(Utils.getPlugin(),600);
+            this.runTaskLaterAsynchronously(Utils.getPlugin(),1200);
 
             if (this.isTpaHere) {
                 this.requester.sendMessage(lang.tpa_request_here.replace("$1",this.target.getName()));
@@ -93,6 +93,7 @@ public class TPA implements CommandExecutor {
         }
 
         public void cancel_request() {
+            Utils.log(this.target.getName() + " & " + this.requester.getName() + "'s request cancelled");
             this.cancelled = true;
             this.requester.sendMessage(lang.tpa_cancelled.replace("$1",this.target.getName()));
             this.target.sendMessage(lang.tpa_notify_cancelled.replace("$1",this.requester.getName()));
@@ -101,6 +102,7 @@ public class TPA implements CommandExecutor {
         }
 
         public void decline() {
+            Utils.log(this.target.getName() + " & " + this.requester.getName() + "'s request declined");
             this.cancelled = true;
             this.requester.sendMessage(lang.tpa_decline.replace("$1",this.target.getName()));
             this.target.sendMessage(lang.tpa_notify_decline.replace("$1",this.requester.getName()));
@@ -110,14 +112,17 @@ public class TPA implements CommandExecutor {
 
         public void accept() {
             if (!this.cancelled) {
+                Utils.log(this.target.getName() + " & " + this.requester.getName() + "'s request accepted");
                 new TeleportWait(this.requester,this.target,this.isTpaHere).runTaskLater(Utils.getPlugin(),100);
                 this.cancelled = true;
                 this.requester.sendMessage(lang.tpa_notify_accepted.replace("$1",this.target.getName()));
                 this.target.sendMessage(lang.tpa_accepted.replace("$1",this.requester.getName()));
                 this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_PLING,2,2);
             } else {
+                Utils.log(this.target.getName() + " & " + this.requester.getName() + "'s request expired");
                 this.requester.sendMessage(lang.tpa_expired);
             }
+            Utils.log( "End of " + this.target.getName() + " & " + this.requester.getName() + " tpa request.");
         }
 
         @Override
@@ -125,7 +130,9 @@ public class TPA implements CommandExecutor {
             if (!this.cancelled) {
                 this.requester.sendMessage(lang.tpa_expired);
                 this.target.sendMessage(lang.tpa_expired);
+                Utils.log( "Expiring " + this.target.getName() + " & " + this.requester.getName() + " tpa request.");
             }
+            Utils.log( "Already Expired " + this.target.getName() + " & " + this.requester.getName() + " tpa request.");
             this.cancelled = true;
         }
     }
@@ -143,6 +150,7 @@ public class TPA implements CommandExecutor {
 
             this.health = this.player.getHealth();
             this.target.spawnParticle(Particle.WARPED_SPORE,this.target.getLocation().add(0,1,0),50,0, 0.5, 0,0.1);
+            Utils.log( "Initiating teleport of " + this.target.getName() + " & " + this.player.getName());
         }
 
         @Override
@@ -168,6 +176,7 @@ public class TPA implements CommandExecutor {
                 this.target.sendMessage(lang.tpa_notify_cancel_move.replace("$1",this.player.getName()));
                 this.target.playSound(this.target,Sound.BLOCK_NOTE_BLOCK_BANJO,1,(float) 0.5);
             }
+            Utils.log( "Finish " + this.target.getName() + " & " + this.player.getName() + " tpa request.");
         }
     }
 }

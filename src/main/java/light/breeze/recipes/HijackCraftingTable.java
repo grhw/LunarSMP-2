@@ -2,7 +2,6 @@ package light.breeze.recipes;
 
 import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
-import light.breeze.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -46,7 +45,6 @@ public class HijackCraftingTable implements Listener {
 
     public Boolean Compare(ItemStack[] from, ItemStack[] compareTo) {
         for (int i = 0; i < from.length; i++) {
-            Utils.log(compareTo[i] + ", " + from[i]);
             if (!(compareTo[i] == from[i]||(compareTo[i] != null&&compareTo[i].isSimilar(from[i])))) {
                 return false;
             }

@@ -1,9 +1,10 @@
 package light.breeze.utils;
 
-import org.bukkit.*;
-import org.bukkit.command.CommandSender;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +13,6 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 
 public class Utils {
@@ -26,12 +26,13 @@ public class Utils {
 
 
     public static Player getPlayer(String player_name) {
-        for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
+        /*for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
             if (plr.getName().toLowerCase().matches(player_name.toLowerCase())) {
                 return plr;
             }
         }
-        return null;
+        return null;*/
+        return Bukkit.getPlayer(player_name);
     }
 
     // No NMS for me !
