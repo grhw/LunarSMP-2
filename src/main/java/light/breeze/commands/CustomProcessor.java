@@ -24,7 +24,7 @@ public class CustomProcessor implements CommandExecutor {
     public CustomProcessor() {
         this.merchants = new HashMap<>();
     }
-    public void Brewer(Player player) {
+    public Merchant Brewer(Player player) {
         if (!this.merchants.containsKey(player)) {
             Merchant merchant = Bukkit.createMerchant(player.getDisplayName() + "'s Custom Brewer");
             List<MerchantRecipe> mrl = new ArrayList<>();
@@ -51,7 +51,7 @@ public class CustomProcessor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         Player player = (Player) commandSender;
-        player.openMerchant(Brewer(player);,true);
+        player.openMerchant(Brewer(player),true);
         return true;
     }
 }
