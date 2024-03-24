@@ -1,5 +1,7 @@
 package light.breeze;
 
+import light.breeze.items.small_potion.SmallPotion;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -37,6 +39,8 @@ public class ManaEvents implements Listener {
             if (cmd == CustomModelDatas.getCustomModelData("glob_of_mana")) {
                 this.mana.addMana(event.getPlayer(),10);
             } else if (cmd == CustomModelDatas.getCustomModelData("small_potion_of_mana")) {
+                event.setCancelled(true);
+                event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
                 this.mana.addMana(event.getPlayer(),20);
             }
         }

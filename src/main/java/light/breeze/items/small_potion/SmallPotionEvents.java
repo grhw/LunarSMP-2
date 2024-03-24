@@ -71,7 +71,8 @@ public class SmallPotionEvents implements Listener {
         if (event.getItem().hasItemMeta()&&event.getItem().getItemMeta().hasCustomModelData()) {
             Integer cmd = event.getItem().getItemMeta().getCustomModelData();
             if (cmd == CustomModelDatas.getCustomModelData("small_potion_fly")) {
-                event.getPlayer().getInventory().addItem(new SmallPotion().createSmallPotion(Material.BUCKET));
+                event.setCancelled(true);
+                event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
                 this.flyPotions.put(event.getPlayer(), Instant.now().getEpochSecond()+150);
             }
         }

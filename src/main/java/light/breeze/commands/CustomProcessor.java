@@ -28,12 +28,12 @@ public class CustomProcessor implements CommandExecutor {
         this.merchant.setRecipes(mrl);
     }
     public MerchantRecipe SingleRecipe(ItemStack Ingredient, ItemStack Result) {
-        MerchantRecipe mr = new MerchantRecipe(Result,-1);
+        MerchantRecipe mr = new MerchantRecipe(Result,99999);
         mr.addIngredient(Ingredient);
         return mr;
     }
     public MerchantRecipe DoubleRecipe(ItemStack Ingredient, ItemStack Ingredient1, ItemStack Result) {
-        MerchantRecipe mr = new MerchantRecipe(Result,-1);
+        MerchantRecipe mr = new MerchantRecipe(Result,99999);
         mr.addIngredient(Ingredient);
         mr.addIngredient(Ingredient1);
         return mr;

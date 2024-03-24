@@ -37,8 +37,8 @@ commands:
     usage: /<command>
     permission: minecraft.command.help
 
-  openprocessor:
-    description: proesses
-    aliases: [processor,processer,prossessor]
+  openbrewer:
+    description: brew
+    aliases: [brewer,custombrew,opencustombrewer]
     usage: /<command>
     permission: minecraft.command.help
