@@ -11,6 +11,7 @@ import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
 import light.breeze.items.wardenbound.WardenBound;
 import light.breeze.items.withersword.WitherSword;
+import light.breeze.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -54,9 +55,15 @@ public class CustomGive implements CommandExecutor {
         Map<String, ItemStack> customItems = getCustomItems();
 
         if (customItems.containsKey(args[0])) {
-            Player player = (Player) sender; // copied and pasted directly from the fucking wiki
+            Player player = null;
+            if (args.length > 1) {
+                player = Utils.getPlayer(args[1]);
+            } else {
+                player = (Player) sender;
+            }
             player.getInventory().addItem(customItems.get(args[0]));
             sender.sendMessage("Gave " + sender.getName() + " 1 ["  + args[0] + "].");
+            player.sendMessage("Recieved [" + args[0] + "] from "  + sender.getName() + ".");
         } else {
             sender.sendMessage("Item " + args[0] + " doesn't exist.");
             return false;
