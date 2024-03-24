@@ -36,3 +36,9 @@ commands:
     aliases: [getmana]
     usage: /<command>
     permission: minecraft.command.help
+
+  openprocessor:
+    description: proesses
+    aliases: [processor,processer,prossessor]
+    usage: /<command>
+    permission: minecraft.command.help

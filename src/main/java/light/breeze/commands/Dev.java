@@ -34,6 +34,9 @@ public class Dev implements CommandExecutor {
                 armTask.runTaskTimer(Utils.getPlugin(),1,10);
             } else if (args[0].contains("get_cmd")) {
                 sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
+            } else if (args[0].contains("fly")) {
+                player.getPlayer().setAllowFlight(true);
+                player.getPlayer().setFlying(true);
             }
         } else {
             player.sendMessage("hi :3");
