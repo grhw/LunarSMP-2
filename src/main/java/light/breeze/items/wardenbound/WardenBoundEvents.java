@@ -32,7 +32,7 @@ public class WardenBoundEvents implements Listener {
         ItemStack hand = player.getInventory().getItemInMainHand();
 
         if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("wardenbound_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1&&this.mana.checkManaWarn(player)) {
+            if (Utils.checkIfMeta(hand)&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("wardenbound_sword")&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1&&this.mana.checkManaWarn(player)) {
                 List<LivingEntity> exclude = new ArrayList<>();
                 exclude.add(player);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);

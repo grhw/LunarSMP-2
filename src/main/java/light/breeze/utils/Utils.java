@@ -118,4 +118,8 @@ public class Utils {
         }
         return false;
     }
+
+    public static Boolean checkIfMeta(ItemStack item) {
+        return item.hasItemMeta()&&item.getItemMeta().hasCustomModelData();
+    }
 }

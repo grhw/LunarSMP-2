@@ -1,5 +1,6 @@
 package light.breeze.items.burningaxe;
 
+import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.*;
@@ -25,7 +26,7 @@ public class BurningAxeEvents implements Listener {
         m.put(0,"Fireball");
         m.put(1,"Machine Gun");
         m.put(2,"Enderdragon");
-        if (hand.hasItemMeta()&&hand.getItemMeta().hasCustomModelData()) {
+        if (Utils.checkIfMeta(hand)) {
             int cmd = hand.getItemMeta().getCustomModelData();
             int type = cmd-9008000;
             if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
