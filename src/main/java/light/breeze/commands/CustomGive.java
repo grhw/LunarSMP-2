@@ -47,6 +47,7 @@ public class CustomGive implements CommandExecutor {
 
         customItems.put("small_potion", new SmallPotion().createSmallPotion(Material.BUCKET));
         customItems.put("small_potion_of_flight", new SmallPotion().createSmallPotionWithFly());
+        customItems.put("small_potion_of_mana", new SmallPotion().createSmallPotionWithMana());
 
         customItems.put("devhat", new DevHat().createDevHat());
         customItems.put("featherhat", new FeatherHat().createFeatherHat());

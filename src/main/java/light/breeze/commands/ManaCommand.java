@@ -1,6 +1,7 @@
 package light.breeze.commands;
 
 import light.breeze.ManaSystem;
+import light.breeze.items.globofmana.GlobOfMana;
 import light.breeze.lang;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,8 +14,13 @@ public class ManaCommand implements CommandExecutor {
         this.mana = new ManaSystem();
     }
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        commandSender.sendMessage(lang.notify_mana.replace("$1",this.mana.getMana((Player) commandSender) + ""));
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
+        Player player = (Player) commandSender;
+        if (args[0] != null&&args[0].matches("sacrifice")) {
+            this.mana.addMana(player,-25);
+            player.getInventory().addItem(new GlobOfMana().createGlobOfMana());
+        }
+        commandSender.sendMessage(lang.notify_mana.replace("$1",this.mana.getMana(player) + ""));
         return true;
     }
 }

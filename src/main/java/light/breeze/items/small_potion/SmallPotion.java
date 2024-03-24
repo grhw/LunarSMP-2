@@ -48,4 +48,21 @@ public class SmallPotion {
         customItem.setItemMeta(meta);
         return customItem;
     }
+
+    public ItemStack createSmallPotionWithMana() {
+        ItemStack customItem = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) customItem.getItemMeta();
+
+        meta.setColor(Color.WHITE);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion_of_mana"));
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+
+        meta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of Mana");
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.BLUE + "Instant Mana 10");
+        meta.setLore(lore);
+        customItem.setItemMeta(meta);
+        return customItem;
+    }
 }

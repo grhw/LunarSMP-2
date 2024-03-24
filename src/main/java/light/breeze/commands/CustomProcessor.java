@@ -1,6 +1,7 @@
 package light.breeze.commands;
 
 import light.breeze.items.endingot.EndIngot;
+import light.breeze.items.globofmana.GlobOfMana;
 import light.breeze.items.small_potion.SmallPotion;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -23,6 +24,7 @@ public class CustomProcessor implements CommandExecutor {
         List<MerchantRecipe> mrl = new ArrayList<>();
 
         mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.LAVA_BUCKET), new EndIngot().createEndIngot(),new SmallPotion().createSmallPotionWithFly()));
+        mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.WATER_BUCKET), new GlobOfMana().createGlobOfMana(),new SmallPotion().createSmallPotionWithMana()));
         this.merchant.setRecipes(mrl);
     }
     public MerchantRecipe SingleRecipe(ItemStack Ingredient, ItemStack Result) {
