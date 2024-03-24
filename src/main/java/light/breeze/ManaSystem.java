@@ -29,7 +29,7 @@ public class ManaSystem {
         if (this.fs.get(player.getName()) == null) {
             this.fs.store(player.getName(),"0");
         }
-        this.fs.store(player.getName(),Math.max(Math.min(mana,500),0)+"");
+        this.fs.store(player.getName(),Math.max(Math.min(mana,500),-100)+"");
     }
     public void addMana(Player player,Integer mana) {
         Integer newMana = this.getMana(player)+mana;
