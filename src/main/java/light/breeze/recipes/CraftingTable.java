@@ -3,6 +3,7 @@ package light.breeze.recipes;
 import light.breeze.cosmetics.hats.TopHat;
 import light.breeze.items.echobow.Echobow;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
+import light.breeze.items.small_potion.SmallPotion;
 import light.breeze.items.withersword.WitherSword;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -53,6 +54,15 @@ public class CraftingTable {
         recipe.setIngredient('i', Material.IRON_INGOT);
         recipe.setIngredient('A', Material.AMETHYST_SHARD);
         recipe.setIngredient('E', Material.ECHO_SHARD);
+        Bukkit.addRecipe(recipe);
+    }
+
+
+    public void SmallPotion(NamespacedKey key) {
+        ShapedRecipe recipe = new ShapedRecipe(key, new SmallPotion().createSmallPotion(Material.BUCKET));
+        recipe.shape(" o ", "g g"," g ");
+        recipe.setIngredient('g', Material.GLASS_PANE);
+        recipe.setIngredient('o', Material.OAK_BUTTON);
         Bukkit.addRecipe(recipe);
     }
 }
