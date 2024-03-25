@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -56,12 +57,12 @@ public class SmallPotionEvents implements Listener {
         Long epoch = Instant.now().getEpochSecond();
         for (int i = 0; i < ar.size(); i += 1) {
             if (this.flyPotions.get(ar.get(i)) < epoch) {
-                this.flyPotions.remove(i);
-                e.getPlayer().setFlying(false);
-                e.getPlayer().setAllowFlight(false);
+                this.flyPotions.remove(ar.get(i));
+                ar.get(i).setFlying(false);
+                ar.get(i).setAllowFlight(false);
             } else {
-                e.getPlayer().setAllowFlight(true);
-                e.getPlayer().setFlying(true);
+                ar.get(i).setAllowFlight(true);
+                ar.get(i).setFlying(true);
             }
         }
     }
@@ -75,6 +76,15 @@ public class SmallPotionEvents implements Listener {
                 event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
                 this.flyPotions.put(event.getPlayer(), Instant.now().getEpochSecond()+150);
             }
+        } else if (event.getItem().getType() == Material.MILK_BUCKET) {
+            this.flyPotions.put(event.getPlayer(),(long) 0);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void damageDebuff(EntityDamageEvent event) {
+        if (this.flyPotions.containsKey(event.getEntity())) {
+            this.flyPotions.put((Player) event.getEntity(),(long) 0);
         }
     }
 }
