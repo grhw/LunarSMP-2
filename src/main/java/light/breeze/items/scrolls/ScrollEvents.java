@@ -16,7 +16,7 @@ import java.util.List;
 public class ScrollEvents  implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onUse(PlayerInteractEvent event) {
-        if (Utils.checkIfMeta(event.getItem())&&event.getItem().getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("fire_scroll")) {
+        if (CustomModelDatas.checkFor(event.getItem(), "fire_scroll")) {
             Location centLoc = event.getPlayer().getLocation();
             List<LivingEntity> targ = Utils.getEntitiesInRadius(centLoc,10);
             for (int i = 0; i < targ.size(); i++) {

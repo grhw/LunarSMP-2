@@ -18,7 +18,7 @@ public class TotemOfFeatherfallEvents implements Listener {
     public void onUse(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
-        if (player.getFallDistance() > 7&&Utils.checkIfMeta(hand)&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("featherfall_totem")) {
+        if (player.getFallDistance() > 7&&CustomModelDatas.checkFor(hand,("featherfall_totem"))) {
             hand.setAmount(hand.getAmount() - 1);
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 360, 1));
             player.playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, SoundCategory.MASTER, 3, 2f);

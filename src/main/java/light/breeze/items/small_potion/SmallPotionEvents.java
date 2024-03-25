@@ -30,7 +30,7 @@ public class SmallPotionEvents implements Listener {
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
         String name = event.getBlock().getTranslationKey().split("\\.")[2];
 
-        if (Utils.checkIfMeta(item)&&item.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("small_potion")) {
+        if (CustomModelDatas.checkFor(item,"small_potion")) {
             event.setCancelled(true);
             event.getBlock().setType(Material.AIR);
             String a = (name + "_" + "bucket").toUpperCase();
@@ -43,7 +43,7 @@ public class SmallPotionEvents implements Listener {
     public void onEmpty(PlayerBucketEmptyEvent event) {
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
 
-        if (Utils.checkIfMeta(item)&&item.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("small_potion")) {
+        if (CustomModelDatas.checkFor(item,"small_potion")) {
             event.setCancelled(true);
             event.getBlock().setType(Material.getMaterial(item.getItemMeta().getDisplayName().split("of ")[1].toUpperCase()));
             event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
@@ -69,8 +69,7 @@ public class SmallPotionEvents implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onDrink(PlayerItemConsumeEvent event) {
         if (Utils.checkIfMeta(event.getItem())) {
-            Integer cmd = event.getItem().getItemMeta().getCustomModelData();
-            if (cmd == CustomModelDatas.getCustomModelData("small_potion_fly")) {
+            if (CustomModelDatas.checkFor(event.getItem(), "small_potion_fly")) {
                 event.setCancelled(true);
                 event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
                 this.flyPotions.put(event.getPlayer(), Utils.getTime()+150);

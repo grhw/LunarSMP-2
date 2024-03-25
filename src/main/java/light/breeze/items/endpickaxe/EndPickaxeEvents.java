@@ -19,7 +19,7 @@ public class EndPickaxeEvents implements Listener {
             Player player = event.getPlayer();
             ItemStack hand = player.getInventory().getItemInMainHand();
 
-            if (Utils.checkIfMeta(hand)&&hand.getItemMeta().getCustomModelData() == CustomModelDatas.getCustomModelData("end_pickaxe")) {
+            if (CustomModelDatas.checkFor(hand,("end_pickaxe"))) {
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, SoundCategory.MASTER, 1, 2f);
                 Location pos = event.getBlock().getLocation();
                 World world = event.getBlock().getWorld();
