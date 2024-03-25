@@ -35,8 +35,8 @@ public class ManaEvents implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void eatManaGlob(PlayerItemConsumeEvent event) {
-        Integer cmd = event.getItem().getItemMeta().getCustomModelData();
         if (Utils.checkIfMeta(event.getItem())) {
+            Integer cmd = event.getItem().getItemMeta().getCustomModelData();
             if (cmd == CustomModelDatas.getCustomModelData("glob_of_mana")) {
                 this.mana.addMana(event.getPlayer(),10);
             } else if (cmd == CustomModelDatas.getCustomModelData("small_potion_of_mana")) {

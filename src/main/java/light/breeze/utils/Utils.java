@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -121,5 +122,9 @@ public class Utils {
 
     public static Boolean checkIfMeta(ItemStack item) {
         return item.hasItemMeta()&&item.getItemMeta().hasCustomModelData();
+    }
+
+    public static Long getTime() {
+        return Instant.now().getEpochSecond();
     }
 }

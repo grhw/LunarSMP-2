@@ -1,21 +1,25 @@
 package light.breeze.anticheat;
 
 import light.breeze.utils.Utils;
-import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.AnvilInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class AntiArtifactRename implements Listener {
     @EventHandler
     public static void onInventoryClick(InventoryClickEvent e){
         if (e.getInventory() instanceof AnvilInventory) {
             AnvilInventory anvil = (AnvilInventory) e.getInventory();
-            if (anvil.getContents()[0] != null&&anvil.getContents()[0].hasItemMeta()&&!(anvil.getRenameText().matches(ChatColor.stripColor(anvil.getContents()[0].getItemMeta().getDisplayName())))) {
+            if (anvil.getContents()[0] != null) {
                 if (Utils.checkIfMeta(anvil.getContents()[0])) {
-                    e.setCancelled(true);
-                    e.getView().getPlayer().sendMessage("You are not allowed to rename Artifacts!");
+                    //e.setCancelled(true);
+                    if (e.getRawSlot() == 2) {
+                        ItemMeta im = e.getCurrentItem().getItemMeta();
+                        im.setDisplayName(anvil.getContents()[0].getItemMeta().getDisplayName());
+                        e.getCurrentItem().setItemMeta(im);
+                    }
                 }
             }
         }

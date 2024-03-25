@@ -16,7 +16,6 @@ import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
 import light.breeze.recipes.HijackCraftingTable;
 import light.breeze.recipes.Smelting;
-import light.breeze.utils.TickUtils;
 import light.breeze.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -55,7 +54,6 @@ public final class LunarSMP extends JavaPlugin {
         this.getCommand("mana").setTabCompleter(new ManaCommandAutoCompletor());
 
         ////// Register Events ////
-        TickUtils tu = new TickUtils();
 
         pm.registerEvents(new WardenBoundEvents(), this);
         pm.registerEvents(new BurningAxeEvents(), this);
@@ -63,7 +61,7 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new WitherSwordEvents(), this);
         pm.registerEvents(new EchobowEvents(), this);
         pm.registerEvents(new EndPickaxeEvents(), this);
-        pm.registerEvents(new StopRedstoneClocks(tu), this);
+        pm.registerEvents(new StopRedstoneClocks(), this);
         pm.registerEvents(new SmallPotionEvents(), this);
 
         pm.registerEvents(new VPNLogger(), this);
@@ -81,6 +79,7 @@ public final class LunarSMP extends JavaPlugin {
         getLogger().info("Loaded!" + lang.ascii_art);
         getLogger().info("Plugin by Gust");
         Plugin plugin = Utils.getPlugin();
+        plugin.getServer().broadcastMessage("LunarSMP Loaded!");
 
         ////// Register Recipes ////
         try {

@@ -14,7 +14,6 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +53,7 @@ public class SmallPotionEvents implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void checkPotions(PlayerMoveEvent e) { // oops! lag!
         List<Player> ar = new ArrayList<>(this.flyPotions.keySet());
-        Long epoch = Instant.now().getEpochSecond();
+        Long epoch = Utils.getTime();
         for (int i = 0; i < ar.size(); i += 1) {
             if (this.flyPotions.get(ar.get(i)) < epoch) {
                 this.flyPotions.remove(ar.get(i));
@@ -74,7 +73,7 @@ public class SmallPotionEvents implements Listener {
             if (cmd == CustomModelDatas.getCustomModelData("small_potion_fly")) {
                 event.setCancelled(true);
                 event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
-                this.flyPotions.put(event.getPlayer(), Instant.now().getEpochSecond()+150);
+                this.flyPotions.put(event.getPlayer(), Utils.getTime()+150);
             }
         } else if (event.getItem().getType() == Material.MILK_BUCKET) {
             this.flyPotions.put(event.getPlayer(),(long) 0);
