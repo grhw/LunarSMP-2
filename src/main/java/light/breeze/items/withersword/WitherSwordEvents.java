@@ -5,9 +5,9 @@ import light.breeze.ManaSystem;
 import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
-import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -23,15 +23,15 @@ public class WitherSwordEvents implements Listener {
         this.mana = new ManaSystem();
     }
 
-    @EventHandler(priority= EventPriority.HIGH)
-    public void onUse(PlayerInteractEvent event) {
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
-        if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (CustomModelDatas.checkFor(hand,("witherbane_sword"))&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1&&this.mana.checkManaWarn(player)) {
+        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (CustomModelDatas.checkFor(hand, ( "witherbane_sword" )) && ! player.hasCooldown(hand.getType()) && player.getCooldown(hand.getType()) < 1 && this.mana.checkManaWarn(player)) {
                 String name = hand.getItemMeta().getDisplayName();
-                player.setCooldown(hand.getType(),60);
-                this.mana.addMana(player,-20);
+                player.setCooldown(hand.getType(), 60);
+                this.mana.addMana(player, - 20);
                 Integer left = Integer.valueOf(name.split(" \\[")[1].split("\\/")[0]);
                 if (left > 0) {
                     left -= 1;
@@ -45,7 +45,7 @@ public class WitherSwordEvents implements Listener {
                     proj.setVisualFire(true);
                     proj.setVelocity(player.getLocation().getDirection().multiply(3));
                     WitherSwordProjTask projTask = new WitherSwordProjTask(proj);
-                    projTask.runTaskTimer(Utils.getPlugin(),0,1);
+                    projTask.runTaskTimer(Utils.getPlugin(), 0, 1);
                 }
             }
         }

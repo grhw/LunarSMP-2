@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.List;
 
 public class Http {
-    public static String get(String strurl) {
+    public static String get( String strurl ) {
         String stuff = "";
         try {
             URL url = new URL(strurl);
@@ -18,8 +18,7 @@ public class Http {
             }
             in.close();
             stuff = str;
-        }
-        catch (java.io.IOException e1) {
+        } catch (java.io.IOException e1) {
             stuff = e1.getMessage();
         }
         return stuff;

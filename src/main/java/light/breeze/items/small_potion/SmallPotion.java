@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmallPotion {
-    public ItemStack createSmallPotion(Material mat) {
+    public ItemStack createSmallPotion( Material mat ) {
         ItemStack custom_item = new ItemStack(mat, 1);
         Damageable meta = (Damageable) custom_item.getItemMeta();
 

@@ -26,19 +26,19 @@ public class WardenBoundEvents implements Listener {
         this.mana = new ManaSystem();
     }
 
-    @EventHandler(priority= EventPriority.HIGH)
-    public void onUse(PlayerInteractEvent event) {
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
 
-        if (event.getAction() == Action.RIGHT_CLICK_AIR||event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (CustomModelDatas.checkFor(hand,("wardenbound_sword"))&&!player.hasCooldown(hand.getType())&&player.getCooldown(hand.getType()) < 1&&this.mana.checkManaWarn(player)) {
+        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (CustomModelDatas.checkFor(hand, ( "wardenbound_sword" )) && ! player.hasCooldown(hand.getType()) && player.getCooldown(hand.getType()) < 1 && this.mana.checkManaWarn(player)) {
                 List<LivingEntity> exclude = new ArrayList<>();
                 exclude.add(player);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.MASTER, 3, 0.75f);
                 player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_AGITATED, SoundCategory.MASTER, 3, 1f);
                 player.setCooldown(hand.getType(), 1800);
-                this.mana.addMana(player,-50);
+                this.mana.addMana(player, - 50);
 
                 for (int i = 2; i <= 20; i += 2) {
                     Location loc = Utils.parseRelativeLocation(player.getLocation(), "^ ^ ^" + i).add(0, 1, 0);
@@ -46,8 +46,8 @@ public class WardenBoundEvents implements Listener {
                     //Utils.runCommandAt(player,"particle minecraft:sonic_boom ^ ^ ^" + i);
                     List<LivingEntity> entityList = Utils.getEntitiesInRadius(loc, 2);
                     for (LivingEntity entity : entityList) {
-                        if (!exclude.contains(entity)) {
-                            entity.damage(16 + (Math.random() * 2));
+                        if (! exclude.contains(entity)) {
+                            entity.damage(16 + ( Math.random() * 2 ));
                             exclude.add(entity);
                         }
                     }

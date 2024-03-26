@@ -15,13 +15,13 @@ import java.util.List;
 public class WitherSwordProjTask extends BukkitRunnable {
     private final Projectile snowball;
 
-    public WitherSwordProjTask(Projectile snowball) {
+    public WitherSwordProjTask( Projectile snowball ) {
         this.snowball = snowball;
     }
 
     @Override
     public void run() {
-        if (snowball == null||snowball.isDead()) {
+        if (snowball == null || snowball.isDead()) {
             this.cancel();
         } else {
             Vector vel = snowball.getVelocity();
@@ -29,11 +29,11 @@ public class WitherSwordProjTask extends BukkitRunnable {
 
             for (LivingEntity entity : entity_list) {
                 if (entity != snowball.getShooter()) {
-                    entity.getWorld().spawnParticle(Particle.REDSTONE, entity.getLocation().add(0,1,0), 4, new Particle.DustOptions(Color.BLACK,5));
-                    entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,60,2));
+                    entity.getWorld().spawnParticle(Particle.REDSTONE, entity.getLocation().add(0, 1, 0), 4, new Particle.DustOptions(Color.BLACK, 5));
+                    entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 60, 2));
                 }
             }
-            snowball.getWorld().spawnParticle(Particle.REDSTONE, snowball.getLocation(), 1, new Particle.DustOptions(Color.BLACK,5));
+            snowball.getWorld().spawnParticle(Particle.REDSTONE, snowball.getLocation(), 1, new Particle.DustOptions(Color.BLACK, 5));
         }
     }
 }

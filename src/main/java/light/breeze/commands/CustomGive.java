@@ -36,14 +36,14 @@ public class CustomGive implements CommandExecutor {
         custom_items.put("echo_bow", new EchoBow().createEchoBow("50"));
 
         ItemStack ebna = new EchoBow().createEchoBow("1");
-        ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
-        custom_items.put("eb_no_ammo",ebna);
+        ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);
+        custom_items.put("eb_no_ammo", ebna);
 
         custom_items.put("end_pickaxe", new EndPickaxe().createEndPickaxe("1600"));
 
         ItemStack uep = new EndPickaxe().createEndPickaxe("1");
-        uep.addUnsafeEnchantment(Enchantment.PIERCING,1);
-        custom_items.put("event_end_pickaxe",uep);
+        uep.addUnsafeEnchantment(Enchantment.PIERCING, 1);
+        custom_items.put("event_end_pickaxe", uep);
 
         custom_items.put("small_potion", new SmallPotion().createSmallPotion(Material.BUCKET));
         custom_items.put("small_potion_of_flight", new SmallPotion().createSmallPotionWithFly());
@@ -57,7 +57,7 @@ public class CustomGive implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
         Map<String, ItemStack> custom_items = getCustomItems();
 
         if (custom_items.containsKey(args[0])) {
@@ -68,8 +68,8 @@ public class CustomGive implements CommandExecutor {
                 player = (Player) sender;
             }
             player.getInventory().addItem(custom_items.get(args[0]));
-            sender.sendMessage("Gave " + sender.getName() + " 1 ["  + args[0] + "].");
-            player.sendMessage("Received [" + args[0] + "] from "  + sender.getName() + ".");
+            sender.sendMessage("Gave " + sender.getName() + " 1 [" + args[0] + "].");
+            player.sendMessage("Received [" + args[0] + "] from " + sender.getName() + ".");
         } else {
             sender.sendMessage("Item " + args[0] + " doesn't exist.");
             return false;

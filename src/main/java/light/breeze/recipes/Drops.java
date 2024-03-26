@@ -9,11 +9,11 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Drops implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
-    public void shulkerDrop(EntityDeathEvent e) {
+    public void shulkerDrop( EntityDeathEvent e ) {
         if (e.getEntity().getName().matches("Shulker")) {
-            if (Math.random()*20 < 1) {
+            if (Math.random() * 20 < 1) {
                 Location loc = e.getEntity().getLocation();
-                loc.getWorld().dropItem(loc,new EndIngot().createEndIngot());
+                loc.getWorld().dropItem(loc, new EndIngot().createEndIngot());
             }
         }
     }

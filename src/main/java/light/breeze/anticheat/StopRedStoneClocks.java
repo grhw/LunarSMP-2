@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StopRedStoneClocks implements Listener {
-    private final Map<Chunk,Long> chunk_time;
+    private final Map<Chunk, Long> chunk_time;
     private final double minTime;
 
     public StopRedStoneClocks() {
@@ -22,16 +22,16 @@ public class StopRedStoneClocks implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void RedStoneClocks( BlockRedstoneEvent event) {
+    public void RedStoneClocks( BlockRedstoneEvent event ) {
         if (event.getBlock().getType() == Material.REPEATER) {
             Chunk chunk = event.getBlock().getChunk();
-            if (chunk_time.containsKey(chunk)&&Math.abs(chunk_time.get(chunk)-Utils.getTime()) < this.minTime) {
+            if (chunk_time.containsKey(chunk) && Math.abs(chunk_time.get(chunk) - Utils.getTime()) < this.minTime) {
                 if (event.getNewCurrent() != 0) {
-                    event.getBlock().getWorld().playSound(event.getBlock().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH,2,1);
+                    event.getBlock().getWorld().playSound(event.getBlock().getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 2, 1);
                 }
                 event.setNewCurrent(0);
             } else {
-                chunk_time.put(chunk,Utils.getTime());
+                chunk_time.put(chunk, Utils.getTime());
             }
         }
     }

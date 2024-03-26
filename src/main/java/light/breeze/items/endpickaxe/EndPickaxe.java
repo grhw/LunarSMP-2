@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EndPickaxe {
-    public ItemStack createEndPickaxe(String maxdurability) {
+    public ItemStack createEndPickaxe( String maxdurability ) {
         ItemStack custom_item = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         Damageable meta = (Damageable) custom_item.getItemMeta();
 

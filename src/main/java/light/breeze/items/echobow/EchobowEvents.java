@@ -23,7 +23,7 @@ public class EchobowEvents implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onEntityShootBow(EntityShootBowEvent event) {
+    public void onEntityShootBow( EntityShootBowEvent event ) {
         LivingEntity shooter = event.getEntity();
         Boolean ignore_because_not_player = false;
         Player player = null;
@@ -33,12 +33,12 @@ public class EchobowEvents implements Listener {
         } else {
             ignore_because_not_player = true;
         }
-        if (CustomModelDatas.checkFor(event.getBow(), "echo_bow") && !ignore_because_not_player) {
-            if ((player.getInventory().contains(Material.ENDER_PEARL) || event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) && this.mana.checkManaWarn(player)) {
-                if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
+        if (CustomModelDatas.checkFor(event.getBow(), "echo_bow") && ! ignore_because_not_player) {
+            if (( player.getInventory().contains(Material.ENDER_PEARL) || event.getBow().containsEnchantment(Enchantment.SILK_TOUCH) ) && this.mana.checkManaWarn(player)) {
+                if (! event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL, 1));
                     Utils.customDurability(event.getBow());
-                    this.mana.addMana(player, -60);
+                    this.mana.addMana(player, - 60);
                 }
                 EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());
                 projTask.runTaskTimer(Utils.getPlugin(), 0, 1);

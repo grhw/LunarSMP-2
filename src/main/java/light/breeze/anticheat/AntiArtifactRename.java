@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class AntiArtifactRename implements Listener {
     @EventHandler
-    public static void onInventoryClick(InventoryClickEvent e){
+    public static void onInventoryClick( InventoryClickEvent e ) {
         if (e.getInventory() instanceof AnvilInventory) {
             AnvilInventory anvil_inventory = (AnvilInventory) e.getInventory();
             if (anvil_inventory.getContents()[0] != null) {

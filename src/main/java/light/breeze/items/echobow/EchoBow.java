@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EchoBow {
-    public ItemStack createEchoBow(String ammo) {
+    public ItemStack createEchoBow( String ammo ) {
         ItemStack customItem = new ItemStack(Material.BOW, 1);
         Damageable meta = (Damageable) customItem.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("echo_bow"));

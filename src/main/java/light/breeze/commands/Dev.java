@@ -18,7 +18,7 @@ import java.util.Map;
 public class Dev implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
         Player player = (Player) sender;
 
         if (args.length > 0) {
@@ -31,7 +31,7 @@ public class Dev implements CommandExecutor {
                 arm.setGravity(false);
                 arm.setCustomName("Step For Points");
                 KothTask armTask = new KothTask(arm);
-                armTask.runTaskTimer(Utils.getPlugin(),1,10);
+                armTask.runTaskTimer(Utils.getPlugin(), 1, 10);
             } else if (args[0].contains("get_cmd")) {
                 sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
             } else if (args[0].contains("fly")) {
@@ -46,30 +46,30 @@ public class Dev implements CommandExecutor {
 
     public class KothTask extends BukkitRunnable {
         private final ArmorStand stand;
-        private final Map<Player,Integer> scores;
+        private final Map<Player, Integer> scores;
 
-        public KothTask(ArmorStand stand) {
+        public KothTask( ArmorStand stand ) {
             this.stand = stand;
             this.scores = new HashMap<>();
         }
 
         @Override
         public void run() {
-            if (this.stand.getHealth() < 1||this.stand.isDead()) {
+            if (this.stand.getHealth() < 1 || this.stand.isDead()) {
                 this.cancel();
                 FileStorage fs = new FileStorage(Utils.getPlugin(), "lastResults.yml");
                 for (Player player : this.scores.keySet()) {
                     fs.store(player.getName(), this.scores.get(player).toString());
                 }
             }
-            List<Player> players = Utils.getPlayersInRadius(this.stand.getEyeLocation(),2);
-            for (Player player:players) {
-                this.scores.put(player,this.scores.getOrDefault(player,1)+1);
+            List<Player> players = Utils.getPlayersInRadius(this.stand.getEyeLocation(), 2);
+            for (Player player : players) {
+                this.scores.put(player, this.scores.getOrDefault(player, 1) + 1);
             }
-            List<Player> disable_players = Utils.getPlayersInRadius(this.stand.getEyeLocation(),60);
-            for (Player player:disable_players) {
+            List<Player> disable_players = Utils.getPlayersInRadius(this.stand.getEyeLocation(), 60);
+            for (Player player : disable_players) {
                 if (player.isGliding()) {
-                    player.setVelocity(new Vector(0,-5,0));
+                    player.setVelocity(new Vector(0, - 5, 0));
                     player.sendMessage("You are not allowed to use elytras in this area!");
                 }
             }

@@ -14,7 +14,7 @@ public class TotemOfFeatherFall {
         ItemStack custom_item = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
         ItemMeta meta = custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("featherfall_totem"));
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Totem " + ChatColor.YELLOW + "Of " + ChatColor.WHITE + "Featherfalling" );
+        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Totem " + ChatColor.YELLOW + "Of " + ChatColor.WHITE + "Featherfalling");
         List<String> lore = new ArrayList<>();
 
         lore.add(ChatColor.WHITE + "This totem, adorned with " + ChatColor.BOLD + "feathers, " + ChatColor.YELLOW + "wheat, " + ChatColor.RESET + "" + ChatColor.WHITE + " and " + ChatColor.BOLD + "" + ChatColor.LIGHT_PURPLE + "delicate petals,");
