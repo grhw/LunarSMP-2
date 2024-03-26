@@ -1,6 +1,7 @@
 package light.breeze;
 
 import light.breeze.anticheat.AntiArtifactRename;
+import light.breeze.anticheat.CustomJoinMessages;
 import light.breeze.anticheat.StopRedStoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
@@ -66,6 +67,7 @@ public final class LunarSMP extends JavaPlugin {
 
         pm.registerEvents(new VPNLogger(), this);
         pm.registerEvents(new AntiArtifactRename(), this);
+        pm.registerEvents(new CustomJoinMessages(), this);
         //pm.registerEvents(new AntiFly(), this);
         //pm.registerEvents(new ChunkLogger(), this);
 

@@ -39,7 +39,7 @@ public class ManaSystem {
         this.setMana(player, newMana);
         if (mana > 0) {
             player.sendMessage(lang.notify_increase_mana.replace("$1", mana + "").replace("$2", newMana + ""));
-            player.spawnParticle(Particle.SPELL_WITCH, player.getLocation().add(0, 1, 0), mana * 1, 0, 0.5, 0, 0.1);
+            player.spawnParticle(Particle.SPELL_WITCH, player.getLocation().add(0, 1, 0), mana * 2, 0, 0.5, 0, 0.1);
         } else {
             player.sendMessage(lang.notify_use_mana.replace("$1", - mana + "").replace("$2", newMana + ""));
         }
