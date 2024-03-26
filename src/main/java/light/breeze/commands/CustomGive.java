@@ -33,9 +33,9 @@ public class CustomGive implements CommandExecutor {
         custom_items.put("totem_of_featherfall", new TotemOfFeatherFall().createTOF());
         custom_items.put("end_ingot", new EndIngot().createEndIngot());
         custom_items.put("wither_sword", new WitherSword().createWitherSword());
-        custom_items.put("echo_bow", new EchoBow().createEchobow("50"));
+        custom_items.put("echo_bow", new EchoBow().createEchoBow("50"));
 
-        ItemStack ebna = new EchoBow().createEchobow("1");
+        ItemStack ebna = new EchoBow().createEchoBow("1");
         ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH,1);
         custom_items.put("eb_no_ammo",ebna);
 
