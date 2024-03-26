@@ -17,11 +17,11 @@ public class ScrollEvents  implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onUse(PlayerInteractEvent event) {
         if (CustomModelDatas.checkFor(event.getItem(), "fire_scroll")) {
-            Location centLoc = event.getPlayer().getLocation();
-            List<LivingEntity> targ = Utils.getEntitiesInRadius(centLoc,10);
-            for (int i = 0; i < targ.size(); i++) {
-                Vector dir = targ.get(i).getLocation().subtract(centLoc).toVector().normalize();
-                event.getPlayer().spawnParticle(Particle.FLAME,centLoc,1,dir);
+            Location center_loc = event.getPlayer().getLocation();
+            List<LivingEntity> targets = Utils.getEntitiesInRadius(center_loc,10);
+            for (int i = 0; i < targets.size(); i++) {
+                Vector dir = targets.get(i).getLocation().subtract(center_loc).toVector().normalize();
+                event.getPlayer().spawnParticle(Particle.FLAME,center_loc,1,dir);
             }
         }
     }

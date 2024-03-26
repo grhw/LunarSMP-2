@@ -11,8 +11,8 @@ import java.util.List;
 
 public class GlobOfMana {
     public ItemStack createGlobOfMana() {
-        ItemStack customItem = new ItemStack(Material.ROTTEN_FLESH, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.ROTTEN_FLESH, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("glob_of_mana"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Glob Of Mana");
         List<String> lore = new ArrayList<>();
@@ -22,7 +22,7 @@ public class GlobOfMana {
         lore.add(ChatColor.GRAY + "When Eaten:");
         lore.add(ChatColor.GREEN + "Food");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }

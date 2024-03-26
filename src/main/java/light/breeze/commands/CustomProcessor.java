@@ -39,20 +39,20 @@ public class CustomProcessor implements CommandExecutor {
         }
         return this.merchants.get(player);
     }
-    public MerchantRecipe SingleRecipe(ItemStack Ingredient, ItemStack Result) {
-        MerchantRecipe mr = new MerchantRecipe(Result,99999);
-        mr.addIngredient(Ingredient);
+    public MerchantRecipe SingleRecipe(ItemStack ingredient, ItemStack result) {
+        MerchantRecipe mr = new MerchantRecipe(result,99999);
+        mr.addIngredient(ingredient);
         return mr;
     }
-    public MerchantRecipe DoubleRecipe(ItemStack Ingredient, ItemStack Ingredient1, ItemStack Result) {
-        MerchantRecipe mr = new MerchantRecipe(Result,99999);
-        mr.addIngredient(Ingredient);
-        mr.addIngredient(Ingredient1);
+    public MerchantRecipe DoubleRecipe(ItemStack ingredient, ItemStack ingredient1, ItemStack result) {
+        MerchantRecipe mr = new MerchantRecipe(result,99999);
+        mr.addIngredient(ingredient);
+        mr.addIngredient(ingredient1);
         return mr;
     }
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        Player player = (Player) commandSender;
+    public boolean onCommand(CommandSender command_sender, Command command, String s, String[] strings) {
+        Player player = (Player) command_sender;
         player.openMerchant(Brewer(player),true);
         return true;
     }

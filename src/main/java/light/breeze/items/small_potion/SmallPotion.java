@@ -15,26 +15,26 @@ import java.util.List;
 
 public class SmallPotion {
     public ItemStack createSmallPotion(Material mat) {
-        ItemStack customItem = new ItemStack(mat, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(mat, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
 
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion"));
-        String liquidName = "Oxygen";
+        String liquid_name = "Oxygen";
         if (mat.name().split("_").length > 1) {
-            liquidName = Utils.Capitalize(mat.name().toLowerCase().split("_")[0]);
+            liquid_name = Utils.Capitalize(mat.name().toLowerCase().split("_")[0]);
         }
-        meta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of " + liquidName);
+        meta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of " + liquid_name);
         List<String> lore = new ArrayList<>();
 
         lore.add(ChatColor.GRAY + "No Effects");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 
     public ItemStack createSmallPotionWithFly() {
-        ItemStack customItem = new ItemStack(Material.POTION);
-        PotionMeta meta = (PotionMeta) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) custom_item.getItemMeta();
 
         meta.setColor(Color.WHITE);
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion_fly"));
@@ -45,13 +45,13 @@ public class SmallPotion {
 
         lore.add(ChatColor.BLUE + "Flight (2:30)");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 
     public ItemStack createSmallPotionWithMana() {
-        ItemStack customItem = new ItemStack(Material.POTION);
-        PotionMeta meta = (PotionMeta) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) custom_item.getItemMeta();
 
         meta.setColor(Color.WHITE);
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion_of_mana"));
@@ -62,7 +62,7 @@ public class SmallPotion {
 
         lore.add(ChatColor.BLUE + "Instant Mana 10");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }

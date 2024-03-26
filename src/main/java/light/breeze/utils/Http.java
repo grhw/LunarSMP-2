@@ -12,14 +12,12 @@ public class Http {
             URL url = new URL(strurl);
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String str = "";
-            List broken = in.lines().toList();
+            List<String> broken = in.lines().toList();
             for (int i = 0; i < broken.size(); i++) {
                 str = str + "\n" + broken.get(i);
             }
             in.close();
-            if (str != null) {
-                stuff = str;
-            }
+            stuff = str;
         }
         catch (java.io.IOException e1) {
             stuff = e1.getMessage();

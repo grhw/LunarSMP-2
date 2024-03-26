@@ -12,7 +12,7 @@ import java.util.Map;
 public class CustomGiveAutoCompleter implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] arguments) {
-        if (command.getName().contains("customgive")) {
+        if (command.getName().contains("custom_give")) {
             CustomGive cg = new CustomGive();
             Map<String, ItemStack> ci = cg.getCustomItems();
             List<String> ar = new ArrayList<>(ci.keySet());

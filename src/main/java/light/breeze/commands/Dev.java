@@ -66,8 +66,8 @@ public class Dev implements CommandExecutor {
             for (Player player:players) {
                 this.scores.put(player,this.scores.getOrDefault(player,1)+1);
             }
-            List<Player> disablePlayers = Utils.getPlayersInRadius(this.stand.getEyeLocation(),60);
-            for (Player player:disablePlayers) {
+            List<Player> disable_players = Utils.getPlayersInRadius(this.stand.getEyeLocation(),60);
+            for (Player player:disable_players) {
                 if (player.isGliding()) {
                     player.setVelocity(new Vector(0,-5,0));
                     player.sendMessage("You are not allowed to use elytras in this area!");

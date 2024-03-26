@@ -28,44 +28,44 @@ public class TPA implements CommandExecutor {
         if (args.length > 0) {
             target = args[0];
         }
-        Map<String,TPARequest> userRequests = requests.get(sender.getName());
+        Map<String,TPARequest> user_requests = requests.get(sender.getName());
         if (!requests.containsKey(target)) {
             requests.put(target,new HashMap<>());
         }
-        Map<String,TPARequest> targRequests = requests.get(target);
+        Map<String,TPARequest> targ_requests = requests.get(target);
         Player player = (Player) sender;
         Player targ = Utils.getPlayer(target);
         if (label.contains("accept")) {
-            if (targRequests.containsKey(player.getName())) {
-                TPARequest request = targRequests.get(player.getName());
+            if (targ_requests.containsKey(player.getName())) {
+                TPARequest request = targ_requests.get(player.getName());
                 request.accept();
-                userRequests.remove(target);
+                user_requests.remove(target);
                 return true;
             } else {
                 sender.sendMessage(lang.tpa_no_requests);
             };
         } else if (label.contains("decline")) {
-            if (targRequests.containsKey(player.getName())) {
-                userRequests.get(target).decline();
-                targRequests.remove(target);
+            if (targ_requests.containsKey(player.getName())) {
+                user_requests.get(target).decline();
+                targ_requests.remove(target);
             } else {
                 sender.sendMessage(lang.tpa_no_requests);
             }
         } else if (label.contains("cancel")) {
-            if (userRequests.containsKey(target)) {
-                userRequests.get(target).cancel_request();
-                userRequests.remove(target);
+            if (user_requests.containsKey(target)) {
+                user_requests.get(target).cancel_request();
+                user_requests.remove(target);
             } else {
                 sender.sendMessage(lang.tpa_no_requests);
             }
         } else if (label.contains("here")) {
             TPARequest request = new TPARequest(true,player,targ);
             lastTargetRequests.put(target,player.getName());
-            userRequests.put(target,request);
+            user_requests.put(target,request);
         } else {
             TPARequest request = new TPARequest(false,player,targ);
             lastTargetRequests.put(target,player.getName());
-            userRequests.put(target,request);
+            user_requests.put(target,request);
         }
         return true;
     }

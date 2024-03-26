@@ -27,12 +27,12 @@ public class EchoArrowProjTask extends BukkitRunnable {
             this.cancel();
         } else {
 
-            List<LivingEntity> entityList = Utils.getEntitiesInRadius(arrow.getLocation(), 50);
+            List<LivingEntity> entity_list = Utils.getEntitiesInRadius(arrow.getLocation(), 50);
             LivingEntity closest = null;
             Double closestDist = 150.0;
 
             Player gpl = Utils.getPlayer(this.target);
-            for (LivingEntity entity : entityList) {
+            for (LivingEntity entity : entity_list) {
                 Double dist = entity.getLocation().distance(arrow.getLocation());
                 if (entity != arrow.getShooter()&&((gpl != null&&gpl.getUniqueId() == entity.getUniqueId())||this.target.matches(entity.getType().getName()))&&closestDist > dist&&entity instanceof LivingEntity) {
                     closestDist = dist;
@@ -40,8 +40,8 @@ public class EchoArrowProjTask extends BukkitRunnable {
                 }
             }
             if (closest != null) {
-                Vector targvec = (arrow.getLocation().subtract((closest.getEyeLocation().add(closest.getLocation())).multiply(0.5))).toVector().normalize().multiply(-1.35);
-                arrow.setVelocity(targvec.add(arrow.getVelocity()).multiply(0.5));
+                Vector target_vec = (arrow.getLocation().subtract((closest.getEyeLocation().add(closest.getLocation())).multiply(0.5))).toVector().normalize().multiply(-1.35);
+                arrow.setVelocity(target_vec.add(arrow.getVelocity()).multiply(0.5));
             }
         }
     }

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class WardenBound {
     public ItemStack createWardenBound() {
-        ItemStack wardenBound = new ItemStack(Material.DIAMOND_SWORD, 1);
-        ItemMeta meta = wardenBound.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta meta = custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("wardenbound_sword"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Wardenbound Sword");
         List<String> lore = new ArrayList<>();
@@ -23,7 +23,7 @@ public class WardenBound {
         lore.add(ChatColor.GRAY + "When Used:");
         lore.add(ChatColor.GREEN + "Shoots Warden Ray");
         meta.setLore(lore);
-        wardenBound.setItemMeta(meta);
-        return wardenBound;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }

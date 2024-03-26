@@ -64,56 +64,55 @@ public class Utils {
 
     public static Location parseRelativeLocation(Location location, String relativeCoords) {
         String[] coords = relativeCoords.split(" ");
-        double zOffset = parseRelativeCoordinate(location, coords[2]);
+        double z_offset = parseRelativeCoordinate(location, coords[2]);
 
         // Apply rotation (yaw and pitch) adjustments
         double yaw = Math.toRadians(location.getYaw());
         double pitch = -Math.toRadians(location.getPitch());
 
-        double xAdjusted = zOffset * (Math.sin(yaw) * -Math.cos(pitch));
-        double yAdjusted = zOffset * (Math.sin(pitch));
-        double zAdjusted = zOffset * (Math.cos(yaw) * -Math.cos(pitch));
+        double x_adjusted = z_offset * (Math.sin(yaw) * -Math.cos(pitch));
+        double y_adjusted = z_offset * (Math.sin(pitch));
+        double z_adjusted = z_offset * (Math.cos(yaw) * -Math.cos(pitch));
 
         // Create and return the new location
-        return location.clone().add(xAdjusted, yAdjusted, -zAdjusted);
+        return location.clone().add(x_adjusted, y_adjusted, -z_adjusted);
     }
 
     private static double parseRelativeCoordinate(Location location, String coord) {
         if (coord.equals("^")) {
             return 0;
         } else if (coord.startsWith("^")) {
-            double relativeOffset = Double.parseDouble(coord.substring(1));
-            return relativeOffset;
+            return Double.parseDouble(coord.substring(1));
         } else {
             return Double.parseDouble(coord);
         }
     }
     public static List<Player> getPlayersInRadius(Location center, double radius) {
-        List<Player> playersInRadius = new ArrayList<>();
+        List<Player> players_list = new ArrayList<>();
         for (Player player : Bukkit.getOnlinePlayers()) {
-            Location playerLocation = player.getLocation();
-            if (center.getWorld() == playerLocation.getWorld()) {
-                double distance = center.distance(playerLocation);
+            Location player_location = player.getLocation();
+            if (center.getWorld() == player_location.getWorld()) {
+                double distance = center.distance(player_location);
                 if (distance <= radius) {
-                    playersInRadius.add(player);
+                    players_list.add(player);
                 }
             }
         }
-        return playersInRadius;
+        return players_list;
     }
     public static List<LivingEntity> getEntitiesInRadius(Location center, double radius) {
         World world = center.getWorld();
-        List<LivingEntity> entitiesInRadius = new ArrayList<>();
+        List<LivingEntity> entities_list = new ArrayList<>();
         for (LivingEntity entity : world.getLivingEntities()) {
             if (entity.getLocation().distance(center) <= radius) {
-                entitiesInRadius.add(entity);
+                entities_list.add(entity);
             }
         }
-        return entitiesInRadius;
+        return entities_list;
     }
     public static Boolean inList(ArrayList<String> list, String searchString) {
-        for (String curVal : list){
-            if (curVal.matches(searchString)){
+        for (String cur_val : list){
+            if (cur_val.matches(searchString)){
                return true;
             }
         }

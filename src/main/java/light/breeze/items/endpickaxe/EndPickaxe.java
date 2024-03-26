@@ -11,8 +11,8 @@ import java.util.List;
 
 public class EndPickaxe {
     public ItemStack createEndPickaxe(String maxdurability) {
-        ItemStack customItem = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
 
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("end_pickaxe"));
         meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "End Pickaxe " + "[" + maxdurability + "/" + maxdurability + "]");
@@ -25,7 +25,7 @@ public class EndPickaxe {
         lore.add(ChatColor.GRAY + "When Blocks Broken While On Mainhand:");
         lore.add(ChatColor.GREEN + "Breaks a 3x3 area");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }

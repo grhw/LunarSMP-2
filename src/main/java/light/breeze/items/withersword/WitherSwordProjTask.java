@@ -25,9 +25,9 @@ public class WitherSwordProjTask extends BukkitRunnable {
             this.cancel();
         } else {
             Vector vel = snowball.getVelocity();
-            List<LivingEntity> entityList = Utils.getEntitiesInRadius(snowball.getLocation(), vel.length());
+            List<LivingEntity> entity_list = Utils.getEntitiesInRadius(snowball.getLocation(), vel.length());
 
-            for (LivingEntity entity : entityList) {
+            for (LivingEntity entity : entity_list) {
                 if (entity != snowball.getShooter()) {
                     entity.getWorld().spawnParticle(Particle.REDSTONE, entity.getLocation().add(0,1,0), 4, new Particle.DustOptions(Color.BLACK,5));
                     entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,60,2));

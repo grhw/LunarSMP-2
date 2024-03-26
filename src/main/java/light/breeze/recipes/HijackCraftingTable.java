@@ -19,14 +19,14 @@ public class HijackCraftingTable implements Listener {
         this.recipes = new HashMap<>();
     }
     public void newRecipe(String[] rows, Map<String,ItemStack> mapping, ItemStack res) {
-        ItemStack[] ItemMatrix = new ItemStack[9];
+        ItemStack[] item_matrix = new ItemStack[9];
         mapping.put(" ",null);
         for (int i = 0; i <9; i++) {
             String k = String.valueOf(rows[(int) Math.floor(i/3)].charAt(i%3));
-            ItemMatrix[i] = mapping.get(k);
+            item_matrix[i] = mapping.get(k);
         }
 
-        this.recipes.put(res,ItemMatrix);
+        this.recipes.put(res,item_matrix);
     }
 
 

@@ -1,8 +1,8 @@
 package light.breeze.recipes;
 
 import light.breeze.cosmetics.hats.TopHat;
-import light.breeze.items.echobow.Echobow;
-import light.breeze.items.featherfalltotem.TotemOfFeatherfall;
+import light.breeze.items.echobow.EchoBow;
+import light.breeze.items.featherfalltotem.TotemOfFeatherFall;
 import light.breeze.items.small_potion.SmallPotion;
 import light.breeze.items.withersword.WitherSword;
 import org.bukkit.Bukkit;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 public class CraftingTable {
     public void TOFRecipe(NamespacedKey key) {
-        ShapedRecipe recipe = new ShapedRecipe(key, new TotemOfFeatherfall().createTOF());
+        ShapedRecipe recipe = new ShapedRecipe(key, new TotemOfFeatherFall().createTOF());
         recipe.shape("#H#", "#P#", "###");
         recipe.setIngredient('H', Material.HAY_BLOCK);
         recipe.setIngredient('P', Material.PINK_PETALS);
@@ -30,7 +30,7 @@ public class CraftingTable {
     }
 
     public void Echobow(NamespacedKey key) {
-        ShapedRecipe recipe = new ShapedRecipe(key, new Echobow().createEchobow("50"));
+        ShapedRecipe recipe = new ShapedRecipe(key, new EchoBow().createEchoBow("50"));
         recipe.shape("#E ", "# E", "#E ");
         recipe.setIngredient('E', Material.ECHO_SHARD);
         recipe.setIngredient('#', Material.AMETHYST_SHARD);

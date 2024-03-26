@@ -5,18 +5,20 @@ api-version: 1.20
 authors: [ guhw ]
 description: lol
 commands:
-  lunarsmp:
+  lunar_smp:
     description: shows ascii art
     usage: /<command>
     permission: minecraft.command.help
 
-  customgive:
+  custom_give:
     description: gives custom items
+    aliases: [ customgive ]
     usage: /<command>
     permission: minecraft.command.give
 
-  echotarget:
+  echo_target:
     description: sets echo target
+    aliases: [ echotarget ]
     usage: /<command>
     permission: minecraft.command.help
 
@@ -27,18 +29,18 @@ commands:
 
   tpa:
     description: requests to TP to someone
-    aliases: [tpa, tpato, tpahere, tpaccept, tpacancel, tpcancel, tpaaccept, tpdecline, tpadecline]
+    aliases: [ tpa, tpato, tpahere, tpaccept, tpacancel, tpcancel, tpaaccept, tpdecline, tpadecline ]
     usage: /tpa <player>
     permission: minecraft.command.help
 
   mana:
     description: gets mana
-    aliases: [getmana]
+    aliases: [ get_mana ]
     usage: /<command>
     permission: minecraft.command.help
 
-  openbrewer:
+  open_brewer:
     description: brew
-    aliases: [brewer,custombrew,opencustombrewer]
+    aliases: [ brewer,custom_brew,open_custom_brewer ]
     usage: /<command>
     permission: minecraft.command.help

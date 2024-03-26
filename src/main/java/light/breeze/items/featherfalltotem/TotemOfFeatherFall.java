@@ -3,19 +3,16 @@ package light.breeze.items.featherfalltotem;
 import light.breeze.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TotemOfFeatherfall {
+public class TotemOfFeatherFall {
     public ItemStack createTOF() {
-        ItemStack customItem = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
-        ItemMeta meta = customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
+        ItemMeta meta = custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("featherfall_totem"));
         meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Totem " + ChatColor.YELLOW + "Of " + ChatColor.WHITE + "Featherfalling" );
         List<String> lore = new ArrayList<>();
@@ -26,8 +23,8 @@ public class TotemOfFeatherfall {
         lore.add(ChatColor.GRAY + "On fall:");
         lore.add(ChatColor.BLUE + "Feathers your falling");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }
 

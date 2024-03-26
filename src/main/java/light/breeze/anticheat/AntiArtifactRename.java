@@ -11,13 +11,13 @@ public class AntiArtifactRename implements Listener {
     @EventHandler
     public static void onInventoryClick(InventoryClickEvent e){
         if (e.getInventory() instanceof AnvilInventory) {
-            AnvilInventory anvil = (AnvilInventory) e.getInventory();
-            if (anvil.getContents()[0] != null) {
-                if (Utils.checkIfMeta(anvil.getContents()[0])) {
+            AnvilInventory anvil_inventory = (AnvilInventory) e.getInventory();
+            if (anvil_inventory.getContents()[0] != null) {
+                if (Utils.checkIfMeta(anvil_inventory.getContents()[0])) {
                     //e.setCancelled(true);
                     if (e.getRawSlot() == 2) {
                         ItemMeta im = e.getCurrentItem().getItemMeta();
-                        im.setDisplayName(anvil.getContents()[0].getItemMeta().getDisplayName());
+                        im.setDisplayName(anvil_inventory.getContents()[0].getItemMeta().getDisplayName());
                         e.getCurrentItem().setItemMeta(im);
                     }
                 }

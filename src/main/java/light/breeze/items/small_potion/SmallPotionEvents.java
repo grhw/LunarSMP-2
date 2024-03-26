@@ -20,9 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 public class SmallPotionEvents implements Listener {
-    public Map<Player,Long> flyPotions;
+    public Map<Player,Long> fly_potions;
     public SmallPotionEvents() {
-        this.flyPotions = new HashMap<>();
+        this.fly_potions = new HashMap<>();
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -52,11 +52,11 @@ public class SmallPotionEvents implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void checkPotions(PlayerMoveEvent e) { // oops! lag!
-        List<Player> ar = new ArrayList<>(this.flyPotions.keySet());
+        List<Player> ar = new ArrayList<>(this.fly_potions.keySet());
         Long epoch = Utils.getTime();
         for (int i = 0; i < ar.size(); i += 1) {
-            if (this.flyPotions.get(ar.get(i)) < epoch) {
-                this.flyPotions.remove(ar.get(i));
+            if (this.fly_potions.get(ar.get(i)) < epoch) {
+                this.fly_potions.remove(ar.get(i));
                 ar.get(i).setFlying(false);
                 ar.get(i).setAllowFlight(false);
             } else {
@@ -72,17 +72,17 @@ public class SmallPotionEvents implements Listener {
             if (CustomModelDatas.checkFor(event.getItem(), "small_potion_fly")) {
                 event.setCancelled(true);
                 event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
-                this.flyPotions.put(event.getPlayer(), Utils.getTime()+150);
+                this.fly_potions.put(event.getPlayer(), Utils.getTime()+150);
             }
         } else if (event.getItem().getType() == Material.MILK_BUCKET) {
-            this.flyPotions.put(event.getPlayer(),(long) 0);
+            this.fly_potions.put(event.getPlayer(),(long) 0);
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void damageDebuff(EntityDamageEvent event) {
-        if (this.flyPotions.containsKey(event.getEntity())) {
-            this.flyPotions.put((Player) event.getEntity(),(long) 0);
+        if (this.fly_potions.containsKey(event.getEntity())) {
+            this.fly_potions.put((Player) event.getEntity(),(long) 0);
         }
     }
 }

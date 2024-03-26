@@ -11,8 +11,8 @@ import java.util.List;
 
 public class WitherSword {
     public ItemStack createWitherSword() {
-        ItemStack customItem = new ItemStack(Material.IRON_SWORD, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.IRON_SWORD, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("witherbane_sword"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Witherbane Sword [50/50]");
         List<String> lore = new ArrayList<>();
@@ -26,7 +26,7 @@ public class WitherSword {
         lore.add(ChatColor.GRAY + "Because of semi-broken sword:");
         lore.add(ChatColor.RED + "Does less damage");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }

@@ -1,19 +1,19 @@
 package light.breeze;
 
 import light.breeze.anticheat.AntiArtifactRename;
-import light.breeze.anticheat.StopRedstoneClocks;
+import light.breeze.anticheat.StopRedStoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
 import light.breeze.cosmetics.Cosmetics;
-import light.breeze.items.small_potion.SmallPotionEvents;
-import light.breeze.recipes.Drops;
-import light.breeze.items.endpickaxe.EndPickaxeEvents;
-import light.breeze.recipes.CraftingTable;
 import light.breeze.items.burningaxe.BurningAxeEvents;
 import light.breeze.items.echobow.EchobowEvents;
+import light.breeze.items.endpickaxe.EndPickaxeEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
+import light.breeze.items.small_potion.SmallPotionEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
+import light.breeze.recipes.CraftingTable;
+import light.breeze.recipes.Drops;
 import light.breeze.recipes.HijackCraftingTable;
 import light.breeze.recipes.Smelting;
 import light.breeze.utils.Utils;
@@ -36,17 +36,17 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new ManaEvents(), this);
 
         ////// Register Commands ////
-        this.getCommand("lunarsmp").setExecutor(new Credits());
+        this.getCommand("lunar_smp").setExecutor(new Credits());
 
-        this.getCommand("customgive").setExecutor(new CustomGive());
-        this.getCommand("customgive").setTabCompleter(new CustomGiveAutoCompleter());
+        this.getCommand("custom_give").setExecutor(new CustomGive());
+        this.getCommand("custom_give").setTabCompleter(new CustomGiveAutoCompleter());
 
-        this.getCommand("echotarget").setExecutor(new EchoTarget());
-        this.getCommand("echotarget").setTabCompleter(new EchoTargetAutoCompleter());
+        this.getCommand("echo_target").setExecutor(new EchoTarget());
+        this.getCommand("echo_target").setTabCompleter(new EchoTargetAutoCompleter());
 
         this.getCommand("dev").setExecutor(new Dev());
 
-        this.getCommand("openbrewer").setExecutor(new CustomProcessor());
+        this.getCommand("open_brewer").setExecutor(new CustomProcessor());
 
         this.getCommand("tpa").setExecutor(new TPA());
 
@@ -61,7 +61,7 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new WitherSwordEvents(), this);
         pm.registerEvents(new EchobowEvents(), this);
         pm.registerEvents(new EndPickaxeEvents(), this);
-        pm.registerEvents(new StopRedstoneClocks(), this);
+        pm.registerEvents(new StopRedStoneClocks(), this);
         pm.registerEvents(new SmallPotionEvents(), this);
 
         pm.registerEvents(new VPNLogger(), this);
@@ -85,28 +85,28 @@ public final class LunarSMP extends JavaPlugin {
         try {
 
             CraftingTable recipes = new CraftingTable();
-            Smelting smeltrecipes = new Smelting();
-            HijackCraftingTable customrecipes = new HijackCraftingTable();
+            Smelting smelt_recipes = new Smelting();
+            HijackCraftingTable custom_recipes = new HijackCraftingTable();
 
-            customrecipes.EndPickaxe();
-            pm.registerEvents(customrecipes, plugin);
+            custom_recipes.EndPickaxe();
+            pm.registerEvents(custom_recipes, plugin);
 
-            recipes.SmallPotion(new NamespacedKey(plugin, "smallpotion"));
+            recipes.SmallPotion(new NamespacedKey(plugin, "small_potion"));
 
-            recipes.TOFRecipe(new NamespacedKey(plugin, "featherfall"));
-            recipes.TophatRecipe(new NamespacedKey(plugin, "tophat"));
+            recipes.TOFRecipe(new NamespacedKey(plugin, "feather_fall"));
+            recipes.TophatRecipe(new NamespacedKey(plugin, "top_hat"));
 
-            recipes.Witherbane(new NamespacedKey(plugin, "witherbane"));
-            recipes.Echobow(new NamespacedKey(plugin, "echobow"));
+            recipes.Witherbane(new NamespacedKey(plugin, "wither_bane"));
+            recipes.Echobow(new NamespacedKey(plugin, "echo_bow"));
 
-            recipes.EchoshardDuplication(new NamespacedKey(plugin, "echosharddupe"));
+            recipes.EchoshardDuplication(new NamespacedKey(plugin, "echo_shard_dupe"));
 
-            smeltrecipes.Axolotl(new NamespacedKey(plugin, "axolotl"));
-            smeltrecipes.Bonemeal(new NamespacedKey(plugin, "bonemeal"));
-            smeltrecipes.RottenLeather(new NamespacedKey(plugin, "rotten_leather"));
+            smelt_recipes.Axolotl(new NamespacedKey(plugin, "axolotl"));
+            smelt_recipes.Bonemeal(new NamespacedKey(plugin, "bone_meal"));
+            smelt_recipes.RottenLeather(new NamespacedKey(plugin, "rotten_leather"));
         } catch (Exception e) {
             Utils.log("Either something went TERRIBLY wrong, or plugin was reloaded using PlugMan.");
-            this.getLogger().log(Level.WARNING,"",e);
+            this.getLogger().log(Level.WARNING, "", e);
         }
     }
 

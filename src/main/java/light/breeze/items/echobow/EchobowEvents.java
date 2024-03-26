@@ -21,18 +21,19 @@ public class EchobowEvents implements Listener {
     public EchobowEvents() {
         this.mana = new ManaSystem();
     }
-    @EventHandler(priority= EventPriority.HIGH)
+
+    @EventHandler(priority = EventPriority.HIGH)
     public void onEntityShootBow(EntityShootBowEvent event) {
         LivingEntity shooter = event.getEntity();
-        Boolean ignoreBecauseNotPlayer = false;
+        Boolean ignore_because_not_player = false;
         Player player = null;
 
         if (shooter instanceof Player) {
             player = (Player) shooter;
         } else {
-            ignoreBecauseNotPlayer = true;
+            ignore_because_not_player = true;
         }
-        if (CustomModelDatas.checkFor(event.getBow(),"echo_bow")&&!ignoreBecauseNotPlayer) {
+        if (CustomModelDatas.checkFor(event.getBow(), "echo_bow") && !ignore_because_not_player) {
             if ((player.getInventory().contains(Material.ENDER_PEARL) || event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) && this.mana.checkManaWarn(player)) {
                 if (!event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL, 1));

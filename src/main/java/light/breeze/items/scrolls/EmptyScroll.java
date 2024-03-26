@@ -12,8 +12,8 @@ import java.util.List;
 
 public class EmptyScroll {
     public ItemStack createEmptyScrolls() {
-        ItemStack customItem = new ItemStack(Material.FLOWER_BANNER_PATTERN, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.FLOWER_BANNER_PATTERN, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("empty_scroll"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Blank Scroll");
         meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
@@ -24,13 +24,13 @@ public class EmptyScroll {
         lore.add(ChatColor.GRAY + "When Used:");
         lore.add(ChatColor.GREEN + "Nothing");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 
     public ItemStack createFireScroll() {
-        ItemStack customItem = new ItemStack(Material.FLOWER_BANNER_PATTERN, 1);
-        Damageable meta = (Damageable) customItem.getItemMeta();
+        ItemStack custom_item = new ItemStack(Material.FLOWER_BANNER_PATTERN, 1);
+        Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("fire_scroll"));
         meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Scroll of Fire");
         meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
@@ -41,7 +41,7 @@ public class EmptyScroll {
         lore.add(ChatColor.GRAY + "When Used:");
         lore.add(ChatColor.GREEN + "Fire");
         meta.setLore(lore);
-        customItem.setItemMeta(meta);
-        return customItem;
+        custom_item.setItemMeta(meta);
+        return custom_item;
     }
 }
