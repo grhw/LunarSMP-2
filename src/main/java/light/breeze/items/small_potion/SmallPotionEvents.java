@@ -75,9 +75,9 @@ public class SmallPotionEvents implements Listener {
         for (Player void_potion_player : void_potion_players) {
             if (this.void_potions.get(void_potion_player) < epoch) {
                 this.void_potions.remove(void_potion_player);
-                e.getPlayer().sendMessage(lang.notify_potion_void_timed_out);
+                void_potion_player.sendMessage(lang.notify_potion_void_timed_out);
             } else if (void_potion_player.getLocation().getY() < -60) {
-                e.getPlayer().setVelocity(new Vector(0,25,0));
+                void_potion_player.setVelocity(new Vector(0,25,0));
             }
         }
     }
