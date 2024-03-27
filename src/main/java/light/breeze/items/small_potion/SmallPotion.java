@@ -1,6 +1,6 @@
 package light.breeze.items.small_potion;
 
-import light.breeze.CustomModelDatas;
+import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -44,6 +44,40 @@ public class SmallPotion {
         List<String> lore = new ArrayList<>();
 
         lore.add(ChatColor.BLUE + "Flight (2:30)");
+        meta.setLore(lore);
+        custom_item.setItemMeta(meta);
+        return custom_item;
+    }
+
+    public ItemStack createSmallPotionWithObsidian() {
+        ItemStack custom_item = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) custom_item.getItemMeta();
+
+        meta.setColor(Color.WHITE);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion_obsidian"));
+        //meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+
+        meta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of Obsidian");
+        List<String> lore = new ArrayList<>();
+
+        //lore.add(ChatColor.GRAY + "No Effects");
+        meta.setLore(lore);
+        custom_item.setItemMeta(meta);
+        return custom_item;
+    }
+
+    public ItemStack createSmallPotionWithVoidProtection() {
+        ItemStack custom_item = new ItemStack(Material.POTION);
+        PotionMeta meta = (PotionMeta) custom_item.getItemMeta();
+
+        meta.setColor(Color.WHITE);
+        meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion_void_protection"));
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+
+        meta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of Void Protection");
+        List<String> lore = new ArrayList<>();
+
+        lore.add(ChatColor.BLUE + "Void Protection (10:00)");
         meta.setLore(lore);
         custom_item.setItemMeta(meta);
         return custom_item;

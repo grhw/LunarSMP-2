@@ -33,6 +33,9 @@ public class CustomProcessor implements CommandExecutor {
 
             mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.LAVA_BUCKET), new EndIngot().createEndIngot(), new SmallPotion().createSmallPotionWithFly()));
             mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.WATER_BUCKET), new GlobOfMana().createGlobOfMana(), new SmallPotion().createSmallPotionWithMana()));
+
+            mrl.add(DoubleRecipe(new SmallPotion().createSmallPotion(Material.WATER_BUCKET), new SmallPotion().createSmallPotion(Material.LAVA_BUCKET), new SmallPotion().createSmallPotionWithObsidian()));
+            mrl.add(DoubleRecipe(new SmallPotion().createSmallPotionWithObsidian(), new ItemStack(Material.POPPED_CHORUS_FRUIT, 4), new SmallPotion().createSmallPotionWithVoidProtection()));
             //mrl.add(DoubleRecipe(new ItemStack(Material.BAMBOO), new ItemStack(Material.PAPER), new EmptyScroll().createEmptyScrolls()));
             //mrl.add(DoubleRecipe(new EmptyScroll().createEmptyScrolls(), new ItemStack(Material.FIRE_CHARGE,5), new EmptyScroll().createFireScroll()));
             merchant.setRecipes(mrl);

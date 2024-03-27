@@ -1,5 +1,6 @@
-package light.breeze;
+package light.breeze.mana;
 
+import light.breeze.lang;
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
 import org.bukkit.Particle;

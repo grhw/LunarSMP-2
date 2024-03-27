@@ -1,7 +1,7 @@
 package light.breeze.items.withersword;
 
-import light.breeze.CustomModelDatas;
-import light.breeze.ManaSystem;
+import light.breeze.utils.CustomModelDatas;
+import light.breeze.mana.ManaSystem;
 import light.breeze.utils.Utils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;

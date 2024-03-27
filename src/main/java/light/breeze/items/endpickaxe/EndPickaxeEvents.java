@@ -1,7 +1,7 @@
 package light.breeze.items.endpickaxe;
 
-import light.breeze.CustomModelDatas;
-import light.breeze.utils.Utils;
+import light.breeze.utils.CustomDurability;
+import light.breeze.utils.CustomModelDatas;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -10,7 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 public class EndPickaxeEvents implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
@@ -35,9 +37,21 @@ public class EndPickaxeEvents implements Listener {
                     }
                 }
                 if (! hand.containsEnchantment(Enchantment.PIERCING)) {
-                    Utils.customDurability(hand);
+                    CustomDurability.add(hand, - 1);
                 }
             }
+
         }
     }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void doMending( PlayerExpChangeEvent event ) {
+        PlayerInventory inv = event.getPlayer().getInventory();
+        if (CustomModelDatas.checkFor(inv.getItemInMainHand(), "end_pickaxe")) {
+            CustomDurability.add(inv.getItemInMainHand(), 1);
+        } else if (CustomModelDatas.checkFor(inv.getItemInOffHand(), "end_pickaxe")) {
+            CustomDurability.add(inv.getItemInOffHand(), 1);
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package light.breeze.items.echobow;
 
-import light.breeze.CustomModelDatas;
+import light.breeze.utils.CustomModelDatas;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

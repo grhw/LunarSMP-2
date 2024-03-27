@@ -1,7 +1,8 @@
 package light.breeze.items.echobow;
 
-import light.breeze.CustomModelDatas;
-import light.breeze.ManaSystem;
+import light.breeze.mana.ManaSystem;
+import light.breeze.utils.CustomDurability;
+import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -37,7 +38,7 @@ public class EchobowEvents implements Listener {
             if (( player.getInventory().contains(Material.ENDER_PEARL) || event.getBow().containsEnchantment(Enchantment.SILK_TOUCH) ) && this.mana.checkManaWarn(player)) {
                 if (! event.getBow().containsEnchantment(Enchantment.SILK_TOUCH)) {
                     player.getInventory().removeItem(new ItemStack(Material.ENDER_PEARL, 1));
-                    Utils.customDurability(event.getBow());
+                    CustomDurability.add(event.getBow(),-1);
                     this.mana.addMana(player, - 60);
                 }
                 EchoArrowProjTask projTask = new EchoArrowProjTask((Projectile) event.getProjectile());

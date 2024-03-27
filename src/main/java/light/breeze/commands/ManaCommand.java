@@ -1,8 +1,8 @@
 package light.breeze.commands;
 
-import light.breeze.ManaSystem;
 import light.breeze.items.globofmana.GlobOfMana;
 import light.breeze.lang;
+import light.breeze.mana.ManaSystem;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

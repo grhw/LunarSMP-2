@@ -1,6 +1,6 @@
 package light.breeze.commands;
 
-import light.breeze.CustomModelDatas;
+import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
 import org.bukkit.command.Command;

@@ -8,7 +8,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.time.Instant;
@@ -52,16 +51,6 @@ public class Utils {
         return ( name.charAt(0) + "" ).toUpperCase() + name.substring(1);
     }
 
-    public static void customDurability( ItemStack item ) {
-        ItemMeta bim = item.getItemMeta();
-        String old = bim.getDisplayName();
-        String[] num = old.split("\\[")[1].split("\\]")[0].split("/");
-        bim.setDisplayName(old.split("\\[")[0] + "[" + ( Integer.parseInt(num[0]) - 1 ) + "/" + Integer.parseInt(num[1]) + "]");
-        item.setItemMeta(bim);
-        if (Integer.parseInt(num[0]) < 1) {
-            item.setAmount(0);
-        }
-    }
 
     public static Location parseRelativeLocation( Location location, String relativeCoords ) {
         String[] coords = relativeCoords.split(" ");

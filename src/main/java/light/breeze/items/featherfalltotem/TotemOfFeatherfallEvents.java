@@ -1,6 +1,6 @@
 package light.breeze.items.featherfalltotem;
 
-import light.breeze.CustomModelDatas;
+import light.breeze.utils.CustomModelDatas;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;

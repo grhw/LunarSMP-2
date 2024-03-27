@@ -1,6 +1,6 @@
-package light.breeze;
+package light.breeze.utils;
 
-import light.breeze.utils.Utils;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class CustomModelDatas {
@@ -10,5 +10,9 @@ public class CustomModelDatas {
 
     public static boolean checkFor( ItemStack item, String name ) {
         return Utils.checkIfMeta(item) && item.getItemMeta().getCustomModelData() == getCustomModelData(name);
+    }
+
+    public static boolean checkForWithCooldown( ItemStack item, String name, Player player ) {
+        return checkFor(item, name) && ( ( ! player.hasCooldown(item.getType()) ) || player.getCooldown(item.getType()) < 1 );
     }
 }

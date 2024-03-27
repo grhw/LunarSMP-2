@@ -10,6 +10,7 @@ import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.featherfalltotem.TotemOfFeatherFall;
 import light.breeze.items.small_potion.SmallPotion;
+import light.breeze.items.spearofjustice.SpearOfJustice;
 import light.breeze.items.wardenbound.WardenBound;
 import light.breeze.items.withersword.WitherSword;
 import light.breeze.utils.Utils;
@@ -34,6 +35,7 @@ public class CustomGive implements CommandExecutor {
         custom_items.put("end_ingot", new EndIngot().createEndIngot());
         custom_items.put("wither_sword", new WitherSword().createWitherSword());
         custom_items.put("echo_bow", new EchoBow().createEchoBow("50"));
+        custom_items.put("spear_of_justice", new SpearOfJustice().createSpearOfJustice());
 
         ItemStack ebna = new EchoBow().createEchoBow("1");
         ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);

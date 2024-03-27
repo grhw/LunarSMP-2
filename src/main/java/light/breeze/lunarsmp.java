@@ -11,8 +11,10 @@ import light.breeze.items.echobow.EchobowEvents;
 import light.breeze.items.endpickaxe.EndPickaxeEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
 import light.breeze.items.small_potion.SmallPotionEvents;
+import light.breeze.items.spearofjustice.SpearOfJusticeEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
 import light.breeze.items.withersword.WitherSwordEvents;
+import light.breeze.mana.ManaEvents;
 import light.breeze.recipes.CraftingTable;
 import light.breeze.recipes.Drops;
 import light.breeze.recipes.HijackCraftingTable;
@@ -62,6 +64,7 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new WitherSwordEvents(), this);
         pm.registerEvents(new EchobowEvents(), this);
         pm.registerEvents(new EndPickaxeEvents(), this);
+        pm.registerEvents(new SpearOfJusticeEvents(), this);
         pm.registerEvents(new StopRedStoneClocks(), this);
         pm.registerEvents(new SmallPotionEvents(), this);
 

@@ -1,6 +1,7 @@
-package light.breeze;
+package light.breeze.mana;
 
 import light.breeze.items.small_potion.SmallPotion;
+import light.breeze.utils.CustomModelDatas;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

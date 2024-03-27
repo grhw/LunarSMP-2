@@ -1,6 +1,6 @@
 package light.breeze.items.scrolls;
 
-import light.breeze.CustomModelDatas;
+import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.Particle;
