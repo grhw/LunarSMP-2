@@ -41,8 +41,8 @@ public class SmallPotionEvents implements Listener {
             String a = ( name + "_" + "bucket" ).toUpperCase();
             Utils.log(a);
             ItemStack smallPotion = event.getPlayer().getInventory().getItemInMainHand();
-            smallPotion.setAmount(smallPotion.getAmount()-1);
             event.getPlayer().getInventory().addItem(new SmallPotion().createSmallPotion(Material.matchMaterial(a)));
+            smallPotion.setAmount(smallPotion.getAmount()-1);
         }
     }
 

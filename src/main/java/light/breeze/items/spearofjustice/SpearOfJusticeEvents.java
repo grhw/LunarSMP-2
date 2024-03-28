@@ -38,19 +38,21 @@ public class SpearOfJusticeEvents implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onUse( ProjectileLaunchEvent event ) {
-        Player player = (Player) event.getEntity().getShooter();
-        if (this.ms.checkManaWarn(player) && CustomModelDatas.checkForWithCooldown(player.getInventory().getItemInMainHand(), "spear_of_justice", player)) {
-            player.setCooldown(player.getInventory().getItemInMainHand().getType(), 240);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, ( 5 * 5 ), 255, false, false, false));
-            this.ms.addMana(player, - 30);
+        if (event.getEntity().getType() == EntityType.PLAYER) {
+            Player player = (Player) event.getEntity().getShooter();
+            if (this.ms.checkManaWarn(player) && CustomModelDatas.checkForWithCooldown(player.getInventory().getItemInMainHand(), "spear_of_justice", player)) {
+                player.setCooldown(player.getInventory().getItemInMainHand().getType(), 240);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, ( 5 * 5 ), 255, false, false, false));
+                this.ms.addMana(player, - 30);
 
-            player.getWorld().playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, SoundCategory.MASTER, 1, 2);
+                player.getWorld().playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, SoundCategory.MASTER, 1, 2);
 
-            for (int i = 0; i < 5; i++) {
-                new BarrageTask(player, this.ms).runTaskLater(Utils.getPlugin(), i * 5);
+                for (int i = 0; i < 5; i++) {
+                    new BarrageTask(player, this.ms).runTaskLater(Utils.getPlugin(), i * 5);
+                }
+                new FallTask(player, this.ms).runTaskLater(Utils.getPlugin(), ( 5 * 5 ) + 5);
+                event.setCancelled(true);
             }
-            new FallTask(player, this.ms).runTaskLater(Utils.getPlugin(), ( 5 * 5 ) + 5);
-            event.setCancelled(true);
         }
     }
 

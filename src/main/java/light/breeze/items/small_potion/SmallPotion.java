@@ -7,7 +7,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
 public class SmallPotion {
     public ItemStack createSmallPotion( Material mat ) {
         ItemStack custom_item = new ItemStack(mat, 1);
-        Damageable meta = (Damageable) custom_item.getItemMeta();
+        ItemMeta meta = custom_item.getItemMeta();
 
         meta.setCustomModelData(CustomModelDatas.getCustomModelData("small_potion"));
         String liquid_name = "Oxygen";

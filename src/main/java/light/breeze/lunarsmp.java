@@ -20,6 +20,7 @@ import light.breeze.recipes.Drops;
 import light.breeze.recipes.HijackCraftingTable;
 import light.breeze.recipes.Smelting;
 import light.breeze.utils.Utils;
+import light.breeze.website.webbukit.WebBukkit;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.Plugin;
@@ -111,6 +112,13 @@ public final class LunarSMP extends JavaPlugin {
             smelt_recipes.RottenLeather(new NamespacedKey(plugin, "rotten_leather"));
         } catch (Exception e) {
             Utils.log("Either something went TERRIBLY wrong, or plugin was reloaded using PlugMan.");
+            this.getLogger().log(Level.WARNING, "", e);
+        }
+
+        try {
+            WebBukkit.instance.start(80);
+        } catch (Exception e) {
+            Utils.log("We couldn't start the website!");
             this.getLogger().log(Level.WARNING, "", e);
         }
     }
