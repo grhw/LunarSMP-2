@@ -116,7 +116,7 @@ public final class LunarSMP extends JavaPlugin {
         }
 
         try {
-            WebBukkit.instance.start(80);
+            WebBukkit.instance.start(5028);
         } catch (Exception e) {
             Utils.log("We couldn't start the website!");
             this.getLogger().log(Level.WARNING, "", e);

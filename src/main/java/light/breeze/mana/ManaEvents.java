@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class ManaEvents implements Listener {
     public ManaSystem mana;
@@ -38,6 +39,9 @@ public class ManaEvents implements Listener {
     public void eatManaGlob( PlayerItemConsumeEvent event ) {
         if (CustomModelDatas.checkFor(event.getItem(), "glob_of_mana")) {
             this.mana.addMana(event.getPlayer(), 10);
+            ItemStack gimh = event.getPlayer().getInventory().getItemInMainHand();
+            gimh.setAmount(gimh.getAmount()-1);
+            event.setCancelled(true);
         } else if (CustomModelDatas.checkFor(event.getItem(), "small_potion_of_mana")) {
             event.setCancelled(true);
             event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));

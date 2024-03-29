@@ -13,6 +13,6 @@ public class CustomModelDatas {
     }
 
     public static boolean checkForWithCooldown( ItemStack item, String name, Player player ) {
-        return checkFor(item, name) && ( ( ! player.hasCooldown(item.getType()) ) || player.getCooldown(item.getType()) < 1 );
+        return checkFor(item, name) && player.getCooldown(item.getType()) < 1;
     }
 }

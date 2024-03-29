@@ -33,16 +33,19 @@ public class SmallPotionEvents implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onFill( PlayerBucketFillEvent event ) {
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
-        String name = event.getBlock().getTranslationKey().split("\\.")[2];
+        // trans rights
+        String[] trans_key = event.getBlock().getTranslationKey().replaceAll("_",".").split("\\.");
 
-        if (CustomModelDatas.checkFor(item, "small_potion")) {
-            event.setCancelled(true);
-            event.getBlock().setType(Material.AIR);
-            String a = ( name + "_" + "bucket" ).toUpperCase();
-            Utils.log(a);
-            ItemStack smallPotion = event.getPlayer().getInventory().getItemInMainHand();
-            event.getPlayer().getInventory().addItem(new SmallPotion().createSmallPotion(Material.matchMaterial(a)));
-            smallPotion.setAmount(smallPotion.getAmount()-1);
+        if (trans_key.length > 2) {
+            String name = trans_key[2];
+            if (CustomModelDatas.checkFor(item, "small_potion")) {
+                event.setCancelled(true);
+                event.getBlock().setType(Material.AIR);
+                String a = ( name + "_" + "bucket" ).toUpperCase();
+                Utils.log(a);
+                event.getPlayer().getInventory().addItem(new SmallPotion().createSmallPotion(Material.matchMaterial(a)));
+                item.setAmount(item.getAmount()-1);
+            }
         }
     }
 

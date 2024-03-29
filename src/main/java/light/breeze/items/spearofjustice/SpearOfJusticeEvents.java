@@ -29,7 +29,7 @@ public class SpearOfJusticeEvents implements Listener {
     public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
-        if (CustomModelDatas.checkFor(item, "spear_of_justice") && player.getFallDistance() < 2 && this.ms.checkManaWarn(player)) {
+        if (CustomModelDatas.checkForWithCooldown(item, "spear_of_justice",player) && player.getFallDistance() < 2 && this.ms.checkManaWarn(player)) {
             player.setVelocity(new Vector(0, 2, 0));
             player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation().add(0, 0, 0), 50, 0, 0, 0, 1);
             this.ms.addMana(player, - 10);
@@ -38,7 +38,8 @@ public class SpearOfJusticeEvents implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onUse( ProjectileLaunchEvent event ) {
-        if (event.getEntity().getType() == EntityType.PLAYER) {
+        if (event.getEntity().getShooter() instanceof Player) {
+            Utils.log("waeklsadsklaslakdkaada");
             Player player = (Player) event.getEntity().getShooter();
             if (this.ms.checkManaWarn(player) && CustomModelDatas.checkForWithCooldown(player.getInventory().getItemInMainHand(), "spear_of_justice", player)) {
                 player.setCooldown(player.getInventory().getItemInMainHand().getType(), 240);

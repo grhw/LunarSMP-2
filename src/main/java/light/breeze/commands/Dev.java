@@ -1,8 +1,10 @@
 package light.breeze.commands;
 
+import light.breeze.mana.ManaSystem;
 import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Dev implements CommandExecutor {
+    private final ManaSystem mana = new ManaSystem();
 
     @Override
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
@@ -34,9 +37,14 @@ public class Dev implements CommandExecutor {
                 armTask.runTaskTimer(Utils.getPlugin(), 1, 10);
             } else if (args[0].contains("get_cmd")) {
                 sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
+            } else if (args[0].contains("get_trans")) {
+                sender.sendMessage("trans rights");
+                sender.sendMessage(Material.matchMaterial(args[1].toUpperCase()).getTranslationKey());
             } else if (args[0].contains("fly")) {
                 player.getPlayer().setAllowFlight(true);
                 player.getPlayer().setFlying(true);
+            } else if (args[0].contains("mana")) {
+                this.mana.addMana(player,Integer.parseInt(args[1]));
             }
         } else {
             player.sendMessage("hi :3");
