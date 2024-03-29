@@ -44,7 +44,7 @@ public class Dev implements CommandExecutor {
                 player.getPlayer().setAllowFlight(true);
                 player.getPlayer().setFlying(true);
             } else if (args[0].contains("mana")) {
-                this.mana.addMana(player,Integer.parseInt(args[1]));
+                this.mana.addMana(player, Integer.parseInt(args[1]));
             }
         } else {
             player.sendMessage("hi :3");
