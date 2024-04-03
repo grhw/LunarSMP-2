@@ -9,7 +9,9 @@ import light.breeze.cosmetics.Cosmetics;
 import light.breeze.items.burningaxe.BurningAxeEvents;
 import light.breeze.items.echobow.EchobowEvents;
 import light.breeze.items.endpickaxe.EndPickaxeEvents;
+import light.breeze.items.endsword.EndSwordEvents;
 import light.breeze.items.featherfalltotem.TotemOfFeatherfallEvents;
+import light.breeze.items.necklace_of_the_gods.NecklaceOfTheGodsEvents;
 import light.breeze.items.small_potion.SmallPotionEvents;
 import light.breeze.items.spearofjustice.SpearOfJusticeEvents;
 import light.breeze.items.wardenbound.WardenBoundEvents;
@@ -61,6 +63,8 @@ public final class LunarSMP extends JavaPlugin {
 
         pm.registerEvents(new WardenBoundEvents(), this);
         pm.registerEvents(new BurningAxeEvents(), this);
+        pm.registerEvents(new EndSwordEvents(), this);
+        pm.registerEvents(new TestDummyEvents(), this);
         pm.registerEvents(new TotemOfFeatherfallEvents(), this);
         pm.registerEvents(new WitherSwordEvents(), this);
         pm.registerEvents(new EchobowEvents(), this);
@@ -72,9 +76,9 @@ public final class LunarSMP extends JavaPlugin {
         pm.registerEvents(new VPNLogger(), this);
         pm.registerEvents(new AntiArtifactRename(), this);
         pm.registerEvents(new CustomJoinMessages(), this);
-        //pm.registerEvents(new AntiFly(), this);
-        //pm.registerEvents(new ChunkLogger(), this);
 
+        ////// Ticking Tasks //
+        new NecklaceOfTheGodsEvents.LoopTask().runTaskTimer(this, 20, 20 * 10); // 20t = 1s
 
         pm.registerEvents(new Cosmetics(), this);
 
@@ -119,7 +123,7 @@ public final class LunarSMP extends JavaPlugin {
             WebBukkit.instance.start(5028);
         } catch (Exception e) {
             Utils.log("We couldn't start the website!");
-            this.getLogger().log(Level.WARNING, "", e);
+            //this.getLogger().log(Level.WARNING, "", e); // WILL NOT SHUT THE FUCK UP IN SERVER LOGS
         }
     }
 

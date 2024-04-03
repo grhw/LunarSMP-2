@@ -35,6 +35,10 @@ public class Dev implements CommandExecutor {
                 arm.setCustomName("Step For Points");
                 KothTask armTask = new KothTask(arm);
                 armTask.runTaskTimer(Utils.getPlugin(), 1, 10);
+            } else if (args[0].contains("dummy")) {
+                ArmorStand arm = player.getWorld().spawn(player.getLocation(), ArmorStand.class);
+                arm.setCustomName("Test Dummy");
+                arm.setCustomNameVisible(true);
             } else if (args[0].contains("get_cmd")) {
                 sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
             } else if (args[0].contains("get_trans")) {
