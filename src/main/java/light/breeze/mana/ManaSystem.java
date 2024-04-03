@@ -42,7 +42,7 @@ public class ManaSystem {
     public void addMana( Player player, Integer mana ) {
         Integer newMana = this.getMana(player) + mana;
         this.setMana(player, newMana);
-        if (mana > 0) {
+        if (mana >= 0) {
             //player.sendMessage(lang.notify_increase_mana.replace("$1", mana + "").replace("$2", newMana + ""));
             Utils.Actionbar(player, lang.notify_increase_mana.replace("$1", mana + ""));
             player.spawnParticle(Particle.SPELL_WITCH, player.getLocation().add(0, 1, 0), mana * 2, 0, 0.5, 0, 0.1);
