@@ -3,7 +3,7 @@ version: '${project.version}'
 main: light.breeze.LunarSMP
 api-version: 1.20
 authors: [ guhw ]
-depend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI]
 description: lol
 commands:
   lunar_smp:
