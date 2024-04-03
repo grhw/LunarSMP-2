@@ -88,14 +88,19 @@ public class SmallPotionEvents implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onDrink( PlayerItemConsumeEvent event ) {
         if (Utils.checkIfMeta(event.getItem())) {
+            boolean isPotion = false;
             if (CustomModelDatas.checkFor(event.getItem(), "small_potion_fly")) {
                 this.fly_potions.put(event.getPlayer(), Utils.getTime() + 150);
+                isPotion = true;
             } else if (CustomModelDatas.checkFor(event.getItem(), "small_potion_void_protection")) {
                 Utils.log("asd");
+                isPotion = true;
                 this.void_potions.put(event.getPlayer(), Utils.getTime() + 600);
             }
-            event.setCancelled(true);
-            event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
+            if (isPotion) {
+                event.setCancelled(true);
+                event.getPlayer().getInventory().setItemInMainHand(new SmallPotion().createSmallPotion(Material.BUCKET));
+            }
         } else if (event.getItem().getType() == Material.MILK_BUCKET) {
             this.fly_potions.put(event.getPlayer(), (long) 0);
             this.void_potions.put(event.getPlayer(), (long) 0);
