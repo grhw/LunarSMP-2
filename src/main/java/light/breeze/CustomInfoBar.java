@@ -1,6 +1,7 @@
 package light.breeze;
 
 import light.breeze.mana.ManaSystem;
+import light.breeze.utils.Utils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -41,13 +42,15 @@ public class CustomInfoBar {
                 Score score = objective.getScore(line);
                 score.setScore(lines.length - i);
             }
-        } else {
-            player.setScoreboard(CustomInfoBar.createScoreboard(player));
         }
     }
 
     public static void updatePlayerboard( Player player ) {
         updateScoreboardText(getScoreList(player), player);
+        if (player.getScoreboard().getEntries().size() != 10) {
+            Utils.log("making new");
+            player.setScoreboard(CustomInfoBar.createScoreboard(player));
+        }
     }
 
     public static Scoreboard createScoreboard( Player player ) {
