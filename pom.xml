@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>light.breeze</groupId>
-    <artifactId>LunarSMP</artifactId>
-    <version>1.0.0</version>
+    <artifactId>Lunar</artifactId>
+    <version>SMP</version>
     <packaging>jar</packaging>
 
     <name>LunarSMPPlugin</name>
