@@ -59,14 +59,17 @@ public class TPA implements CommandExecutor {
             } else {
                 sender.sendMessage(lang.tpa_no_requests);
             }
-        } else if (label.contains("here")) {
-            TPARequest request = new TPARequest(true, player, targ);
+        } else if (targ != null) {
+            TPARequest request;
+            if (label.contains("here")) {
+                request = new TPARequest(true, player, targ);
+            } else {
+                request = new TPARequest(false, player, targ);
+            }
             last_target_requests.put(target, player.getName());
             user_requests.put(target, request);
         } else {
-            TPARequest request = new TPARequest(false, player, targ);
-            last_target_requests.put(target, player.getName());
-            user_requests.put(target, request);
+            sender.sendMessage(lang.tpa_invalid_player);
         }
         return true;
     }

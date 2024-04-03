@@ -29,10 +29,11 @@ public class lang {
     public static String notify_potion_void_timed_out = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Your void potion ran out.";
 
     public static String tpa_expired = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "This request is now expired.";
-    public static String tpa_cancel_move = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Teleport request cancelled as you moved.";
+    public static String tpa_cancel_move = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Teleport request cancelled as you took damage.";
 
-    public static String tpa_notify_cancel_move = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Teleport request cancelled as $1 moved.";
+    public static String tpa_notify_cancel_move = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "Teleport request cancelled as $1 took damage.";
     public static String tpa_no_requests = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "You do not have any requests!";
+    public static String tpa_invalid_player = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "This player is not online!";
 
     public static String no_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.RED + "You're out of mana!";
     public static String notify_increase_mana = ChatColor.DARK_PURPLE + "[LunarSMP] " + ChatColor.GREEN + "+$1 Mana";
