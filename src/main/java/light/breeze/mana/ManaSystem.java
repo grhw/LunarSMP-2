@@ -32,11 +32,15 @@ public class ManaSystem {
         return true;
     }
 
+    public static Integer getMaxMana(Player player) {
+        return player.getLevel()*105;
+    }
+
     public void setMana( Player player, Integer mana ) {
         if (this.fs.get(player.getName()) == null) {
             this.fs.store(player.getName(), "0");
         }
-        this.fs.store(player.getName(), Math.max(Math.min(mana, 500), - 100) + "");
+        this.fs.store(player.getName(), Math.max(Math.min(mana, getMaxMana(player)), - 100) + "");
     }
 
     public void addMana( Player player, Integer mana ) {

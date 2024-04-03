@@ -18,7 +18,7 @@ public class CustomInfoBar {
         lines[0] = PlaceholderAPI.setPlaceholders(player, ChatColor.DARK_BLUE + "   [ %betterteams_name% " + ChatColor.DARK_BLUE + "] ");
         lines[1] = ChatColor.YELLOW + PlaceholderAPI.setPlaceholders(player, "     Lag: %math_0:1_100-(" + PlaceholderAPI.setPlaceholders(player, "%server_tps_15%").replace("*", "") + "/20*100)%%");
         lines[2] = "  ";
-        lines[3] = ChatColor.LIGHT_PURPLE + "     Mana: " + new ManaSystem().getMana(player);
+        lines[3] = ChatColor.LIGHT_PURPLE + "     Mana: " + new ManaSystem().getMana(player) + "/" + ManaSystem.getMaxMana(player);
         lines[4] = ChatColor.RED + PlaceholderAPI.setPlaceholders(player, "     Kills: %statistic_player_kills%");
         lines[5] = ChatColor.DARK_RED + PlaceholderAPI.setPlaceholders(player, "     Deaths: %statistic_deaths%");
         lines[6] = " ";
