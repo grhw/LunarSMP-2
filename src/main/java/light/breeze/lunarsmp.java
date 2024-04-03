@@ -1,7 +1,6 @@
 package light.breeze;
 
 import light.breeze.anticheat.AntiArtifactRename;
-import light.breeze.anticheat.CustomJoinMessages;
 import light.breeze.anticheat.StopRedStoneClocks;
 import light.breeze.anticheat.VPNLogger;
 import light.breeze.commands.*;
@@ -79,6 +78,7 @@ public final class LunarSMP extends JavaPlugin {
 
         ////// Ticking Tasks //
         new NecklaceOfTheGodsEvents.LoopTask().runTaskTimer(this, 20, 20 * 10); // 20t = 1s
+        new CustomInfoBar.Updater().runTaskTimer(this, 20, 20);
 
         pm.registerEvents(new Cosmetics(), this);
 

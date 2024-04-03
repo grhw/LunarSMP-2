@@ -1,9 +1,6 @@
 package light.breeze.utils;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Server;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -12,7 +9,9 @@ import org.bukkit.plugin.Plugin;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 public class Utils {
@@ -25,6 +24,30 @@ public class Utils {
         Bukkit.getLogger().log(Level.INFO, str);
     }
 
+    public Map<Character,Float> CharLengthMap = new HashMap<>();
+    public Utils() {
+        String length1 = "AaBbCcDdEeGgHhKkMmNnOoPpQqRrSsUuVvWwXxYyZzTLJj\\/-=+%";
+        String length2 = "tfli|:;'\"";
+        String length3 = "I[]{}";
+
+        for (char c : length1.toCharArray()) {
+            CharLengthMap.put(c,1f);
+        }
+        for (char c : length2.toCharArray()) {
+            CharLengthMap.put(c,0.1f);
+        }
+        for (char c : length3.toCharArray()) {
+            CharLengthMap.put(c,0.5f);
+        }
+    }
+    public Integer getLength( String text ) {
+        float length = 0;
+        for (char c : text.toCharArray()) {
+            Utils.log(c + "");
+            length += CharLengthMap.get(c);
+        }
+        return (int) length;
+    }
 
     public static Player getPlayer( String player_name ) {
         /*for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
@@ -78,6 +101,19 @@ public class Utils {
         }
     }
 
+
+    public static String padding( String text, Integer require, String pad ) {
+        Integer length = ChatColor.stripColor(text).length();
+        if (require > length) {
+            String padded = pad.repeat((require-length)/2);
+            return padded + text;
+        }
+        return text;
+    }
+
+    public static void Actionbar(Player player, String text) {
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"title " + player.getName() + "  actionbar \"" + text + "\"");
+    }
     public static List<Player> getPlayersInRadius( Location center, double radius ) {
         List<Player> players_list = new ArrayList<>();
         for (Player player : Bukkit.getOnlinePlayers()) {
