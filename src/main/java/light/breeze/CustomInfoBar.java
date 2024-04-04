@@ -15,7 +15,7 @@ import org.bukkit.scoreboard.Scoreboard;
 public class CustomInfoBar {
     public static String[] getScoreList( Player player ) {
         String[] lines = new String[10];
-        lines[0] = PlaceholderAPI.setPlaceholders(player, ChatColor.DARK_BLUE + "   [ %betterteams_name% " + ChatColor.DARK_BLUE + "] ");
+        lines[0] = PlaceholderAPI.setPlaceholders(player, ChatColor.DARK_BLUE + "   [ %betterteams_color%%betterteams_name% " + ChatColor.DARK_BLUE + "] ");
         lines[1] = ChatColor.YELLOW + PlaceholderAPI.setPlaceholders(player, "     Lag: %math_0:1_100-(" + PlaceholderAPI.setPlaceholders(player, "%server_tps_15%").replace("*", "") + "/20*100)%%");
         lines[2] = "  ";
         lines[3] = ChatColor.LIGHT_PURPLE + "     Mana: " + new ManaSystem().getMana(player) + "/" + ManaSystem.getMaxMana(player);
@@ -54,7 +54,7 @@ public class CustomInfoBar {
 
         Player jasdjasd = player;
 
-        player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, "[%betterteams_name%] ") + player.getName());
+        player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, "%betterteams_color%[%betterteams_name%] ") + player.getName());
     }
 
     public static Scoreboard createScoreboard( Player player ) {
@@ -63,7 +63,7 @@ public class CustomInfoBar {
 
         updateScoreboardText(getScoreList(player), player);
         player.setPlayerListHeader(ChatColor.LIGHT_PURPLE + "   [ LunarSMP ]   ");
-        player.setPlayerListHeader(ChatColor.LIGHT_PURPLE + "   [          ]   ");
+        player.setPlayerListFooter(ChatColor.LIGHT_PURPLE + "   [          ]   ");
 
         return scoreboard;
     }
