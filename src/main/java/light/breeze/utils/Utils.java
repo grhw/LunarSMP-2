@@ -116,13 +116,18 @@ public class Utils {
     }
     public static List<Player> getPlayersInRadius( Location center, double radius ) {
         List<Player> players_list = new ArrayList<>();
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            Location player_location = player.getLocation();
-            if (center.getWorld() == player_location.getWorld()) {
-                double distance = center.distance(player_location);
-                if (distance <= radius) {
-                    players_list.add(player);
-                }
+        //for (Player player : Bukkit.getOnlinePlayers()) {
+        //    Location player_location = player.getLocation();
+        //    if (center.getWorld() == player_location.getWorld()) {
+        //        double distance = center.distance(player_location);
+        //        if (distance <= radius) {
+        //            players_list.add(player);
+        //        }
+        //    }
+        //}
+        for (Entity e: getEntitiesInRadius(center,radius)) {
+            if (e instanceof Player) {
+                players_list.add((Player) e);
             }
         }
         return players_list;
@@ -131,9 +136,14 @@ public class Utils {
     public static List<LivingEntity> getEntitiesInRadius( Location center, double radius ) {
         World world = center.getWorld();
         List<LivingEntity> entities_list = new ArrayList<>();
-        for (LivingEntity entity : world.getLivingEntities()) {
-            if (entity.getLocation().distance(center) <= radius) {
-                entities_list.add(entity);
+        //for (LivingEntity entity : world.getLivingEntities()) {
+        //    if (entity.getLocation().distance(center) <= radius) {
+        //        entities_list.add(entity);
+        //    }
+        //}
+        for (Entity e: world.getNearbyEntities(center,radius,radius,radius)) {
+            if (e instanceof LivingEntity) {
+                entities_list.add((LivingEntity) e);
             }
         }
         return entities_list;

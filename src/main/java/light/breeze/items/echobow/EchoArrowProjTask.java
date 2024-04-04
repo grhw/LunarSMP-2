@@ -15,7 +15,7 @@ public class EchoArrowProjTask extends BukkitRunnable {
     private final String target;
 
     public EchoArrowProjTask( Projectile arrow ) {
-        FileStorage fs = new FileStorage(Utils.getPlugin(), "echotargets.yml");
+        FileStorage fs = new FileStorage(Utils.getPlugin(), "echo_targets.yml");
         this.arrow = arrow;
 
         this.target = fs.get(( (Player) arrow.getShooter() ).getUniqueId().toString());
