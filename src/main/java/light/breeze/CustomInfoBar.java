@@ -46,11 +46,11 @@ public class CustomInfoBar {
     }
 
     public static void updatePlayerboard( Player player ) {
-        updateScoreboardText(getScoreList(player), player);
         if (player.getScoreboard().getEntries().size() != 10) {
             Utils.log("making new");
             player.setScoreboard(CustomInfoBar.createScoreboard(player));
         }
+        updateScoreboardText(getScoreList(player), player);
     }
 
     public static Scoreboard createScoreboard( Player player ) {

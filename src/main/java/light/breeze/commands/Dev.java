@@ -4,12 +4,14 @@ import light.breeze.mana.ManaSystem;
 import light.breeze.utils.CustomModelDatas;
 import light.breeze.utils.FileStorage;
 import light.breeze.utils.Utils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -36,9 +38,11 @@ public class Dev implements CommandExecutor {
                 KothTask armTask = new KothTask(arm);
                 armTask.runTaskTimer(Utils.getPlugin(), 1, 10);
             } else if (args[0].contains("dummy")) {
-                ArmorStand arm = player.getWorld().spawn(player.getLocation(), ArmorStand.class);
-                arm.setCustomName("Test Dummy");
+                Villager arm = player.getWorld().spawn(player.getLocation(), Villager.class);
+                arm.setCustomName(ChatColor.LIGHT_PURPLE + "Test Dummy");
                 arm.setCustomNameVisible(true);
+                arm.setAI(false);
+                arm.setInvulnerable(false);
             } else if (args[0].contains("get_cmd")) {
                 sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
             } else if (args[0].contains("get_trans")) {
