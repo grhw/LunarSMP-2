@@ -51,6 +51,10 @@ public class CustomInfoBar {
             player.setScoreboard(CustomInfoBar.createScoreboard(player));
         }
         updateScoreboardText(getScoreList(player), player);
+
+        Player jasdjasd = player;
+
+        player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, "[%betterteams_name%] ") + player.getName());
     }
 
     public static Scoreboard createScoreboard( Player player ) {
@@ -58,6 +62,8 @@ public class CustomInfoBar {
         Objective objective = scoreboard.registerNewObjective("scoreboard", "dummy");
 
         updateScoreboardText(getScoreList(player), player);
+        player.setPlayerListHeader(ChatColor.LIGHT_PURPLE + "   [ LunarSMP ]   ");
+        player.setPlayerListHeader(ChatColor.LIGHT_PURPLE + "   [          ]   ");
 
         return scoreboard;
     }
