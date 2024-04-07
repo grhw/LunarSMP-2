@@ -21,19 +21,19 @@ public class WitherSwordProjTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (snowball == null || snowball.isDead()) {
+        if ( snowball == null || snowball.isDead() ) {
             this.cancel();
         } else {
             Vector vel = snowball.getVelocity();
-            List<LivingEntity> entity_list = Utils.getEntitiesInRadius(snowball.getLocation(), vel.length());
+            List<LivingEntity> entity_list = Utils.getEntitiesInRadius( snowball.getLocation(), vel.length() );
 
-            for (LivingEntity entity : entity_list) {
-                if (entity != snowball.getShooter()) {
-                    entity.getWorld().spawnParticle(Particle.REDSTONE, entity.getLocation().add(0, 1, 0), 4, new Particle.DustOptions(Color.BLACK, 5));
-                    entity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 60, 2));
+            for ( LivingEntity entity : entity_list ) {
+                if ( entity != snowball.getShooter() ) {
+                    entity.getWorld().spawnParticle( Particle.REDSTONE, entity.getLocation().add( 0, 1, 0 ), 4, new Particle.DustOptions( Color.BLACK, 5 ) );
+                    entity.addPotionEffect( new PotionEffect( PotionEffectType.WITHER, 60, 2 ) );
                 }
             }
-            snowball.getWorld().spawnParticle(Particle.REDSTONE, snowball.getLocation(), 1, new Particle.DustOptions(Color.BLACK, 5));
+            snowball.getWorld().spawnParticle( Particle.REDSTONE, snowball.getLocation(), 1, new Particle.DustOptions( Color.BLACK, 5 ) );
         }
     }
 }

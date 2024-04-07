@@ -5,14 +5,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class CustomModelDatas {
     public static int getCustomModelData( String name ) {
-        return Math.abs(name.hashCode());
+        return Math.abs( name.hashCode() );
     }
 
     public static boolean checkFor( ItemStack item, String name ) {
-        return Utils.checkIfMeta(item) && item.getItemMeta().getCustomModelData() == getCustomModelData(name);
+        return Utils.checkIfMeta( item ) && item.getItemMeta().getCustomModelData() == getCustomModelData( name );
     }
 
     public static boolean checkForWithCooldown( ItemStack item, String name, Player player ) {
-        return checkFor(item, name) && player.getCooldown(item.getType()) < 1;
+        return checkFor( item, name ) && player.getCooldown( item.getType() ) < 1;
     }
 }

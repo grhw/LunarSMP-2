@@ -11,7 +11,7 @@ public class CustomJoinMessages implements Listener {
     public void onJoin( PlayerJoinEvent event ) {
         //event.setJoinMessage("");
         //event.getPlayer().getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + event.getPlayer().getName() + " joined the server !!");
-        event.getPlayer().sendMessage(lang.ascii_art_2);
+        event.getPlayer().sendMessage( lang.ascii_art_2 );
     }
 
     @EventHandler(priority = EventPriority.HIGH)

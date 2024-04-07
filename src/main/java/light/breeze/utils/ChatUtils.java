@@ -6,6 +6,6 @@ import org.bukkit.ChatColor;
 
 public class ChatUtils {
     public static BaseComponent[] formatText( String color_code, String text ) {
-        return TextComponent.fromLegacyText(ChatColor.stripColor(color_code) + text);
+        return TextComponent.fromLegacyText( ChatColor.stripColor( color_code ) + text );
     }
 }

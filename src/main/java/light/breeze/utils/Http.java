@@ -9,16 +9,16 @@ public class Http {
     public static String get( String strurl ) {
         String stuff = "";
         try {
-            URL url = new URL(strurl);
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            URL url = new URL( strurl );
+            BufferedReader in = new BufferedReader( new InputStreamReader( url.openStream() ) );
             String str = "";
             List<String> broken = in.lines().toList();
-            for (int i = 0; i < broken.size(); i++) {
-                str = str + "\n" + broken.get(i);
+            for ( int i = 0; i < broken.size(); i++ ) {
+                str = str + "\n" + broken.get( i );
             }
             in.close();
             stuff = str;
-        } catch (java.io.IOException e1) {
+        } catch ( java.io.IOException e1 ) {
             stuff = e1.getMessage();
         }
         return stuff;
