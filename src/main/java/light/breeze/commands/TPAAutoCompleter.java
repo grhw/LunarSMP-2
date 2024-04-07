@@ -12,10 +12,10 @@ import java.util.List;
 public class TPAAutoCompleter implements TabCompleter {
     @Override
     public List<String> onTabComplete( CommandSender sender, Command command, String alias, String[] arguments ) {
-        if (arguments.length == 1) {
+        if ( arguments.length == 1 ) {
             List<String> playerList = new ArrayList<>();
-            for (OfflinePlayer player : Bukkit.getServer().getOfflinePlayers()) {
-                playerList.add(player.getName());
+            for ( OfflinePlayer player : Bukkit.getServer().getOfflinePlayers() ) {
+                playerList.add( player.getName() );
             }
             return playerList;
         }

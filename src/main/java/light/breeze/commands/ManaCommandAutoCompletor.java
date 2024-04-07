@@ -10,10 +10,10 @@ import java.util.List;
 public class ManaCommandAutoCompletor implements TabCompleter {
     public List<String> onTabComplete( CommandSender sender, Command command, String alias, String[] args ) {
         List<String> ac = new ArrayList<>();
-        if (args.length > 1) {
+        if ( args.length > 1 ) {
             return new ArrayList<>();
         }
-        ac.add("sacrifice");
+        ac.add( "sacrifice" );
         return ac;
     }
 }

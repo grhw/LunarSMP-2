@@ -31,36 +31,36 @@ public class CustomGive implements CommandExecutor {
 
     public Map<String, ItemStack> getCustomItems() {
         Map<String, ItemStack> custom_items = new HashMap<>();
-        custom_items.put("wardenbound_sword", new WardenBound().createWardenBound());
-        custom_items.put("burning_axe", new BurningAxe().createBurningAxe());
-        custom_items.put("totem_of_featherfall", new TotemOfFeatherFall().createTOF());
-        custom_items.put("end_ingot", new EndIngot().createEndIngot());
-        custom_items.put("wither_sword", new WitherSword().createWitherSword());
-        custom_items.put("echo_bow", new EchoBow().createEchoBow("50"));
-        custom_items.put("spear_of_justice", new SpearOfJustice().createSpearOfJustice());
+        custom_items.put( "wardenbound_sword", new WardenBound().createWardenBound() );
+        custom_items.put( "burning_axe", new BurningAxe().createBurningAxe() );
+        custom_items.put( "totem_of_featherfall", new TotemOfFeatherFall().createTOF() );
+        custom_items.put( "end_ingot", new EndIngot().createEndIngot() );
+        custom_items.put( "wither_sword", new WitherSword().createWitherSword() );
+        custom_items.put( "echo_bow", new EchoBow().createEchoBow( "50" ) );
+        custom_items.put( "spear_of_justice", new SpearOfJustice().createSpearOfJustice() );
 
-        ItemStack ebna = new EchoBow().createEchoBow("1");
-        ebna.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);
-        custom_items.put("eb_no_ammo", ebna);
+        ItemStack ebna = new EchoBow().createEchoBow( "1" );
+        ebna.addUnsafeEnchantment( Enchantment.SILK_TOUCH, 1 );
+        custom_items.put( "eb_no_ammo", ebna );
 
-        custom_items.put("end_pickaxe", new EndPickaxe().createEndPickaxe("1600"));
+        custom_items.put( "end_pickaxe", new EndPickaxe().createEndPickaxe( "1600" ) );
 
-        ItemStack uep = new EndPickaxe().createEndPickaxe("1");
-        uep.addUnsafeEnchantment(Enchantment.PIERCING, 1);
-        custom_items.put("event_end_pickaxe", uep);
+        ItemStack uep = new EndPickaxe().createEndPickaxe( "1" );
+        uep.addUnsafeEnchantment( Enchantment.PIERCING, 1 );
+        custom_items.put( "event_end_pickaxe", uep );
 
-        custom_items.put("small_potion", new SmallPotion().createSmallPotion(Material.BUCKET));
-        custom_items.put("small_potion_of_flight", new SmallPotion().createSmallPotionWithFly());
-        custom_items.put("small_potion_of_mana", new SmallPotion().createSmallPotionWithMana());
+        custom_items.put( "small_potion", new SmallPotion().createSmallPotion( Material.BUCKET ) );
+        custom_items.put( "small_potion_of_flight", new SmallPotion().createSmallPotionWithFly() );
+        custom_items.put( "small_potion_of_mana", new SmallPotion().createSmallPotionWithMana() );
 
-        custom_items.put("god_necklace", new NecklaceOfTheGods().createNecklaceOfTheGods());
-        custom_items.put("end_sword", new EndSword().createEndSword());
+        custom_items.put( "god_necklace", new NecklaceOfTheGods().createNecklaceOfTheGods() );
+        custom_items.put( "end_sword", new EndSword().createEndSword() );
 
 
-        custom_items.put("devhat", new DevHat().createDevHat());
-        custom_items.put("featherhat", new FeatherHat().createFeatherHat());
-        custom_items.put("tophat", new TopHat().createTopHat());
-        custom_items.put("witchhat", new WitchHat().createWitchHat());
+        custom_items.put( "devhat", new DevHat().createDevHat() );
+        custom_items.put( "featherhat", new FeatherHat().createFeatherHat() );
+        custom_items.put( "tophat", new TopHat().createTopHat() );
+        custom_items.put( "witchhat", new WitchHat().createWitchHat() );
         return custom_items;
     }
 
@@ -68,18 +68,18 @@ public class CustomGive implements CommandExecutor {
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
         Map<String, ItemStack> custom_items = getCustomItems();
 
-        if (custom_items.containsKey(args[0])) {
+        if ( custom_items.containsKey( args[ 0 ] ) ) {
             Player player = null;
-            if (args.length > 1) {
-                player = Utils.getPlayer(args[1]);
+            if ( args.length > 1 ) {
+                player = Utils.getPlayer( args[ 1 ] );
             } else {
                 player = (Player) sender;
             }
-            player.getInventory().addItem(custom_items.get(args[0]));
-            sender.sendMessage("Gave " + sender.getName() + " 1 [" + args[0] + "].");
-            player.sendMessage("Received [" + args[0] + "] from " + sender.getName() + ".");
+            player.getInventory().addItem( custom_items.get( args[ 0 ] ) );
+            sender.sendMessage( "Gave " + sender.getName() + " 1 [" + args[ 0 ] + "]." );
+            player.sendMessage( "Received [" + args[ 0 ] + "] from " + sender.getName() + "." );
         } else {
-            sender.sendMessage("Item " + args[0] + " doesn't exist.");
+            sender.sendMessage( "Item " + args[ 0 ] + " doesn't exist." );
             return false;
         }
         return true;

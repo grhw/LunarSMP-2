@@ -26,36 +26,36 @@ public class Dev implements CommandExecutor {
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
         Player player = (Player) sender;
 
-        if (args.length > 0) {
-            if (args[0].contains("koth")) {
-                player.sendMessage("Creating KOTH Container at your location.");
-                ArmorStand arm = player.getWorld().spawn(player.getLocation(), ArmorStand.class);
-                arm.setSmall(true);
-                arm.setInvulnerable(true);
-                arm.setInvisible(true);
-                arm.setGravity(false);
-                arm.setCustomName("Step For Points");
-                KothTask armTask = new KothTask(arm);
-                armTask.runTaskTimer(Utils.getPlugin(), 1, 10);
-            } else if (args[0].contains("dummy")) {
-                Villager arm = player.getWorld().spawn(player.getLocation(), Villager.class);
-                arm.setCustomName(ChatColor.LIGHT_PURPLE + "Test Dummy");
-                arm.setCustomNameVisible(true);
-                arm.setAI(false);
-                arm.setInvulnerable(false);
-            } else if (args[0].contains("get_cmd")) {
-                sender.sendMessage(Integer.toString(CustomModelDatas.getCustomModelData(args[1])));
-            } else if (args[0].contains("get_trans")) {
-                sender.sendMessage("trans rights");
-                sender.sendMessage(Material.matchMaterial(args[1].toUpperCase()).getTranslationKey());
-            } else if (args[0].contains("fly")) {
-                player.getPlayer().setAllowFlight(true);
-                player.getPlayer().setFlying(true);
-            } else if (args[0].contains("mana")) {
-                this.mana.addMana(player, Integer.parseInt(args[1]));
+        if ( args.length > 0 ) {
+            if ( args[ 0 ].contains( "koth" ) ) {
+                player.sendMessage( "Creating KOTH Container at your location." );
+                ArmorStand arm = player.getWorld().spawn( player.getLocation(), ArmorStand.class );
+                arm.setSmall( true );
+                arm.setInvulnerable( true );
+                arm.setInvisible( true );
+                arm.setGravity( false );
+                arm.setCustomName( "Step For Points" );
+                KothTask armTask = new KothTask( arm );
+                armTask.runTaskTimer( Utils.getPlugin(), 1, 10 );
+            } else if ( args[ 0 ].contains( "dummy" ) ) {
+                Villager arm = player.getWorld().spawn( player.getLocation(), Villager.class );
+                arm.setCustomName( ChatColor.LIGHT_PURPLE + "Test Dummy" );
+                arm.setCustomNameVisible( true );
+                arm.setAI( false );
+                arm.setInvulnerable( false );
+            } else if ( args[ 0 ].contains( "get_cmd" ) ) {
+                sender.sendMessage( Integer.toString( CustomModelDatas.getCustomModelData( args[ 1 ] ) ) );
+            } else if ( args[ 0 ].contains( "get_trans" ) ) {
+                sender.sendMessage( "trans rights" );
+                sender.sendMessage( Material.matchMaterial( args[ 1 ].toUpperCase() ).getTranslationKey() );
+            } else if ( args[ 0 ].contains( "fly" ) ) {
+                player.getPlayer().setAllowFlight( true );
+                player.getPlayer().setFlying( true );
+            } else if ( args[ 0 ].contains( "mana" ) ) {
+                this.mana.addMana( player, Integer.parseInt( args[ 1 ] ) );
             }
         } else {
-            player.sendMessage("hi :3");
+            player.sendMessage( "hi :3" );
         }
         return true;
     }
@@ -71,22 +71,22 @@ public class Dev implements CommandExecutor {
 
         @Override
         public void run() {
-            if (this.stand.getHealth() < 1 || this.stand.isDead()) {
+            if ( this.stand.getHealth() < 1 || this.stand.isDead() ) {
                 this.cancel();
-                FileStorage fs = new FileStorage(Utils.getPlugin(), "lastResults.yml");
-                for (Player player : this.scores.keySet()) {
-                    fs.store(player.getName(), this.scores.get(player).toString());
+                FileStorage fs = new FileStorage( Utils.getPlugin(), "lastResults.yml" );
+                for ( Player player : this.scores.keySet() ) {
+                    fs.store( player.getName(), this.scores.get( player ).toString() );
                 }
             }
-            List<Player> players = Utils.getPlayersInRadius(this.stand.getEyeLocation(), 2);
-            for (Player player : players) {
-                this.scores.put(player, this.scores.getOrDefault(player, 1) + 1);
+            List<Player> players = Utils.getPlayersInRadius( this.stand.getEyeLocation(), 2 );
+            for ( Player player : players ) {
+                this.scores.put( player, this.scores.getOrDefault( player, 1 ) + 1 );
             }
-            List<Player> disable_players = Utils.getPlayersInRadius(this.stand.getEyeLocation(), 60);
-            for (Player player : disable_players) {
-                if (player.isGliding()) {
-                    player.setVelocity(new Vector(0, - 5, 0));
-                    player.sendMessage("You are not allowed to use elytras in this area!");
+            List<Player> disable_players = Utils.getPlayersInRadius( this.stand.getEyeLocation(), 60 );
+            for ( Player player : disable_players ) {
+                if ( player.isGliding() ) {
+                    player.setVelocity( new Vector( 0, - 5, 0 ) );
+                    player.sendMessage( "You are not allowed to use elytras in this area!" );
                 }
             }
         }

@@ -10,18 +10,20 @@ import java.util.List;
 
 public class WitchHat {
     public ItemStack createWitchHat() {
-        ItemStack customItem = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
+        ItemStack customItem = new ItemStack( Material.WARPED_FUNGUS_ON_A_STICK, 1 );
         ItemMeta meta = customItem.getItemMeta();
 
-        meta.setCustomModelData(8001004);
-        meta.setDisplayName("Witch hat");
+        meta.setCustomModelData( 8001004 );
+        meta.setDisplayName( "Witch hat" );
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.GRAY + "Cosmetic");
+        lore.add( ChatColor.GRAY + "Cosmetic" );
 
-        meta.setLore(lore);
-        customItem.setItemMeta(meta);
+        meta.setLore( lore );
+        customItem.setItemMeta( meta );
 
         return customItem;
-    };
+    }
+
+    ;
 }

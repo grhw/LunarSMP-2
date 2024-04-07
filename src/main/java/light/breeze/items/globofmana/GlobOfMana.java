@@ -11,18 +11,18 @@ import java.util.List;
 
 public class GlobOfMana {
     public ItemStack createGlobOfMana() {
-        ItemStack custom_item = new ItemStack(Material.ROTTEN_FLESH, 1);
+        ItemStack custom_item = new ItemStack( Material.ROTTEN_FLESH, 1 );
         Damageable meta = (Damageable) custom_item.getItemMeta();
-        meta.setCustomModelData(CustomModelDatas.getCustomModelData("glob_of_mana"));
-        meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Glob Of Mana");
+        meta.setCustomModelData( CustomModelDatas.getCustomModelData( "glob_of_mana" ) );
+        meta.setDisplayName( ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Glob Of Mana" );
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "..can't you like.. cook it?");
-        lore.add("");
-        lore.add(ChatColor.GRAY + "When Eaten:");
-        lore.add(ChatColor.GREEN + "Food");
-        meta.setLore(lore);
-        custom_item.setItemMeta(meta);
+        lore.add( ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "..can't you like.. cook it?" );
+        lore.add( "" );
+        lore.add( ChatColor.GRAY + "When Eaten:" );
+        lore.add( ChatColor.GREEN + "Food" );
+        meta.setLore( lore );
+        custom_item.setItemMeta( meta );
         return custom_item;
     }
 }

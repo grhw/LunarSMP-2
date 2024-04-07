@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 public class Credits implements CommandExecutor {
     @Override
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
-        sender.sendMessage(lang.ascii_art_2 + ChatColor.WHITE + "" + ChatColor.UNDERLINE + "\nPlugin created by Light Breeze (guhw/gust)");
+        sender.sendMessage( lang.ascii_art_2 + ChatColor.WHITE + "" + ChatColor.UNDERLINE + "\nPlugin created by Light Breeze (guhw/gust)" );
         return true;
     }
 }

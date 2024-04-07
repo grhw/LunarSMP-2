@@ -18,11 +18,11 @@ public class ManaCommand implements CommandExecutor {
     @Override
     public boolean onCommand( CommandSender sender, Command command, String s, String[] args ) {
         Player player = (Player) sender;
-        if (args.length > 0 && args[0] != null && args[0].matches("sacrifice")) {
-            this.mana.addMana(player, - 25);
-            player.getInventory().addItem(new GlobOfMana().createGlobOfMana());
+        if ( args.length > 0 && args[ 0 ] != null && args[ 0 ].matches( "sacrifice" ) ) {
+            this.mana.addMana( player, - 25 );
+            player.getInventory().addItem( new GlobOfMana().createGlobOfMana() );
         }
-        sender.sendMessage(lang.notify_mana.replace("$1", this.mana.getMana(player) + ""));
+        sender.sendMessage( lang.notify_mana.replace( "$1", this.mana.getMana( player ) + "" ) );
         return true;
     }
 }

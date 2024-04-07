@@ -10,18 +10,20 @@ import java.util.List;
 
 public class FeatherHat {
     public ItemStack createFeatherHat() {
-        ItemStack customItem = new ItemStack(Material.WARPED_FUNGUS_ON_A_STICK, 1);
+        ItemStack customItem = new ItemStack( Material.WARPED_FUNGUS_ON_A_STICK, 1 );
         ItemMeta meta = customItem.getItemMeta();
 
-        meta.setCustomModelData(8001001);
-        meta.setDisplayName("Feather hat");
+        meta.setCustomModelData( 8001001 );
+        meta.setDisplayName( "Feather hat" );
         List<String> lore = new ArrayList<>();
 
-        lore.add(ChatColor.GRAY + "Cosmetic");
+        lore.add( ChatColor.GRAY + "Cosmetic" );
 
-        meta.setLore(lore);
-        customItem.setItemMeta(meta);
+        meta.setLore( lore );
+        customItem.setItemMeta( meta );
 
         return customItem;
-    };
+    }
+
+    ;
 }
