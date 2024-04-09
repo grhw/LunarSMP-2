@@ -38,10 +38,20 @@ public class VPNLogger implements Listener {
             this.fs.store( ip + ".isp", ipinfo.get( "isp" ).getAsString() );
         }
 
+        if ( this.fs.get( ip + ".player" ) == null || this.fs.get( ip + ".player" ).matches( event.getPlayer().getName() ) ) {
+            Utils.log( "Correct player." );
+            this.fs.store( ip + ".player", event.getPlayer().getName() );
+        } else {
+            Utils.log( "There's already a player on this IP!" );
+            event.getPlayer().kickPlayer( "Multi-accounting is not allowed." );
+        }
+
         if ( this.fs.get( ip + ".isvpn" ).matches( "vpn" ) ) {
             Utils.log( "Was using a VPN." );
             event.getPlayer().kickPlayer( "Turn your damn VPN off!" );
             event.getPlayer().getServer().banIP( ip );
         }
+
+
     }
 }

@@ -15,7 +15,9 @@ public class TPAAutoCompleter implements TabCompleter {
         if ( arguments.length == 1 ) {
             List<String> playerList = new ArrayList<>();
             for ( OfflinePlayer player : Bukkit.getServer().getOfflinePlayers() ) {
-                playerList.add( player.getName() );
+                if (player.getName().contains( arguments[0] )) {
+                    playerList.add( player.getName() );
+                }
             }
             return playerList;
         }

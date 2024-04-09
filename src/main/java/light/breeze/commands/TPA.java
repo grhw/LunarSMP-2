@@ -126,6 +126,7 @@ public class TPA implements CommandExecutor {
             } else {
                 Utils.log( this.target.getName() + " & " + this.requester.getName() + "'s request expired" );
                 this.requester.sendMessage( lang.tpa_expired );
+                this.target.sendMessage( lang.tpa_expired );
             }
             Utils.log( "End of " + this.target.getName() + " & " + this.requester.getName() + " tpa request." );
         }

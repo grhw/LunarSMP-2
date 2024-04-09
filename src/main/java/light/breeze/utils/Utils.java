@@ -43,13 +43,13 @@ public class Utils {
     }
 
     public static Player getPlayer( String player_name ) {
-        /*for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
+        for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
             if (plr.getName().toLowerCase().matches(player_name.toLowerCase())) {
                 return plr;
             }
         }
-        return null;*/
-        return Bukkit.getPlayer( player_name );
+        return null;
+        //return Bukkit.getPlayer( player_name );
     }
 
     // No NMS for me !
