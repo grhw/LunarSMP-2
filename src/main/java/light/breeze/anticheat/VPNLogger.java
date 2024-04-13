@@ -17,7 +17,11 @@ public class VPNLogger implements Listener {
         this.fs = new FileStorage( Utils.getPlugin(), "lunarlog.yml" );
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    public boolean check( String ip, String name, int num ) {
+        return this.fs.get( ip + ".player" + num ).matches( name ) || this.fs.get( ip + ".player" + num ) == null;
+    }
+
+    @EventHandler( priority = EventPriority.HIGH )
     public void checkVPN( PlayerJoinEvent event ) {
         String ip = event.getPlayer().getAddress().getAddress().getHostAddress();
         Utils.log( "Checking " + ip );
@@ -38,17 +42,28 @@ public class VPNLogger implements Listener {
             this.fs.store( ip + ".isp", ipinfo.get( "isp" ).getAsString() );
         }
 
-        if ( this.fs.get( ip + ".player" ) == null || this.fs.get( ip + ".player" ).matches( event.getPlayer().getName() ) ) {
-            Utils.log( "Correct player." );
-            this.fs.store( ip + ".player", event.getPlayer().getName() );
-        } else {
+        Boolean multi_account_kick = true;
+        if ( this.fs.get( ip + ".maxplayers" ) == null ) {
+            this.fs.store( ip + ".maxplayers", "1" );
+        }
+        Integer max = Integer.parseInt( this.fs.get( ip + ".maxplayers" ) );
+        for ( Integer i = 1; i <= max; i++ ) {
+            if ( check( ip, event.getPlayer().getName(), i ) ) {
+                multi_account_kick = false;
+                this.fs.store( ip + ".player" + i, event.getPlayer().getName() );
+            }
+        }
+        if ( multi_account_kick ) {
             Utils.log( "There's already a player on this IP!" );
             event.getPlayer().kickPlayer( "Multi-accounting is not allowed." );
+            event.getPlayer().getServer().broadcastMessage( "Kicked due to multi-accounting." );
         }
 
         if ( this.fs.get( ip + ".isvpn" ).matches( "vpn" ) ) {
             Utils.log( "Was using a VPN." );
             event.getPlayer().kickPlayer( "Turn your damn VPN off!" );
+            event.getPlayer().getServer().broadcastMessage( "Kicked due to VPN usage." );
+            event.getPlayer().getServer().dispatchCommand( event.getPlayer().getServer().getConsoleSender(), "ban-ip " + ip + " Turn your damn VPN off!" );
             event.getPlayer().getServer().banIP( ip );
         }
 
