@@ -21,7 +21,7 @@ public class SmallPotion {
         meta.setCustomModelData( CustomModelDatas.getCustomModelData( "small_potion" ) );
         String liquid_name = "Oxygen";
         if ( mat.name().split( "_" ).length > 1 ) {
-            liquid_name = Utils.Capitalize( mat.name().toLowerCase().split( "_" )[ 0 ] );
+            liquid_name = Utils.Capitalize( mat.name().toLowerCase().split( "_" )[0] );
         }
         meta.setDisplayName( ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Small Potion of " + liquid_name );
         List<String> lore = new ArrayList<>();

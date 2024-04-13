@@ -16,25 +16,25 @@ public class EchoTarget implements CommandExecutor {
         FileStorage fs = new FileStorage( Utils.getPlugin(), "echo_targets.yml" );
 
         if ( args.length > 1 ) {
-            if ( args[ 0 ].contains( "player" ) ) {
-                Player foundPlayer = Utils.getPlayer( args[ 1 ] );
+            if ( args[0].contains( "player" ) ) {
+                Player foundPlayer = Utils.getPlayer( args[1] );
                 if ( foundPlayer != null ) {
                     sender.sendMessage( "Now targeting player [" + foundPlayer.getName() + "]." );
                     fs.store( player.getUniqueId().toString(), foundPlayer.getName() );
                 } else {
-                    sender.sendMessage( "No player named [" + args[ 1 ] + "] currently online." );
+                    sender.sendMessage( "No player named [" + args[1] + "] currently online." );
                 }
-            } else if ( args[ 0 ].contains( "entity" ) ) {
+            } else if ( args[0].contains( "entity" ) ) {
                 Boolean found = false;
                 for ( Entity entity : player.getWorld().getEntities() ) {
-                    if ( ( ! found ) && args[ 1 ].matches( entity.getType().getName() ) ) {
-                        sender.sendMessage( "Now targeting any [" + args[ 1 ] + "]." );
+                    if ( ( ! found ) && args[1].matches( entity.getType().getName() ) ) {
+                        sender.sendMessage( "Now targeting any [" + args[1] + "]." );
                         found = true;
-                        fs.store( player.getUniqueId().toString(), args[ 1 ] );
+                        fs.store( player.getUniqueId().toString(), args[1] );
                     }
                 }
                 if ( ! found ) {
-                    sender.sendMessage( "No [" + args[ 1 ] + "] in current world." );
+                    sender.sendMessage( "No [" + args[1] + "] in current world." );
                 }
             } else {
                 sender.sendMessage( "Type: player/entity" );

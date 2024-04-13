@@ -27,7 +27,7 @@ public class TPA implements CommandExecutor {
             target = last_target_requests.get( sender.getName() );
         }
         if ( args.length > 0 ) {
-            target = args[ 0 ];
+            target = args[0];
         }
         Map<String, TPARequest> user_requests = requests.get( sender.getName() );
         if ( ! requests.containsKey( target ) ) {

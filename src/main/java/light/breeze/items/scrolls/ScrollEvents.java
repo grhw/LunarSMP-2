@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
 import java.util.List;
 
 public class ScrollEvents implements Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
         if ( CustomModelDatas.checkFor( event.getItem(), "fire_scroll" ) ) {
             Location center_loc = event.getPlayer().getLocation();

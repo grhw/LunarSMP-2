@@ -11,7 +11,7 @@ public class TestDummyEvents implements Listener {
     private long lastDamage = Utils.getTime();
     private long totalDamage = 0;
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( EntityDamageEvent event ) {
         if ( event.getEntity().getCustomName() != null && event.getEntity().getCustomName().startsWith( ChatColor.LIGHT_PURPLE + "Test Dummy" ) ) {
             if ( Utils.getTime() - lastDamage > 1 ) {

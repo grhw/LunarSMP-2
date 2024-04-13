@@ -23,7 +23,7 @@ public class WitherSwordEvents implements Listener {
         this.mana = new ManaSystem();
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
@@ -32,11 +32,11 @@ public class WitherSwordEvents implements Listener {
                 String name = hand.getItemMeta().getDisplayName();
                 player.setCooldown( hand.getType(), 60 );
                 this.mana.addMana( player, - 20 );
-                Integer left = Integer.valueOf( name.split( " \\[" )[ 1 ].split( "\\/" )[ 0 ] );
+                Integer left = Integer.valueOf( name.split( " \\[" )[1].split( "\\/" )[0] );
                 if ( left > 0 ) {
                     left -= 1;
                     ItemMeta m = hand.getItemMeta();
-                    m.setDisplayName( name.split( " \\[" )[ 0 ] + " [" + left + "/50]" );
+                    m.setDisplayName( name.split( " \\[" )[0] + " [" + left + "/50]" );
                     hand.setItemMeta( m );
 
 

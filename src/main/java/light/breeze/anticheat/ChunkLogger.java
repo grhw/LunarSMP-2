@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class ChunkLogger implements Listener {
     FileStorage fs = new FileStorage( Utils.getPlugin(), "chunk_log.yml" );
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void logChunk( PlayerMoveEvent event ) {
         Chunk chunk = event.getPlayer().getLocation().getChunk();
         if ( event.getFrom().distance( event.getTo() ) > 0 ) {

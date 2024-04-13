@@ -9,7 +9,7 @@ import org.bukkit.util.Vector;
 
 
 public class AntiFly implements Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void playerMove( PlayerMoveEvent event ) {
         Location old_pos = event.getFrom();
         Location new_pos = event.getTo();

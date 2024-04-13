@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 public class Drops implements Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void shulkerDrop( EntityDeathEvent e ) {
         if ( e.getEntity().getName().matches( "Shulker" ) ) {
             if ( Math.random() * 20 < 1 ) {

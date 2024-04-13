@@ -18,7 +18,7 @@ public class VPNLogger implements Listener {
     }
 
     public boolean check( String ip, String name, int num ) {
-        return this.fs.get( ip + ".player" + num ).matches( name ) || this.fs.get( ip + ".player" + num ) == null;
+        return this.fs.get( ip + ".player" + num ) == null || this.fs.get( ip + ".player" + num ).matches( name );
     }
 
     @EventHandler( priority = EventPriority.HIGH )

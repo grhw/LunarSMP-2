@@ -14,7 +14,7 @@ public class NecklaceOfTheGodsEvents {
         @Override
         public void run() {
             for ( Player player : Bukkit.getServer().getOnlinePlayers() ) {
-                ItemStack chestPiece = player.getInventory().getArmorContents()[ 2 ];
+                ItemStack chestPiece = player.getInventory().getArmorContents()[2];
                 if ( chestPiece != null && CustomModelDatas.checkFor( chestPiece, "necklace_of_the_gods" ) && player.getHealth() < 20 && mana.checkManaWarn( player ) ) {
                     mana.addMana( player, - 20 );
                     player.setHealth( player.getHealth() + 2.5 );

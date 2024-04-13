@@ -68,18 +68,18 @@ public class CustomGive implements CommandExecutor {
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
         Map<String, ItemStack> custom_items = getCustomItems();
 
-        if ( custom_items.containsKey( args[ 0 ] ) ) {
+        if ( custom_items.containsKey( args[0] ) ) {
             Player player = null;
             if ( args.length > 1 ) {
-                player = Utils.getPlayer( args[ 1 ] );
+                player = Utils.getPlayer( args[1] );
             } else {
                 player = (Player) sender;
             }
-            player.getInventory().addItem( custom_items.get( args[ 0 ] ) );
-            sender.sendMessage( "Gave " + sender.getName() + " 1 [" + args[ 0 ] + "]." );
-            player.sendMessage( "Received [" + args[ 0 ] + "] from " + sender.getName() + "." );
+            player.getInventory().addItem( custom_items.get( args[0] ) );
+            sender.sendMessage( "Gave " + sender.getName() + " 1 [" + args[0] + "]." );
+            player.sendMessage( "Received [" + args[0] + "] from " + sender.getName() + "." );
         } else {
-            sender.sendMessage( "Item " + args[ 0 ] + " doesn't exist." );
+            sender.sendMessage( "Item " + args[0] + " doesn't exist." );
             return false;
         }
         return true;

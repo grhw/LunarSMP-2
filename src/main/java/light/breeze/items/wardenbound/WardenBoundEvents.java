@@ -39,7 +39,7 @@ public class WardenBoundEvents implements Listener {
         return allowHit;
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();

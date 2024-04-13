@@ -21,7 +21,7 @@ public class StopRedStoneClocks implements Listener {
         this.minTime = 0.1;
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void RedStoneClocks( BlockRedstoneEvent event ) {
         if ( event.getBlock().getType() == Material.REPEATER ) {
             Chunk chunk = event.getBlock().getChunk();

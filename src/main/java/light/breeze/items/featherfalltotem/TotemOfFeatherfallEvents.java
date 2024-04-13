@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class TotemOfFeatherfallEvents implements Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerMoveEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();

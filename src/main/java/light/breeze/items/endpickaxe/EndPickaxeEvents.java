@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 public class EndPickaxeEvents implements Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( BlockBreakEvent event ) {
         if ( event.getPlayer() != null ) {
             Player player = event.getPlayer();
@@ -44,7 +44,7 @@ public class EndPickaxeEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void doMending( PlayerExpChangeEvent event ) {
         PlayerInventory inv = event.getPlayer().getInventory();
         if ( CustomModelDatas.checkFor( inv.getItemInMainHand(), "end_pickaxe" ) ) {

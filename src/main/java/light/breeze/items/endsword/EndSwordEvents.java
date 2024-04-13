@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class EndSwordEvents implements Listener {
     private ManaSystem mana = new ManaSystem();
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( EntityDamageByEntityEvent event ) {
         if ( event.getDamager() instanceof Player ) {
             Player player = (Player) event.getDamager();

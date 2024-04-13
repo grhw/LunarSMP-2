@@ -23,7 +23,7 @@ public class EchobowEvents implements Listener {
         this.mana = new ManaSystem();
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onEntityShootBow( EntityShootBowEvent event ) {
         LivingEntity shooter = event.getEntity();
         Boolean ignore_because_not_player = false;

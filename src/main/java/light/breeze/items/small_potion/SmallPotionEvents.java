@@ -30,14 +30,14 @@ public class SmallPotionEvents implements Listener {
         this.void_potions = new HashMap<>();
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onFill( PlayerBucketFillEvent event ) {
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
         // trans rights
         String[] trans_key = event.getBlock().getTranslationKey().replaceAll( "_", "." ).split( "\\." );
 
         if ( trans_key.length > 2 ) {
-            String name = trans_key[ 2 ];
+            String name = trans_key[2];
             if ( CustomModelDatas.checkFor( item, "small_potion" ) ) {
                 event.setCancelled( true );
                 event.getBlock().setType( Material.AIR );
@@ -49,18 +49,18 @@ public class SmallPotionEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onEmpty( PlayerBucketEmptyEvent event ) {
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
 
         if ( CustomModelDatas.checkFor( item, "small_potion" ) ) {
             event.setCancelled( true );
-            event.getBlock().setType( Material.getMaterial( item.getItemMeta().getDisplayName().split( "of " )[ 1 ].toUpperCase() ) );
+            event.getBlock().setType( Material.getMaterial( item.getItemMeta().getDisplayName().split( "of " )[1].toUpperCase() ) );
             event.getPlayer().getInventory().setItemInMainHand( new SmallPotion().createSmallPotion( Material.BUCKET ) );
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void checkPotions( PlayerMoveEvent e ) { // oops! lag!
         List<Player> fly_potion_players = new ArrayList<>( this.fly_potions.keySet() );
         List<Player> void_potion_players = new ArrayList<>( this.void_potions.keySet() );
@@ -85,7 +85,7 @@ public class SmallPotionEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onDrink( PlayerItemConsumeEvent event ) {
         if ( Utils.checkIfMeta( event.getItem() ) ) {
             boolean isPotion = false;
@@ -107,7 +107,7 @@ public class SmallPotionEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void damageDebuff( EntityDamageEvent event ) {
         if ( this.fly_potions.containsKey( event.getEntity() ) ) {
             this.fly_potions.put( (Player) event.getEntity(), (long) 0 );

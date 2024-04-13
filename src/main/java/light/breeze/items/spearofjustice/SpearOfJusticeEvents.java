@@ -25,7 +25,7 @@ import org.bukkit.util.Vector;
 public class SpearOfJusticeEvents implements Listener {
     private ManaSystem ms = new ManaSystem();
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
@@ -36,7 +36,7 @@ public class SpearOfJusticeEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( ProjectileLaunchEvent event ) {
         if ( event.getEntity().getShooter() instanceof Player ) {
             Player player = (Player) event.getEntity().getShooter();
@@ -56,7 +56,7 @@ public class SpearOfJusticeEvents implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void removeOnHit( ProjectileHitEvent event ) {
         if ( event.getEntity().getType() == EntityType.TRIDENT ) {
             if ( event.getEntity().getCustomName().contains( "Spear of Justice" ) ) {

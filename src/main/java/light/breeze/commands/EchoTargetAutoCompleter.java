@@ -18,16 +18,16 @@ public class EchoTargetAutoCompleter implements TabCompleter {
             ac.add( "player" );
             ac.add( "entity" );
             return ac;
-        } else if ( args[ 0 ].contains( "entity" ) ) {
+        } else if ( args[0].contains( "entity" ) ) {
             for ( Entity entity : player.getWorld().getEntities() ) {
                 String name = entity.getType().getName();
-                if ( name.contains( args[ 1 ] ) && ! ac.contains( name ) ) {
+                if ( name.contains( args[1] ) && ! ac.contains( name ) ) {
                     ac.add( name );
                 }
             }
-        } else if ( args[ 0 ].contains( "player" ) ) {
+        } else if ( args[0].contains( "player" ) ) {
             for ( Player plr : player.getServer().getOnlinePlayers() ) {
-                if ( plr.getName().contains( args[ 1 ] ) ) {
+                if ( plr.getName().contains( args[1] ) ) {
                     ac.add( plr.getName() );
                 }
             }

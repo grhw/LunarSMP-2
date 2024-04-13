@@ -18,7 +18,7 @@ import java.util.Map;
 public class BurningAxeEvents implements Listener {
 
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();

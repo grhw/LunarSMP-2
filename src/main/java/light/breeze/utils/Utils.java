@@ -43,8 +43,8 @@ public class Utils {
     }
 
     public static Player getPlayer( String player_name ) {
-        for (Player plr: Bukkit.getServer().getOnlinePlayers()) {
-            if (plr.getName().toLowerCase().matches(player_name.toLowerCase())) {
+        for ( Player plr : Bukkit.getServer().getOnlinePlayers() ) {
+            if ( plr.getName().toLowerCase().matches( player_name.toLowerCase() ) ) {
                 return plr;
             }
         }
@@ -69,7 +69,7 @@ public class Utils {
 
     public static Location parseRelativeLocation( Location location, String relativeCoords ) {
         String[] coords = relativeCoords.split( " " );
-        double z_offset = parseRelativeCoordinate( location, coords[ 2 ] );
+        double z_offset = parseRelativeCoordinate( location, coords[2] );
 
         // Apply rotation (yaw and pitch) adjustments
         double yaw = Math.toRadians( location.getYaw() );
