@@ -76,7 +76,7 @@ public final class LunarSMP extends JavaPlugin {
 
         pm.registerEvents( new VPNLogger(), this );
         pm.registerEvents( new AntiArtifactRename(), this );
-        pm.registerEvents( new CustomJoinMessages(), this );
+        pm.registerEvents( new CustomMessages(), this );
 
         ////// Ticking Tasks //
         new NecklaceOfTheGodsEvents.LoopTask().runTaskTimer( this, 20, 20 * 10 ); // 20t = 1s

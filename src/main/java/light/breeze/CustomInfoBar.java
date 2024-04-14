@@ -7,15 +7,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.*;
 
 public class CustomInfoBar {
     public static String[] getScoreList( Player player ) {
         String[] lines = new String[10];
-        lines[0] = PlaceholderAPI.setPlaceholders( player, ChatColor.DARK_BLUE + "   [ %betterteams_color%%betterteams_name% " + ChatColor.DARK_BLUE + "] " );
+        lines[0] = PlaceholderAPI.setPlaceholders( player, ChatColor.DARK_BLUE + "   [ %betterteams_color%%betterteams_name%" + ChatColor.DARK_BLUE + " ] " );
         lines[1] = ChatColor.YELLOW + PlaceholderAPI.setPlaceholders( player, "     Lag: %math_0:1_100-(" + PlaceholderAPI.setPlaceholders( player, "%server_tps_15%" ).replace( "*", "" ) + "/20*100)%%" );
         lines[2] = "  ";
         lines[3] = ChatColor.LIGHT_PURPLE + "     Mana: " + new ManaSystem().getMana( player ) + "/" + ManaSystem.getMaxMana( player );
@@ -31,6 +28,14 @@ public class CustomInfoBar {
 
     public static void updateScoreboardText( String[] lines, Player player ) {
         Scoreboard scoreboard = player.getScoreboard();
+        String team_name = PlaceholderAPI.setPlaceholders( player, "%betterteams_color%%betterteams_name%" );
+        Team team = scoreboard.getTeam( team_name );
+        if ( team == null ) {
+            team = scoreboard.registerNewTeam( team_name );
+        }
+
+        team.addEntry( player.getName() );
+
         if ( scoreboard.getObjective( "scoreboard" ) != null ) {
             scoreboard.getObjective( "scoreboard" ).unregister();
             Objective objective = scoreboard.registerNewObjective( "scoreboard", "dummy" );
