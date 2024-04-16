@@ -10,6 +10,7 @@ import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
 import light.breeze.items.endsword.EndSword;
 import light.breeze.items.featherfalltotem.TotemOfFeatherFall;
+import light.breeze.items.manabox.ManaBox;
 import light.breeze.items.necklace_of_the_gods.NecklaceOfTheGods;
 import light.breeze.items.small_potion.SmallPotion;
 import light.breeze.items.spearofjustice.SpearOfJustice;
@@ -52,6 +53,8 @@ public class CustomGive implements CommandExecutor {
         custom_items.put( "small_potion", new SmallPotion().createSmallPotion( Material.BUCKET ) );
         custom_items.put( "small_potion_of_flight", new SmallPotion().createSmallPotionWithFly() );
         custom_items.put( "small_potion_of_mana", new SmallPotion().createSmallPotionWithMana() );
+
+        custom_items.put( "mana_box", new ManaBox().createManaBox() );
 
         custom_items.put( "god_necklace", new NecklaceOfTheGods().createNecklaceOfTheGods() );
         custom_items.put( "end_sword", new EndSword().createEndSword() );
