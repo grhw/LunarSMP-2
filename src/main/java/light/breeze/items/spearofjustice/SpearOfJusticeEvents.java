@@ -40,7 +40,7 @@ public class SpearOfJusticeEvents implements Listener {
     public void onUse( ProjectileLaunchEvent event ) {
         if ( event.getEntity().getShooter() instanceof Player ) {
             Player player = (Player) event.getEntity().getShooter();
-            if ( this.ms.checkManaWarn( player ) && CustomModelDatas.checkForWithCooldown( player.getInventory().getItemInMainHand(), "spear_of_justice", player ) ) {
+            if ( CustomModelDatas.checkForWithCooldown( player.getInventory().getItemInMainHand(), "spear_of_justice", player ) && this.ms.checkManaWarn( player ) ) {
                 player.setCooldown( player.getInventory().getItemInMainHand().getType(), 240 );
                 player.addPotionEffect( new PotionEffect( PotionEffectType.LEVITATION, ( 5 * 5 ), 255, false, false, false ) );
                 this.ms.addMana( player, - 30 );

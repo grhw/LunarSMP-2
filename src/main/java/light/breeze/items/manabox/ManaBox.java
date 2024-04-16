@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ManaBox {
     public ItemStack createManaBox() {
-        ItemStack custom_item = new ItemStack( Material.SLIME_BALL, 1 );
+        ItemStack custom_item = new ItemStack( Material.FISHING_ROD, 1 );
         Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData( CustomModelDatas.getCustomModelData( "mana_box" ) );
         meta.setDisplayName( ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Mana Box" );
