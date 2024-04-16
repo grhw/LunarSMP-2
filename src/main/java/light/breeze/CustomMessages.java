@@ -27,6 +27,6 @@ public class CustomMessages implements Listener {
 
     @EventHandler( priority = EventPriority.NORMAL )
     public void onChat( AsyncPlayerChatEvent event ) {
-        event.setMessage( PlaceholderAPI.setPlaceholders( event.getPlayer(), "%betterteams_color%[%betterteams_name%] " ) + event.getPlayer().getName() + ChatColor.RESET + " " + event.getMessage() );
+        event.setFormat( PlaceholderAPI.setPlaceholders( event.getPlayer(), "%betterteams_color%" ) + event.getPlayer().getName() + ChatColor.RESET + ": " + event.getMessage() );
     }
 }

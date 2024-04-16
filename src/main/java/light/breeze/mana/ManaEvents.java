@@ -25,7 +25,7 @@ public class ManaEvents implements Listener {
 
     @EventHandler( priority = EventPriority.HIGH )
     public void rechargeXP( PlayerExpChangeEvent event ) {
-        this.mana.addMana( event.getPlayer(), event.getAmount() * 2 );
+        this.mana.addMana( event.getPlayer(), event.getAmount() / 2 );
     }
 
     @EventHandler( priority = EventPriority.HIGH )
