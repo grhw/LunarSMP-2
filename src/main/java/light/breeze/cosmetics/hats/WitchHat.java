@@ -25,5 +25,4 @@ public class WitchHat {
         return customItem;
     }
 
-    ;
 }

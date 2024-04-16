@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GlobOfMana {
-    public ItemStack createGlobOfMana(int c) {
+    public ItemStack createGlobOfMana( int c ) {
         ItemStack custom_item = new ItemStack( Material.ROTTEN_FLESH, 1 );
         Damageable meta = (Damageable) custom_item.getItemMeta();
         meta.setCustomModelData( CustomModelDatas.getCustomModelData( "glob_of_mana" ) );
@@ -26,7 +26,8 @@ public class GlobOfMana {
         custom_item.setAmount( c );
         return custom_item;
     }
+
     public ItemStack createGlobOfMana() {
-        return createGlobOfMana(1);
+        return createGlobOfMana( 1 );
     }
 }

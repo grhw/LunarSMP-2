@@ -9,7 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class NecklaceOfTheGodsEvents {
     public static class LoopTask extends BukkitRunnable { // Whoops! Lag!
-        private ManaSystem mana = new ManaSystem();
+        private final ManaSystem mana = new ManaSystem();
 
         @Override
         public void run() {

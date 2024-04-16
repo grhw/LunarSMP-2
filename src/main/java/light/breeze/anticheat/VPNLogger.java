@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class VPNLogger implements Listener {
-    private FileStorage fs;
+    private final FileStorage fs;
 
     public VPNLogger() {
         this.fs = new FileStorage( Utils.getPlugin(), "lunarlog.yml" );
@@ -38,7 +38,7 @@ public class VPNLogger implements Listener {
                 this.fs.store( ip + ".isvpn", "no" );
             }
             this.fs.store( ip + ".country", ipinfo.get( "countryName" ).getAsString() );
-            this.fs.store( ip + ".blocklevel", "" + ipinfo.get( "block" ).getAsString() );
+            this.fs.store( ip + ".blocklevel", ipinfo.get( "block" ).getAsString() );
             this.fs.store( ip + ".isp", ipinfo.get( "isp" ).getAsString() );
         }
 

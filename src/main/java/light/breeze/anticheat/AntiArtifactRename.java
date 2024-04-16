@@ -10,8 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class AntiArtifactRename implements Listener {
     @EventHandler
     public static void onInventoryClick( InventoryClickEvent e ) {
-        if ( e.getInventory() instanceof AnvilInventory ) {
-            AnvilInventory anvil_inventory = (AnvilInventory) e.getInventory();
+        if ( e.getInventory() instanceof AnvilInventory anvil_inventory ) {
             if ( anvil_inventory.getContents()[0] != null ) {
                 if ( Utils.checkIfMeta( anvil_inventory.getContents()[0] ) ) {
                     //e.setCancelled(true);

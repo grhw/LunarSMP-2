@@ -10,12 +10,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class EndSwordEvents implements Listener {
-    private ManaSystem mana = new ManaSystem();
+    private final ManaSystem mana = new ManaSystem();
 
     @EventHandler( priority = EventPriority.HIGH )
     public void onUse( EntityDamageByEntityEvent event ) {
-        if ( event.getDamager() instanceof Player ) {
-            Player player = (Player) event.getDamager();
+        if ( event.getDamager() instanceof Player player ) {
             ItemStack item = player.getInventory().getItemInMainHand();
             if ( CustomModelDatas.checkForWithCooldown( item, "end_sword", player ) && this.mana.checkManaWarn( player ) ) {
                 player.setCooldown( item.getType(), 200 );

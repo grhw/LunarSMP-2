@@ -25,5 +25,4 @@ public class DevHat {
         return customItem;
     }
 
-    ;
 }

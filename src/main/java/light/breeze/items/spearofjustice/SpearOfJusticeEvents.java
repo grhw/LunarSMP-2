@@ -23,7 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 public class SpearOfJusticeEvents implements Listener {
-    private ManaSystem ms = new ManaSystem();
+    private final ManaSystem ms = new ManaSystem();
 
     @EventHandler( priority = EventPriority.HIGH )
     public void onUse( PlayerInteractEvent event ) {
@@ -38,8 +38,7 @@ public class SpearOfJusticeEvents implements Listener {
 
     @EventHandler( priority = EventPriority.HIGH )
     public void onUse( ProjectileLaunchEvent event ) {
-        if ( event.getEntity().getShooter() instanceof Player ) {
-            Player player = (Player) event.getEntity().getShooter();
+        if ( event.getEntity().getShooter() instanceof Player player ) {
             if ( CustomModelDatas.checkForWithCooldown( player.getInventory().getItemInMainHand(), "spear_of_justice", player ) && this.ms.checkManaWarn( player ) ) {
                 player.setCooldown( player.getInventory().getItemInMainHand().getType(), 240 );
                 player.addPotionEffect( new PotionEffect( PotionEffectType.LEVITATION, ( 5 * 5 ), 255, false, false, false ) );

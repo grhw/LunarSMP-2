@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TPA implements CommandExecutor {
-    private Map<String, Map<String, TPARequest>> requests = new HashMap<>();
-    private Map<String, String> last_target_requests = new HashMap<>();
+    private final Map<String, Map<String, TPARequest>> requests = new HashMap<>();
+    private final Map<String, String> last_target_requests = new HashMap<>();
 
     @Override
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {

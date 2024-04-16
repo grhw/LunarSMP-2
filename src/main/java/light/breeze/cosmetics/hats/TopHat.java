@@ -25,5 +25,4 @@ public class TopHat {
         return customItem;
     }
 
-    ;
 }
