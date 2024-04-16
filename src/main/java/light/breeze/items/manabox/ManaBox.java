@@ -23,5 +23,6 @@ public class ManaBox {
         lore.add( ChatColor.GREEN + "Throws the box and captures any nearby entity" );
         meta.setLore( lore );
         custom_item.setItemMeta( meta );
+        return custom_item;
     }
 }
