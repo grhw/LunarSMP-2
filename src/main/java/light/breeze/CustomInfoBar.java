@@ -1,7 +1,6 @@
 package light.breeze;
 
 import light.breeze.mana.ManaSystem;
-import light.breeze.utils.Utils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
