@@ -51,6 +51,7 @@ public final class LunarSMP extends JavaPlugin {
         this.getCommand( "echo_target" ).setTabCompleter( new EchoTargetAutoCompleter() );
 
         this.getCommand( "dev" ).setExecutor( new Dev() );
+        this.getCommand( "panic" ).setExecutor( new Panic() );
 
         this.getCommand( "open_brewer" ).setExecutor( new CustomProcessor() );
 

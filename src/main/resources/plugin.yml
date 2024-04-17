@@ -45,3 +45,9 @@ commands:
     aliases: [ brewer,custom_brew,open_custom_brewer ]
     usage: /<command>
     permission: minecraft.command.help
+
+  panic:
+    description: panic console commands
+    aliases: [ console ]
+    usage: /<command>
+    permission: minecraft.command.help

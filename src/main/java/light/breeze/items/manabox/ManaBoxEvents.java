@@ -38,7 +38,7 @@ public class ManaBoxEvents implements Listener {
                             event.getPlayer().spawnParticle( Particle.VILLAGER_ANGRY, event.getCaught().getLocation(), 1, 1, 1, 0.5, 25 );
                             event.getCaught().getWorld().dropItemNaturally( event.getCaught().getLocation(), new GlobOfMana().createGlobOfMana( 6 ) );
                         }
-                        event.getPlayer().getInventory().setItemInMainHand( null );
+                        //event.getPlayer().getInventory().setItemInMainHand( null );
                     }
                 }
             }
