@@ -2,6 +2,8 @@ package light.breeze.recipes;
 
 import light.breeze.items.endingot.EndIngot;
 import light.breeze.items.endpickaxe.EndPickaxe;
+import light.breeze.items.globofmana.GlobOfMana;
+import light.breeze.items.manabox.ManaBox;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -42,6 +44,20 @@ public class HijackCraftingTable implements Listener {
         mapping.put( "|", new ItemStack( Material.END_ROD ) );
 
         newRecipe( recipe, mapping, new EndPickaxe().createEndPickaxe( "1600" ) );
+    }
+
+    public void ManaBox() {
+        String[] recipe = new String[3];
+        recipe[0] = "ESO";
+        recipe[1] = "SBS";
+        recipe[2] = "OSE";
+        Map<String, ItemStack> mapping = new HashMap<>();
+        mapping.put( "S", new ItemStack( Material.SHULKER_SHELL ) );
+        mapping.put( "B", new ItemStack( Material.SHULKER_BOX ) );
+        mapping.put( "E", new EndIngot().createEndIngot() );
+        mapping.put( "O", new GlobOfMana().createGlobOfMana() );
+
+        newRecipe( recipe, mapping, new ManaBox().createManaBox() );
     }
 
     public Boolean Compare( ItemStack[] from, ItemStack[] compareTo ) {

@@ -104,6 +104,7 @@ public final class LunarSMP extends JavaPlugin {
             HijackCraftingTable custom_recipes = new HijackCraftingTable();
 
             custom_recipes.EndPickaxe();
+            custom_recipes.ManaBox();
             pm.registerEvents( custom_recipes, plugin );
 
             recipes.SmallPotion( new NamespacedKey( plugin, "small_potion" ) );

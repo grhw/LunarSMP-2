@@ -1,6 +1,5 @@
 package light.breeze.items.manabox;
 
-import light.breeze.items.globofmana.GlobOfMana;
 import light.breeze.mana.ManaSystem;
 import light.breeze.utils.CustomModelDatas;
 import org.bukkit.Particle;
@@ -30,15 +29,15 @@ public class ManaBoxEvents implements Listener {
                         long roll = Math.round( Math.random() * ( req ) );
                         if ( roll == 1 ) {
                             event.getPlayer().playSound( event.getCaught().getLocation(), Sound.BLOCK_SHULKER_BOX_OPEN, 5, 2 );
-                            event.getPlayer().spawnParticle( Particle.WHITE_SMOKE, event.getCaught().getLocation(), 1, 1, 1, 0., 150 );
+                            event.getPlayer().spawnParticle( Particle.WHITE_SMOKE, event.getCaught().getLocation(), 1, 1, 1, 0, 150 );
                             event.getCaught().getWorld().dropItemNaturally( event.getCaught().getLocation(), new FilledManaBox().createFilledManaBox( event.getCaught().createSnapshot(), event.getCaught().getName() ) );
                             event.getCaught().remove();
+                            event.getPlayer().getInventory().setItemInMainHand( null );
                         } else {
                             event.getPlayer().playSound( event.getCaught().getLocation(), Sound.ENTITY_CAMEL_DASH, 5, 1 );
                             event.getPlayer().spawnParticle( Particle.VILLAGER_ANGRY, event.getCaught().getLocation(), 1, 1, 1, 0.5, 25 );
-                            event.getCaught().getWorld().dropItemNaturally( event.getCaught().getLocation(), new GlobOfMana().createGlobOfMana( 6 ) );
+                            //event.getCaught().getWorld().dropItemNaturally( event.getCaught().getLocation(), new GlobOfMana().createGlobOfMana( 6 ) );
                         }
-                        //event.getPlayer().getInventory().setItemInMainHand( null );
                     }
                 }
             }
