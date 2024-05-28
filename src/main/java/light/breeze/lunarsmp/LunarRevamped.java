@@ -1,5 +1,6 @@
 package light.breeze.lunarsmp;
 
+import light.breeze.lunarsmp.anticheat.VPNLogger;
 import light.breeze.lunarsmp.initialization.Commands;
 import light.breeze.lunarsmp.initialization.Items;
 import org.bukkit.plugin.java.JavaPlugin;
